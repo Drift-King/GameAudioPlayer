@@ -1,5 +1,29 @@
+Introduction to GAP
+======================
+
+Game Audio Player (GAP) is an utility capable of...
+1) Searching various games resource files for various audio files (music/sfx/speech)
+2) Extracting found files "as is" and converting them to WAVs
+3) Playing found/added files with seeking and other features
+4) Extracting any files from various resource archives
+
+Features supported include...
+1) Plug-in system: plug-ins for audio files and resource files
+2) Playlist functionality: remove node(s), duplicate node, move up/down,
+   clear, multiselect, add/scan directory, sort list
+3) Saving/Converting multiple files at once using filename template
+4) Game oriented playlist: options for loading/saving playlists so that they can
+   be used on systems with different CD drive letters
+5) Playback options: repeat one/all, shuffle, introscan, single-file playback
+6) Drag'n'Drop support for main (playback) and playlist windows
+7) Several ready-for-use playlists for CD-games: NFS, NFS2, NFS3, NFS4, NFS5,
+   Command & Conquer, Red Alert, Dune 2000, C&C: Tiberian Sun, The Neverhood,
+   Fallout, Fallout 2, Diablo, Diablo 2, StarCraft, NBA Live'96, NBA Live'99,
+   Quake3, Torin's Passage, Gabriel Knight 1 & 2, Phantasmagoria 1 & 2,
+   King's Quest 7 & 8, Leisure Suit Larry 7, Full Throttle, etc.
+
 =============================================================================
-			  GAP Source Code Notes 		   08-03-2002
+			  GAP Source Code Notes
 =============================================================================
 
 This file contains some notes on GAP/plug-ins source code.
