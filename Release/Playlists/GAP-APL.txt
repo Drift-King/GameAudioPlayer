@@ -1,0 +1,232 @@
+=============================================================================
+			ANX Playlists for CD games		   07-03-2002
+=============================================================================
+
+Premade APLs (GAP playlists) for CD games may be used on systems with
+different CD drive letters, as long as GAP is properly configured to
+save/load such APLs and APLs are made for game data residing on the game CD.
+
+You are encouraged to add correct (usable) APLs for CD games to this package
+(and, correspondingly, add your name and contact info along with your APLs
+descriptions to this text file). But really useful are the APLs with either
+of two features (better with both):
+1) containing audio file names: songnames for music files, game context based
+descriptions of sound/speech files,
+2) containing audio files which were found as a result of scanning of a large
+resource file or a massive bunch of files on game CD.
+Such playlists are quite difficult to create, so it's always good to distribute
+them. Especially useful are APLs with songnames, as this information is rarely
+stored in game audio/resource files, thus, it often cannot be obtained by GAP
+itself.
+
+GAP-APL.ZIP package includes ANX Playlists for the games:
+
+[Prepared by Valery V. Anisimovsky (son_of_the_north@mail.ru)]
+C&C (sound).apl -- Command & Conquer sounds/speech (use either of two CDs)
+C&C (music).apl -- Command & Conquer music (use either of two CDs)
+C&C (video) [GDI].apl -- Command & Conquer movies (GDI CD)
+C&C (video) [NOD].apl -- Command & Conquer movies (NOD CD)
+RedAlert (video) [Allies].apl -- Red Alert movies (ALLIES CD)
+RedAlert (video) [Soviet].apl -- Red Alert movies (SOVIET CD)
+TiberianSun (sound) [GDI].apl -- C&C: Tiberian Sun sounds/speech (GDI CD)
+TiberianSun (sound) [NOD].apl -- C&C: Tiberian Sun sounds/speech (NOD CD)
+TiberianSun (music).apl -- C&C: Tiberian Sun music (use either of two CDs)
+TiberianSun (movie) [GDI].apl -- C&C: Tiberian Sun movies (GDI CD)
+TiberianSun (movie) [NOD].apl -- C&C: Tiberian Sun movies (NOD CD)
+Kyrandia 3 (video).apl -- Legend Of Kyrandia 3 movies
+Kyrandia 3 (music).apl -- Legend Of Kyrandia 3 music
+Kyrandia 3 (sound).apl -- Legend Of Kyrandia 3 sounds
+Kyrandia 3 (speech).apl -- Legend Of Kyrandia 3 speech
+Descent2 (video).apl -- Descent 2 movies
+Descent2 Vertigo (video).apl -- Descent 2: Vertigo movies
+CNW (video).apl -- Conquest of the New World movies
+NBA Live'96 (video).apl -- NBA Live'96 movies soundtracks
+NBA Live'96 (music).apl -- NBA Live'96 music
+NBA Live'96 (sound).apl -- NBA Live'96 sounds
+NBA Live'96 (speech).apl -- NBA Live'96 speech
+NFSSE (music).apl -- NFS SE music
+NFSSE (video).apl -- NFS SE movies soundtracks
+NFSSE (sound).apl -- NFS SE sounds
+NFSSE (speech).apl -- NFS SE speech
+NFS2SE (music) [ASF].apl -- NFS2 SE .ASF music
+NFS2SE (music) [MUS].apl -- NFS2 SE .MUS music
+NFS3 (music).apl -- NFS3: Hot Pursuit music
+NFS4 (video).apl -- NFS4: High Stakes movies soundtracks
+NFS4 (music).apl -- NFS4: High Stakes music
+NFS5 (video).apl -- NFS5: Porsche Unleashed video soundtracks
+Fallout (music).apl -- Fallout music
+Diablo.apl -- Diablo sounds/speech/music
+Diablo (music).apl -- Diablo music
+WarCraft2 BNE (music).apl -- WarCraft 2: Battle.net Edition music
+WarCraft2 BNE (speech).apl -- WarCraft 2: Battle.net Edition speech
+StarCraft (speech).apl -- StarCraft speech
+BroodWar (speech).apl -- BroodWar speech
+Hexen2 (sound).apl -- Hexen 2+ Portal Of Praevus mission pack sounds
+MageSlayer.apl -- MageSlayer sounds
+Dark Reign.apl -- Dark Reign sounds/speech
+Blood2 (sound).apl -- Blood 2 sounds/speech
+Tomb Raider.apl -- Tomb Raider sounds
+MDK.apl -- MDK sounds/music
+MDK (music).apl -- MDK music
+MDK (video).apl -- MDK movies
+MTM2 (music).apl -- Monster Truck Madness 2 music
+MTM2 (sound).apl -- Monster Truck Madness 2 sounds
+Quake2.apl -- Quake 2 sounds
+Quake3 Arena (music).apl -- Quake 3: Arena music
+Full Throttle (speech).apl -- Full Throttle speech
+Space Bucks.apl -- Space Bucks sounds/speech/music
+Space Bucks (music).apl -- Space Bucks music
+Torin's Passage (speech).apl -- Torin's Passage sounds/speech
+Torin's Passage (sound).apl -- Torin's Passage sounds/music
+Torin's Passage (music).apl -- Torin's Passage music
+King's Quest 7 (sound).apl -- King's Quest 7 sounds
+King's Quest 7 (speech).apl -- King's Quest 7 speech
+LSL7 (sound).apl -- Leisure Suit Larry 7 sounds/speech
+LSL7 (music).apl -- Leisure Suit Larry 7 music
+Neverhood (music).apl -- The Neverhood music
+Neverhood (sound).apl -- The Neverhood sounds
+Unreal-RNP (sound).apl -- Unreal: Return to Na Pali sounds/speech
+UnrealTournament (sound).apl -- Unreal Tournament sounds/speech
+Wheel Of Time (sound).apl -- Wheel Of Time sounds/speech
+Broken Sword 2 (music) [CD1].apl -- Broken Sword 2 music (CD#1)
+Broken Sword 2 (music) [CD2].apl -- Broken Sword 2 music (CD#2)
+Broken Sword 2 (speech) [CD1].apl -- Broken Sword 2 speech (CD#1)
+Broken Sword 2 (speech) [CD2].apl -- Broken Sword 2 speech (CD#2)
+Atlantis 2 (music) [CD1].apl -- Atlantis 2 music (CD#1)
+Atlantis 2 (music) [CD2].apl -- Atlantis 2 music (CD#2)
+Atlantis 2 (music) [CD3].apl -- Atlantis 2 music (CD#3)
+Atlantis 2 (music) [CD4].apl -- Atlantis 2 music (CD#4)
+Atlantis 2 (speech) [CD1].apl -- Atlantis 2 speech (CD#1)
+Atlantis 2 (speech) [CD2].apl -- Atlantis 2 speech (CD#2)
+Atlantis 2 (speech) [CD3].apl -- Atlantis 2 speech (CD#3)
+Atlantis 2 (speech) [CD4].apl -- Atlantis 2 speech (CD#4)
+Atlantis 2 (sounds) [CD1].apl -- Atlantis 2 sounds (CD#1)
+Atlantis 2 (sounds) [CD2].apl -- Atlantis 2 sounds (CD#2)
+Atlantis 2 (sounds) [CD3].apl -- Atlantis 2 sounds (CD#3)
+Atlantis 2 (sounds) [CD4].apl -- Atlantis 2 sounds (CD#4)
+Atlantis 2 (video soundtracks) [CD1].apl -- Atlantis 2 video soundtracks (CD#1)
+Atlantis 2 (video soundtracks) [CD2].apl -- Atlantis 2 video soundtracks (CD#2)
+Atlantis 2 (video soundtracks) [CD3].apl -- Atlantis 2 video soundtracks (CD#3)
+Atlantis 2 (video soundtracks) [CD4].apl -- Atlantis 2 video soundtracks (CD#4)
+Harvester (music) [CD1].apl -- Harvester music (CD#1)
+Harvester (music) [CD2].apl -- Harvester music (CD#2)
+Harvester (music) [CD3].apl -- Harvester music (CD#3)
+Harvester (sound) [CD1].apl -- Harvester sounds (CD#1)
+Harvester (sound) [CD2].apl -- Harvester sounds (CD#2)
+Harvester (sound) [CD3].apl -- Harvester sounds (CD#3)
+Harvester (speech) [CD1].apl -- Harvester speech (CD#1)
+Harvester (speech) [CD2].apl -- Harvester speech (CD#2)
+Harvester (speech) [CD3].apl -- Harvester speech (CD#3)
+Harvester (video) [CD1].apl -- Harvester movies (CD#1)
+Harvester (video) [CD2].apl -- Harvester movies (CD#2)
+Harvester (video) [CD3].apl -- Harvester movies (CD#3)
+Odyssee (music) [CD1].apl -- Odyssee music (CD#1)
+Odyssee (sounds) [CD1].apl -- Odyssee sounds (CD#1)
+Odyssee (speech) [CD2].apl -- Odyssee speech (CD#2)
+Chine (music).apl -- Chine music
+Chine (speech).apl -- Chine speech
+Chine (sounds).apl -- Chine sounds
+RedAlert2 (music) [CD1].apl -- Red Alert 2 music (ALLIES CD)
+RedAlert2 (music) [CD2].apl -- Red Alert 2 music (SOVIET CD)
+RedAlert2 (sound, speech) [CD1].apl -- Red Alert 2 sounds, speech (ALLIES CD)
+RedAlert2 (sound, speech) [CD2].apl -- Red Alert 2 sounds, speech (SOVIET CD)
+TS-FireStorm (music).apl -- Tiberian Sun: FireStorm music
+TS-FireStorm (speech).apl -- Tiberian Sun: FireStorm speech
+TS-FireStorm (TS music).apl -- Tiberian Sun: FireStorm TS music
+TS-FireStorm (video).apl -- Tiberian Sun: FireStorm video
+RA2-Yuri's Revenge (music).apl -- Red Alert 2: Yuri's Revenge music
+
+[Prepared by Anthony Larme (larme@bit.net.au)]
+King's Quest 8.apl -- King's Quest 8 music/sfx/speech
+Gabriel Knight.apl -- Gabriel Knight music/sfx/speech
+Gabriel Knight 2 [CD1].apl -- Gabriel Knight 2 music/sfx/speech (CD#1)
+Phantasmagoria [CD1].apl -- Phantasmagoria music/sfx/speech	(CD#1)
+Phantasmagoria 2 [CD1].apl -- Phantasmagoria 2 music/sfx/speech (CD#1)
+
+[Prepared by Tarek Al-Azem (talazem@hotmail.com)]
+NBA Live'99 (video).apl -- NBA Live'99 movies soundtracks
+NBA Live'99 (music).apl -- NBA Live'99 music
+
+[Prepared by Dan Robert Polsrod (bendel@sensewave.com)]
+StarCraft (music).apl -- StarCraft music
+
+[Prepared by Max Degtjarev (mdma@mail.ru)]
+RoadRash (music).apl -- Road Rash music
+RoadRash (sound).apl -- Road Rash sounds
+
+[Prepared by Ladislav Zezula (zezula@volny.cz)]
+RedAlert (sound) [Allies].apl -- Red Alert sounds/speech (ALLIES CD)
+RedAlert (music) [Allies].apl -- Red Alert music	 (ALLIES CD)
+RedAlert (sound) [Soviet].apl -- Red Alert sounds/speech (SOVIET CD)
+RedAlert (music) [Soviet].apl -- Red Alert music	 (SOVIET CD)
+Dune2000 (music).apl -- Dune 2000 music
+Fallout2 (music).apl -- Fallout 2 music
+
+[Prepared by Vladimir Goryachev (imw@aport.ru)]
+BroodWar (music).apl -- BroodWar music
+
+[Prepared by Darkest one (darkestone@mail.ru)]
+DTU (music).apl -- Descent to Undermountain music
+
+[Prepared by Steven Xu (stevenxu@21cn.com)]
+NFS5 (music).apl -- NFS5: Porsche Unleashed music
+TS-FireStorm (video).apl -- Tiberian Sun: FireStorm movies
+TS-FireStorm (music).apl -- Tiberian Sun: FireStorm music
+TS-FireStorm (sound).apl -- Tiberian Sun: FireStorm sounds/speech
+Euro'2000 (music).apl -- Euro'2000 music
+Diablo2 (music).apl -- Diablo 2 music
+Diablo2 (sound).apl -- Diablo 2 sounds
+Diablo2 (speech).apl -- Diablo 2 speech
+realMYST (music).apl -- realMYST music
+
+[Prepared by Lubos Culen (mirsoft@gmx.net)]
+Descent Freespace (Music & Speech).apl -- Descent Freespace music & speech
+Descent Freespace (Music).apl -- Descent Freespace music
+FIFA 2000 (Music).apl -- FIFA 2000 music
+FIFA 99 (Music).apl -- FIFA 99 music
+Fillets (Music).apl -- Fillets music
+Full Throttle (Music & Sound).apl -- Full Throttle (Virgin / EU version) music & sound
+Full Throttle (Music).apl -- Full Throttle (Virgin / EU version) music
+King's Quest 8 (Music).apl -- King's Quest 8 music
+Larry 6 (Music & SFX).apl -- LSL 6 sound-fx and two wave musics
+Larry 6 (Speech).apl --  LSL 6 speech
+NBA 95 (Music).apl -- NBA 95 music
+NHL 98 (Music).apl -- NHL 98 music
+NHL 99 (Music).apl -- NHL 99 music
+NHL 2000 (Music).apl -- NHL 2000 music
+NHL 2001 (Music).apl -- NHL 2001 music
+Red Alert 2 (Music).apl -- Red Alert 2 music
+Sanitarium (Music) [CD1].apl -- Sanitarium music from CD1
+Sanitarium (Music) [CD2].apl -- Sanitarium music from CD2
+Sanitarium (Music) [CD3].apl -- Sanitarium music from CD3
+Thief 2 (Sound & Speech & Music).apl -- Thief 2 sound, speech & music
+World Cup 98 (Music).apl -- FIFA World Cup 98 music
+Worms Armageddon (Music).apl -- Worms Armageddon music
+
+[Prepared by Valentin Efimov (garden@postman.ru)]
+The Road to El Dorado (music).apl -- The Road to El Dorado music
+
+[Prepared by Ilya Beshlebniy (bim@mailru.com)]
+Max Payne (music).apl -- Max Payne music (requires game path setting!)
+Red Faction (music).apl -- Red Faction music (requires game path setting!)
+
+[Prepared by Black SkyWolf [ExaRxis] (skywolf@nm.ru)]
+Diablo2LOD (music).apl -- Diablo 2: Lord Of Destruction music
+Diablo2LOD (sound).apl -- Diablo 2: Lord Of Destruction sound
+Diablo2LOD (speech).apl -- Diablo 2: Lord Of Destruction speech
+FIFA 98 (music).apl -- FIFA 98 music
+Planescape Torment (music) [CD1].apl -- Planescape Torment music (CD#1)
+Planescape Torment (sounds) [CD1].apl -- Planescape Torment sounds (CD#1)
+Planescape Torment (voices) [CD1].apl -- Planescape Torment voices (CD#1)
+Planescape Torment (movie) [CD2].apl -- Planescape Torment movies (CD#2)
+Planescape Torment (movie) [CD3].apl -- Planescape Torment movies (CD#3)
+Planescape Torment (movie) [CD4].apl -- Planescape Torment movies (CD#4)
+StoneKeep (movie).apl -- StoneKeep movies
+
+[Prepared by <sorry to confess I don't really remember who sent me these files>]
+Descent3 (music) [CD1].apl -- Descent3 music (CD#1)
+Descent3 (music) [CD2].apl -- Descent3 music (CD#2)
+Descent3 (speech) [CD1].apl -- Descent3 speech (CD#1)
+Descent3 (speech) [CD2].apl -- Descent3 speech (CD#2)
+Descent3 (video) [CD1].apl -- Descent3 video (CD#1)
+Descent3 (video) [CD2].apl -- Descent3 video (CD#2)

@@ -1,0 +1,154 @@
+=============================================================================
+			  GAP Source Code Notes 		   08-03-2002
+=============================================================================
+
+This file contains some notes on GAP/plug-ins source code.
+Please read it carefully before dealing with the code itself.
+Written by Valery V. Anisimovsky.
+
+==============
+1. DISCLAIMER
+==============
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+If you use any part of this code without any credit to me (or person on whose
+work this code is based), there will be no tragedy, but I don't think that's
+a good way for a programmer...
+
+============
+2. Building
+============
+
+IMPORTANT: if you plan to use gap.sln and *.vcxproj files in this package,
+please do not change the directory structure!
+Solution (gap.sln) and projects (*.vcxproj) depend on that strongly!
+
+GAP.sln -- VS2013 solution file: contains all projects: GAP and all plug-ins.
+To build all, just load GAP.sln in MS Visual Studio and in the main menu
+select Build->Rebuild Solution
+
+NOTE: After the building finishes, GAP.EXE and all plug-in DLLs will be
+placed into .\Release directory, NOT into Release dirs in .\Projects !
+See projects options for more details.
+
+.\Projects directory: project files (*.vcxproj) for specific EXE or DLL.
+After the build there will appear .\Intermediate subdirectory containing 
+intermediate files (*.obj, *.res, etc.), as well as .\Output subdirectory 
+containing some output files for the projects (NOT the DLLs/EXE!).
+
+.\Src directory: source code for GAP and all plug-ins: *.c, *.h, *.rc
+(*.bmp, *.ico, too).
+
+=====================
+3. Source Code Notes
+=====================
+
+"// ???" in code means "no need, really" or "very doubtful".
+The code is not really well-written and contains almost no comments.
+In fact, it's very poorly written and many things may be implemented in a
+much better way. It also may be GREATLY optimized.
+If you succeed in improving this, please let me know!
+Anyway, you're always welcome to mail me any questions/suggestions regarding
+the source code: <son_of_the_north@mail.ru>
+
+Things to do...
+
+* Make use of MapViewOfFile() in RF plug-ins. It should speed up playback
+for most audio formats. It should also speed up searching if a good algorithm
+is used (see further).
+
+* Note that all RF plug-ins MUST provide SetFilePointer function.
+Nevertheless, handled RF format may not support easy seeking, but RF plug-in
+may just use one of the following approaches:
+-- make seek by any (even by slow byte-by-byte file reading) available means,
+-- emulate seek,
+-- fail and set internal failure flag to be used for consequent ReadFile call,
+-- disable GAP's seeking by sending correspondent message to hWndMain.
+In any such case there should be an option in RF plug-in configuration for
+SetFilePointer behaviour.
+
+* Searching for several audio files IDs in ScanResFile() should be somewhat
+faster if it's rewritten basing on a good simultaneous searching algorithm.
+
+* Code contains many duplications.
+
+* Saving/Converting/Searching should be separate threads.
+
+* Plug-in API may be greatly improved.
+
+* AF plug-ins should be able to inform GAP of the wave stream parameters
+changes (sample rate, resolution, channels number, etc.) while GAP should
+react such changes appropriately.
+
+* Support for non-wave streams: MIDI, FM (?), Redbook (?),...
+
+* If a large number of plug-ins is to be handled it would be wise to implement
+hashing in GetRFPlugin()/GetAFPlugin().
+
+* Progress dialog jumps here and there if you click on any other window and
+then on it.
+
+* AFile and some other structures may be greatly optimized: buffers for
+filenames should be allocated when filling these structures. The only AFile
+field which should have fixed size large enough is afName because it can be
+changed.
+
+* ListView control slows down GAP when it contains too many files (>1000).
+
+* Perhaps, it would be wise to rewrite RF plug-in filereader as a separate
+thread (for all RF plug-ins).
+
+* AF plug-in decoders might also be nicer if rewritten as separate threads.
+
+* For almost all AF plug-ins there's some use in writing WinAmp input plug-ins
+for supported formats (basing on the ready code). It's quite useful for the
+games in which music/sfx/speech are stand-alone files.
+
+* MMX, K6-2 3DNow!, etc. acceleration.
+
+* Many more!
+
+Things to take care of...
+
+* MSDev has a tendency to change the dimensions of some controls to default
+values: e.g. 12 for edit control height and 8 for static text height.
+This should be avoided as some of such controls, for instance, in PLAYDIALOG,
+have non-default dimensions and that's (of course! :-) made for better GAP
+appearance.
+
+* Note that all plug-in API functions are __stdcall. Other (non-exported)
+functions may be __fastcall or whatever you like.
+
+* For ALL projects, both GAP and plug-ins, there should be the SAME structure
+packing options. This is important, as plug-ins and GAP code share some
+headers defining structures used by both.
+
+* Dealing with plug-ins under WATCOM C 11.0 is a tricky thing: some combinations
+of optimization options for GAP and plug-ins projects result in crashes when
+trying to load plug-ins. There's no such problem under MSVC 5.
+
+* Usage of ListView_DeleteAllItems() seems to cause unreproduceable crashes
+(when clearing playlist).
+
+* Many more!
+
+===============
+4. Final Words
+===============
+
+Good luck! :-)
+
+--- Valery V. Anisimovsky

@@ -1,0 +1,25 @@
+VQA Format (for Tiberian Sun) by Olaf van der Spek <Olaf@XCC.TMFWeb.NL>
+
+If a chunk id contains a 'z' as last character, it's a format80 encoded chunk.
+
+FINF chunk
+
+Each movie has one FINF chunk. It contains frame information. It has count frames entries of 4 bytes. Each entry, when multiplied by two, points to the SND chunk of the corresponding frame.
+
+VQFR chunk
+
+Each frame has one VQFR chunk. It can contain CBF and VPRZ or VPTR sub-chunks.
+
+CBF chunk
+
+Each movie has one CBF chunk in the first VQFR chunk. The first byte is unused, the second byte is the start of a format80 encoded block. When decoded, this block is (almost) always a multiple of 32 bytes. I think this is because it contains entries of 4 (header.cx_block) x 4 (header.cy_block) 16 bit pixels.
+
+VPRZ chunk
+
+This chunk is always encoded.
+
+VPTR chunk
+
+This chunk is never encoded.
+
+If you've got additional information, please contact me by email.

@@ -1,0 +1,243 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "winver.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+ABOUT DIALOG DISCARDABLE  0, 0, 207, 215
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About ANX AUD Plug-In"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Credits",IDC_STATIC,5,3,196,154,BS_LEFT
+    LTEXT           "",ID_COPYRIGHT,11,15,184,137,NOT WS_GROUP
+    GROUPBOX        "License",IDC_STATIC,5,159,196,33,BS_LEFT
+    LTEXT           "This plug-in is freeware. There is NO WARRANTY for this software, you use it at your own risk.",
+                    IDC_STATIC,11,169,184,18,NOT WS_GROUP
+    DEFPUSHBUTTON   "O&K",IDOK,79,197,50,14
+END
+
+INFOBOX DIALOG DISCARDABLE  0, 0, 215, 99
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "AUD File Info Box"
+FONT 8, "MS Sans Serif"
+BEGIN
+    RTEXT           "Resource Name",IDC_STATIC,4,8,52,8,NOT WS_GROUP
+    EDITTEXT        ID_RESNAME,58,6,150,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "File Data String",IDC_STATIC,4,22,51,8,NOT WS_GROUP
+    EDITTEXT        ID_DATASTR,58,20,150,12,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "Data Format",IDC_STATIC,5,33,111,60,BS_LEFT
+    EDITTEXT        ID_DATAFMT,9,43,103,46,ES_MULTILINE | ES_READONLY
+    RTEXT           "File Size",IDC_STATIC,118,39,27,8,NOT WS_GROUP
+    EDITTEXT        ID_FILESIZE,147,37,61,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "Length",IDC_STATIC,118,54,27,8,NOT WS_GROUP
+    EDITTEXT        ID_LENGTH,147,52,61,12,ES_AUTOHSCROLL | ES_READONLY
+    DEFPUSHBUTTON   "O&K",IDOK,163,79,45,14
+END
+
+CONFIG DIALOG DISCARDABLE  0, 0, 252, 151
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "AUD Plug-In Configuration"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "AUD time calculation &method",IDC_STATIC,5,3,191,106,
+                    WS_GROUP
+    CONTROL         "Use ""outsize"" AUD header field (fast, but inaccurate)",
+                    ID_AH_OUTSIZE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,
+                    11,12,182,10
+    CONTROL         "Use ""size"" AUD header field and estimate (fast)",
+                    ID_AH_SIZE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,11,
+                    22,166,10
+    CONTROL         "Use AUD file size and estimate (fast)",ID_FILE_SIZE,
+                    "Button",BS_AUTORADIOBUTTON | WS_TABSTOP,11,32,130,10
+    CONTROL         "Walk AUD chunks chain (may be too slow)",ID_WALK,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,11,42,151,10
+    GROUPBOX        "When &walking AUD chunks chain...",ID_WALKFRAME,11,53,
+                    180,34,WS_GROUP
+    CONTROL         "Use ""outsize"" AUD chunk header field",ID_CH_OUTSIZE,
+                    "Button",BS_AUTORADIOBUTTON | WS_TABSTOP,15,62,137,10
+    CONTROL         "Use ""size"" AUD chunk header field and estimate",
+                    ID_CH_SIZE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,15,
+                    72,169,10
+    CONTROL         "Don't &use walking if failed to estimate by fast methods",
+                    ID_NOWALK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,93,
+                    183,10
+    GROUPBOX        "IMA ADPCM decompression",IDC_STATIC,5,111,191,35
+    CONTROL         "Use sample &clipping for decompression",ID_USECLIPPING,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,121,138,10
+    CONTROL         "Use sample &enhancement for decompression",
+                    ID_USEENHANCEMENT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    11,131,157,10
+    DEFPUSHBUTTON   "O&K",IDOK,202,6,45,14
+    PUSHBUTTON      "Ca&ncel",IDCANCEL,202,24,45,14
+    PUSHBUTTON      "&Defaults",ID_DEFAULTS,202,42,45,14
+END
+
+WALKING DIALOG DISCARDABLE  0, 0, 173, 38
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Walking"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Walking AUD chunks chain. Please wait...",IDC_STATIC,19,
+                    6,135,8
+    CONTROL         "Progress1",ID_WALKING,"msctls_progress32",WS_BORDER,8,
+                    18,157,9
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,9,8,0
+ PRODUCTVERSION 1,3,2,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "ANX Software\0"
+            VALUE "FileDescription", "ANX AUD Audio File Plug-In\0"
+            VALUE "FileVersion", "0.98\0"
+            VALUE "InternalName", "AF_AUD\0"
+            VALUE "LegalCopyright", "Copyright © 1998-2000 ANX Software\0"
+            VALUE "OriginalFilename", "AF_AUD.DLL\0"
+            VALUE "ProductName", "Game Audio Player\0"
+            VALUE "ProductVersion", "1.32\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""winver.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXT
+//
+
+IDR_CREDITS             TEXT    DISCARDABLE     "Credits.bin"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "ABOUT", DIALOG
+    BEGIN
+        RIGHTMARGIN, 203
+        BOTTOMMARGIN, 199
+    END
+
+    "CONFIG", DIALOG
+    BEGIN
+        BOTTOMMARGIN, 143
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NOTOURFILE          "This file is not a valid AUD audio file or VQA with soundtrack."
+    IDS_NOMEM               "Failed to allocate memory for AUD data block."
+    IDS_NOBUFFER            "Failed to allocate memory for AUD decompression buffer."
+    IDS_UNKNOWNTYPE         "Unknown AUD compression type."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

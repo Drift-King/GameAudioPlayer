@@ -1,0 +1,65 @@
+============================================================================
+		      Game Audio Player Changes History 	  10-03-2001
+============================================================================
+
+The history list is maintained since v1.10. All versions preceding v1.10 are
+v1.0 and should be considered demo ones.
+
+New in GAP v1.32:
+ * New MGI plug-in: Origin music: Wing Commander: Prophecy
+ * New FST plug-in: FutureVision video soundtracks: Harvester
+ * New CMP plug-in: FutureVision music/speech/sound: Harvester
+ * New XA plug-in: Maxis music/speech/sound: SimCity3000
+ * New ISS plug-in: FunCom music/speech/sound: The Longest Journey
+ * New APC plug-in: Cryo Interactive music/speech/sound/video soundtracks
+ * New CLU/CLUSFX plug-ins: Revolution music/speech: Broken Sword 2
+ * ACM plug-in: now it uses new ACM decompression engine in a separate DLL
+ * ANX MPQ plug-in: filelist directory is now configurable
+ * EACS plug-in: Added support for NFS5/NHL'2000/NBA'2000/FIFA'99'2000 music!
+ * SOL plug-in: added SOL LPF sound enhancement
+ * AUD and ASF plug-ins: IMA ADPCM decoder corrected
+ * New BLB/BLBSFX plug-ins: The Neverhood music/sounds!
+ * Resizeable playlist window added
+ * UI features added: right-click menus, easy windows movement, always on top
+ * Playlist improvements: milti-remove, node right-click (context) menu, sorting
+ * Drag'n'Drop support added for main and playlist windows
+ * Fixed stupid bug in ASF and AUD decoders which caused noise in some files
+ * SOL plug-in: SOL ADPCM decompression scheme detection much improved
+ * EACS plug-in improvement: now it can search for MUS sections and extract them!
+ * AUD plug-in improvement: now it can search for VQA videos and play VQA soundtracks!
+ * Minor GAP/plug-ins bugfixes/improvements/optimizations
+ * Scanning rewritten: now it's faster and AF plug-in can support multiple formats
+ * Added more robust error handling
+ * New GRP resource file plug-in: 3D Realms resources
+ * New MVE audio file plug-in: Interplay MVE video soundtracks!
+
+New in GAP v1.28:
+ * Plug-in directories are now configurable
+ * Playback is now performed by a separate thread
+ * GAP now can convert audio files to compressed WAVs!
+ * GAP info box improved: now it provides lots of tips/help/info/links/mails!
+ * WAV plug-in improvement: now it supports compressed WAV formats
+ * New WAD/WADSFX plug-ins: DOOM, DOOM2, Heretic, Hexen, etc. sounds!
+ * New DSND plug-in: Descent, Descent 2 sounds!
+ * ASF plug-in search bug fixed: now it finds soundtracks in .TGV videos
+ * MUS/ASF plug-in decoder bug fixed: now it should play .WVE/.TGQ sound correctly
+ * MPQ plug-in improvement: now it's unloaded successfully when using StarCraft's STORM.DLL
+ * RAW plug-in upgrade: added support for A-law/u-law
+ * SOL plug-in improvements: added auto-detection of SOL ADPCM decompression scheme and stereo SOLs support
+ * VOC plug-in bug fixed: now it closes verified files :-)
+ * AUD plug-in improvement: added support for stereo AUDs
+ * ASF, AUD, MUS/ASF and SOL plug-ins improvement: added option for sample clipping
+ * Minor GAP bugfixes/improvements
+ * New GAP features: single-file playback, add/scan directory
+ * New (very limited) BNK plug-in for NFS 2, NFS 3 sounds/speech
+
+New in GAP v1.10:
+ * New MUS/ASF plug-in for Electronic Arts music (NFS2, NFS3, etc.)!
+ * AUD plug-in now plays Westwood-compressed AUDs!
+ * SOL plug-in now plays SOLs without noise!
+ * Saving/converting of multiple audio files using filename template
+ * Keyboard shortcuts
+ * Some user interface elements improved
+ * Search for SOL, ACM and ASF plug-ins improved
+ * More games supported!
+ * GAP/plug-ins speed/size optimizations

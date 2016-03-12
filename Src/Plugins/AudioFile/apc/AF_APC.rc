@@ -1,0 +1,218 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "winver.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+INFOBOX DIALOG DISCARDABLE  0, 0, 215, 106
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "APC File Info Box"
+FONT 8, "MS Sans Serif"
+BEGIN
+    RTEXT           "Resource Name",IDC_STATIC,4,8,52,8,NOT WS_GROUP
+    EDITTEXT        ID_RESNAME,58,6,150,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "File Data String",IDC_STATIC,4,22,51,8,NOT WS_GROUP
+    EDITTEXT        ID_DATASTR,58,20,150,12,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "Data Format",IDC_STATIC,5,33,111,67,BS_LEFT
+    EDITTEXT        ID_DATAFMT,9,43,103,53,ES_MULTILINE | ES_READONLY
+    RTEXT           "File Size",IDC_STATIC,118,39,27,8,NOT WS_GROUP
+    EDITTEXT        ID_FILESIZE,147,37,61,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "Length",IDC_STATIC,118,54,27,8,NOT WS_GROUP
+    EDITTEXT        ID_LENGTH,147,52,61,12,ES_AUTOHSCROLL | ES_READONLY
+    DEFPUSHBUTTON   "O&K",IDOK,163,86,45,14
+END
+
+CONFIG DIALOG DISCARDABLE  0, 0, 230, 106
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "APC Plug-In Configuration"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "APC search and verification",IDC_STATIC,5,1,167,60
+    CONTROL         "Check &version (1.20)",IDC_CHECKVERSION,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,11,81,10
+    CONTROL         "Check &sample rate",IDC_CHECKRATE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,23,75,10
+    CONTROL         "Check c&hannels number",IDC_CHECKCHANNELS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,35,93,10
+    CONTROL         "Check if the file is an embedded soundtrack",
+                    IDC_CHECKHNM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,47,
+                    154,10
+    GROUPBOX        "IMA ADPCM decompression",IDC_STATIC,5,64,167,36
+    CONTROL         "Use sample &clipping for decompression",ID_USECLIPPING,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,74,138,10
+    CONTROL         "Use sample &enhancement for decompression",
+                    ID_USEENHANCEMENT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    11,86,157,10
+    DEFPUSHBUTTON   "O&K",IDOK,178,4,45,14
+    PUSHBUTTON      "Ca&ncel",IDCANCEL,178,21,45,14
+    PUSHBUTTON      "&Defaults",ID_DEFAULTS,178,38,45,14
+END
+
+ABOUT DIALOG DISCARDABLE  0, 0, 146, 149
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About ANX APC Plug-In"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Credits",IDC_STATIC,5,3,135,81,BS_LEFT
+    LTEXT           "ANX APC Audio File Plug-In v0.80\nCopyright© 2001 ANX Software\nE-mail: son_of_the_north@mail.ru\n\nIMA ADPCM decoder corrections were pointed out by Peter Pawlowski:\nE-mail: peterpw666@hotmail.com\nhttp://www.geocities.com/pp_666/",
+                    ID_COPYRIGHT,12,15,122,65,NOT WS_GROUP
+    GROUPBOX        "License",IDC_STATIC,5,87,135,40,BS_LEFT
+    LTEXT           "This plug-in is freeware. There is NO WARRANTY for this software, you use it at your own risk.",
+                    IDC_STATIC,12,97,122,27,NOT WS_GROUP
+    DEFPUSHBUTTON   "O&K",IDOK,48,131,50,14
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,8,0,0
+ PRODUCTVERSION 1,3,2,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "ANX Software\0"
+            VALUE "FileDescription", "ANX APC Audio File Plug-In\0"
+            VALUE "FileVersion", "0.80\0"
+            VALUE "InternalName", "AF_APC\0"
+            VALUE "LegalCopyright", "Copyright © 2001 ANX Software\0"
+            VALUE "OriginalFilename", "AF_APC.DLL\0"
+            VALUE "ProductName", "Game Audio Player\0"
+            VALUE "ProductVersion", "1.32\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""winver.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "INFOBOX", DIALOG
+    BEGIN
+        BOTTOMMARGIN, 99
+    END
+
+    "CONFIG", DIALOG
+    BEGIN
+        BOTTOMMARGIN, 98
+    END
+
+    "ABOUT", DIALOG
+    BEGIN
+        RIGHTMARGIN, 144
+        BOTTOMMARGIN, 111
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NOTOURFILE          "This file is not a valid APC audio file."
+    IDS_NOMEM               "Failed to allocate memory for APC data block."
+    IDS_NOBUFFER            "Failed to allocate memory for APC decompression buffer."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

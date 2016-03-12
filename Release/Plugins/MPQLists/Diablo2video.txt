@@ -1,0 +1,16 @@
+data\local\video\New_Bliz640x240.bik
+data\local\video\BlizNorth640x240.bik
+data\local\video\New_Bliz640x480.bik
+data\local\video\BlizNorth640x480.bik
+data\local\video\BlizNorth320x480.bik
+data\local\video\New_BLIZ320x480.bik
+data\local\video\Eng\d2intro640x292.bik
+data\local\video\Eng\d2intro640x146.bik
+data\local\video\Eng\Act04start640x146.bik
+data\local\video\Eng\Act03start640x292.bik
+data\local\video\Eng\Act04start640x292.bik
+data\local\video\Eng\Act02start640x146.bik
+data\local\video\Eng\Act04end640x146.bik
+data\local\video\Eng\Act04end640x292.bik
+data\local\video\Eng\Act02start640x292.bik
+data\local\video\Eng\Act03start640x146.bik

@@ -1,0 +1,121 @@
+=============================================================================
+	      Revolution CLU Resource, Music and Sound Formats	    5-01-2002
+=============================================================================
+
+By Valery V. Anisimovsky (son_of_the_north@mail.ru)
+
+In this document I'll try to describe the format of Revolution CLU resource
+files as well as the format of sound/music files stored in CLU archives.
+These formats are used in the game Broken Sword 2 (perhaps, in some other
+Revolution games).
+
+The files this document deals with have extensions: .CLU.
+
+Throughout this document I use C-like notation.
+
+All numbers in all structures described in this document are stored in files
+using little-endian (Intel) byte order.
+
+======================
+1. CLU Resource Files
+======================
+
+Music/speech/sound files of Broken Sword 2 are stored in CLU resource
+files. Each music/speech/sound CLU file has the following header:
+
+struct tagCLUHeader
+{
+  DWORD dwNumber;
+  char	szID[4];
+} CLUHeader;
+
+szID -- string ID is always "\xFF\xF0\xFF\xF0".
+
+dwNumber -- the number of files stored in CLU file.
+
+After the header comes the array of (dwNumber) directory entries.
+Each directory entry contains the info on a file in CLU archive. Each such
+entry has the following format:
+
+struct tagCLUDirEntry
+{
+  DWORD dwStart;
+  DWORD dwSize;
+} CLUDirEntry;
+
+dwStart -- the starting position of the file relative to the beginning of the
+CLU archive.
+
+dwSize -- the size of the file.
+
+Note that there're some entries with zero (dwStart) or (dwSize) --
+they correspond to the files absent in the given CLU archive (the files
+with the same numbers may be found in the corresponding CLU archive on
+the other game CD).
+
+After the array of directory entries come the files contained in CLU
+archive.
+
+NOTE: The CLU files containing other types of game data have different
+format. It's not described here.
+
+===================================
+2. CLUSFX Music/Speech/Sound Files
+===================================
+
+All of the music/speech/sfx files are of the same format which I refer
+to as CLUSFX. CLUSFX file has a simple header -- just a starting value
+of the sample, after which the compressed waveform stream begins. All
+music/speech/sfx files in Broken Sword 2 are 16-bit mono 22050 Hz.
+ALL CLUSFX files are compressed using CLU ADPCM compression algorithm.
+Refer to the following section for the description of CLU ADPCM
+decompression scheme.
+
+=====================================
+3. CLU ADPCM Decompression Algorithm
+=====================================
+
+During the decompression SHORT variable should be maintained. This is
+the current value of the audio sample which is initialized to the CLUSFX
+header value in the beginning.
+
+Here's the code which decompresses CLU ADPCM compressed stream:
+
+DWORD i;
+SHORT iCurSample;
+BYTE *inputBuffer[dwSize];
+
+iCurSample=iFirstSample; // from the CLUSFX header
+
+for (i=0;i<dwSize;i++)
+{
+  if (inputBuffer[i] & 0x8)
+    iCurSample-=((SHORT)(inputBuffer[i] & 7)) << (inputBuffer[i]>>4);
+  else
+    iCurSample+=((SHORT)(inputBuffer[i] & 7)) << (inputBuffer[i]>>4);
+  Output(iCurSample);
+}
+
+Output() is just a placeholder for any action you would like to perform for
+decompressed sample value.
+
+===========
+4. Credits
+===========
+
+Valentin Efimov (garden@postman.ru)
+http://qmusic.wciom.ru
+Provided me with Broken Sword 2 decoding stuff thereby inspired
+me to decode the formats and write the plug-ins for GAP.
+
+-------------------------------------------
+
+Valery V. Anisimovsky (son_of_the_north@mail.ru)
+http://bim.km.ru/gap/
+http://www.anxsoft.newmail.ru
+http://anx.da.ru
+On these sites you can find my GAP program which can deal with CLU
+resource files, play back CLUSFXes from them and convert CLUSFXes to WAVs.
+There's also complete source code of GAP and all its plug-ins there,
+including CLU and CLUSFX plug-ins, which could be used for further details
+on how you can deal with these formats.

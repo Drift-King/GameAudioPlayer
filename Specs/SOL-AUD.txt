@@ -1,0 +1,304 @@
+=============================================================================
+	      Sierra On-Line Audio File Format Description	    5-01-2002
+=============================================================================
+
+By Valery V. Anisimovsky (son_of_the_north@mail.ru)
+
+In this document I'll try to describe audio file format used in many
+Sierra On-Line games. In most games these files are contained within
+.SFX and .AUD resource files (usually named RESOURCE.SFX and RESOURCE.AUD).
+When encountered as stand-alone files, they usually have extension .AUD
+(but it has nothing to do with Westwood's AUD audio file format!).
+
+The games using this format include: King's Quest 6, King's Quest 7,
+King's Quest 8, Leisure Suit Larry 6, Leisure Suit Larry 7, Pepper's
+Adventures in Time, Quest For Glory 3, Space Quest 5, Torin's Passage,
+Phantasmagoria, Phantasmagoria II: A Puzzle Of Flesh, Gabriel Knight,
+Gabriel Knight II, Shivers, Shivers 2: Harvest of Souls, Under a Killing Moon.
+Maybe many more, e.g.: other games of SQx, GQx, LSLx, KQx series.
+
+The files this document deals with have extensions: .SFX, .AUD. Note that the
+extension of resource files containing AUD audio files may be different from
+these.
+
+Throughout this document I use C-like notation.
+
+All numbers in all structures described in this document are stored in files
+using little-endian (Intel) byte order.
+
+===================
+1. AUD File Header
+===================
+
+The AUD file has the following header:
+
+struct AUDHeader
+{
+  BYTE	bID;
+  BYTE	bShift;
+  char	szID[4];
+  WORD	wSampleRate;
+  BYTE	bFlags;
+  DWORD dwDataSize;
+};
+
+bID -- is equal to 0x8D in all Sierra On-Line games I've seen, except for
+King's Quest 8, where it equals to 0x0D.
+
+bShift -- defines where audio data starts: (bShift+2) is the starting
+position of the audio data relative to the file start (NOT to the start of
+RESOURCE.SFX/RESOURCE.AUD containing this file).
+
+szID -- always "SOL\0". Note that there're four bytes including terminating
+zero!
+
+wSampleRate -- sample rate for the file.
+
+bFlags -- bit-mapped flags:
+bit 0 -- if set, audio data is compressed (otherwise it's PCM),
+bit 1 -- ??? (I've never seen it set),
+bit 2 -- if set, audio data is 16-bit (8-bit otherwise),
+bit 3 -- if set, audio data is in signed format (unsigned otherwise): 16-bit
+	 sound is signed and 8-bit is unsigned,
+bit 4 -- if set, sound is stereo (mono otherwise).
+
+dwDataSize -- size of the audio data (in bytes).
+
+=================
+2. AUD File Data
+=================
+
+Starting at (bShift+2) from the file start, comes AUD audio data.
+If bit 0 of bFlags is not set, it's just PCM: 8-bit or 16-bit, signed or unsigned.
+Otherwise it's compressed with the algorithm, which I refer to as SOL ADPCM.
+SOL ADPCM has two types: 8-bit (for 8-bit sound) and 16-bit (for 16-bit sound).
+
+===========================================
+3. 8-bit SOL ADPCM Decompression Algorithm
+===========================================
+
+Let's (CurSample) be current sample value and (InputBuffer) contain SOL ADPCM
+compressed data:
+
+SHORT CurSample;
+BYTE  InputBuffer[InputBufferSize];
+BYTE  code;
+DWORD i; // index into InputBuffer
+
+CurSample=0x80; // unsigned 8-bit
+
+for (i=0;i<InputBufferSize;i++)
+{
+  code=HINIBBLE(InputBuffer[i]); // get HIGHER 4-bit nibble
+
+  if (code & 8) // sign bit
+     CurSample-=SOLTable3bit[INDEX4(code)];
+  else
+     CurSample+=SOLTable3bit[code];
+
+  CurSample=Clip8BitSample(CurSample); // clip to 8-bit unsigned value range
+  Output((BYTE)CurSample); // send to the output stream
+
+  code=LONIBBLE(InputBuffer[i]); // get LOWER 4-bit nibble
+
+  ...the same for lower nibble
+}
+
+HINIBBLE and LONIBBLE are higher and lower 4-bit nibbles:
+#define HINIBBLE(byte) ((byte) >> 4)
+#define LONIBBLE(byte) ((byte) & 0x0F)
+Note that depending on your compiler you may need to use additional nibble
+separation in these defines, e.g. (((byte) >> 4) & 0x0F).
+
+Output() is just a placeholder for any action you would like to perform for
+decompressed sample value.
+
+SOLTable3bit is the delta table given near the end of this document.
+
+INDEX4(code) is really a tricky thing. In some games (mostly older ones) it
+should be the following:
+#define INDEX4(code) (0xF-(code))
+While in some other games it's the following:
+#define INDEX4(code) ((code) & 7)
+
+"Old" INDEX4 is used, for example, in King's Quest 6, Quest For Glory 3,
+Gabriel Knight.
+"New" INDEX4 is used in Torin's Passage, maybe in other games.
+I do not know the reliable way to figure out which of those you should use
+for particular file, but currently I use the simplest technique: I just
+decode first, say, 1Kb of data using both approaches and look if one of
+them results in the output stream which is far from reasonable 8-bit unsigned
+sound (that is, its mean sample value is far from 0x80).
+
+Clip8BitSample is quite evident:
+
+SHORT Clip8BitSample(SHORT sample)
+{
+  if (sample>255)
+     return 255;
+  else if (sample<0)
+     return 0;
+  else
+     return sample;
+}
+
+Note that the HIGHER nibble is processed first.
+
+============================================
+4. 16-bit SOL ADPCM Decompression Algorithm
+============================================
+
+It's just analoguous to the 8-bit decompression scheme:
+
+LONG  CurSample;
+BYTE  InputBuffer[InputBufferSize];
+BYTE  code;
+DWORD i;
+
+CurSample=0x0000; // signed 16-bit
+
+for (i=0;i<InputBufferSize;i++)
+{
+  code=InputBuffer[i];
+
+  if (code & 0x80) // sign bit
+     CurSample-=SOLTable7bit[INDEX8(code)];
+  else
+     CurSample+=SOLTable7bit[code];
+
+  CurSample=Clip16BitSample(CurSample); // clip to 16-bit signed value range
+  Output((SHORT)CurSample); // send to the output stream
+}
+
+SOLTable7bit is the delta table given near the end of this document.
+
+INDEX8(code) might be as tricky as for 8-bit sound. But in all games I've
+seen where compressed 16-bit sound is used it's just the following:
+#define INDEX8(code) ((code) & 0x7F)
+At least it's true for Torin's Passage, King's Quest 8, Gabriel Knight, etc.
+
+Clip16BitSample is quite evident, too:
+
+LONG Clip16BitSample(LONG sample)
+{
+  if (sample>32767)
+     return 32767;
+  else if (sample<-32768)
+     return (-32768);
+  else
+     return sample;
+}
+
+Note that the decompression schemes are given ONLY for unsigned 8-bit sound
+and signed 16-bit sound. I've never seen signed 8-bit or unsigned 16-bit sound
+in AUD format, but to support these you should only support the correspondent
+clipping (-128..127 for signed 8-bit and 0..65535 for unsigned 16-bit) and
+make additional conversion before outputting the sample value:
+signed->unsigned for 8-bit sound or unsigned->signed for 16-bit sound,
+provided that you've initialized (CurSample) to the correspondent value:
+0x00 for signed 8-bit and 0x8000 for unsigned 16-bit.
+
+Also, those algorithms are ONLY for mono sound, but their improvement for
+stereo is simple: for 8-bit sound left channel is in HIGHER nibble and right
+is in LOWER one, while for 16-bit sound left channel is first byte and right
+channel is second one. Note that you should maintain two different (CurSample)
+variables for left and right channels: (CurSampleLeft) and (CurSampleRight).
+
+Of course, both decompression routines described above may be greatly
+optimized.
+
+====================
+5. SOL ADPCM Tables
+====================
+
+BYTE SOLTable3bit[]=
+{
+    0,
+    1,
+    2,
+    3,
+    6,
+    0xA,
+    0xF,
+    0x15
+};
+
+WORD SOLTable7bit[]=
+{
+    0x0,   0x8,    0x10,   0x20,   0x30,   0x40,   0x50,   0x60,
+    0x70,  0x80,   0x90,   0xA0,   0xB0,   0xC0,   0xD0,   0xE0,
+    0xF0,  0x100,  0x110,  0x120,  0x130,  0x140,  0x150,  0x160,
+    0x170, 0x180,  0x190,  0x1A0,  0x1B0,  0x1C0,  0x1D0,  0x1E0,
+    0x1F0, 0x200,  0x208,  0x210,  0x218,  0x220,  0x228,  0x230,
+    0x238, 0x240,  0x248,  0x250,  0x258,  0x260,  0x268,  0x270,
+    0x278, 0x280,  0x288,  0x290,  0x298,  0x2A0,  0x2A8,  0x2B0,
+    0x2B8, 0x2C0,  0x2C8,  0x2D0,  0x2D8,  0x2E0,  0x2E8,  0x2F0,
+    0x2F8, 0x300,  0x308,  0x310,  0x318,  0x320,  0x328,  0x330,
+    0x338, 0x340,  0x348,  0x350,  0x358,  0x360,  0x368,  0x370,
+    0x378, 0x380,  0x388,  0x390,  0x398,  0x3A0,  0x3A8,  0x3B0,
+    0x3B8, 0x3C0,  0x3C8,  0x3D0,  0x3D8,  0x3E0,  0x3E8,  0x3F0,
+    0x3F8, 0x400,  0x440,  0x480,  0x4C0,  0x500,  0x540,  0x580,
+    0x5C0, 0x600,  0x640,  0x680,  0x6C0,  0x700,  0x740,  0x780,
+    0x7C0, 0x800,  0x900,  0xA00,  0xB00,  0xC00,  0xD00,  0xE00,
+    0xF00, 0x1000, 0x1400, 0x1800, 0x1C00, 0x2000, 0x3000, 0x4000
+};
+
+=======================
+6. SOL Low-Pass Filter
+=======================
+
+If decompressed as described above, SOL ADPCM compressed 8-bit files from
+Torin's Passage seem to have some minor noise. It appears that some Sierra
+On-Line games use a kind of strange low-pass filter after the decompression
+of SOL APDCM compressed 8-bit files. SOL ADPCM compressed 16-bit files does
+not seem to need such enhancement (as well as SOL ADPCM compressed 8-bit
+files in some other Sierra games). The SOL LPF scheme looks like to be the
+following. For unsigned 8-bit sound:
+
+BYTE Sound[BufferSize]; 	// decompressed sound buffer
+BYTE FilteredSound[BufferSize]; // filtered sound buffer
+
+DWORD i; // index
+
+for (i=0;i<(BufferSize-2);i++)
+    FilteredSound[i]=(BYTE)((WORD)Sound[i]+(WORD)Sound[i+2])/2;
+
+For 16-bit sound the implementation is just analoguous.
+
+================================================
+7. AUD Resources: RESOURCE.AUD and RESOURCE.SFX
+================================================
+
+When stored in .SFX/.AUD resources, the audio files are stored "as is",
+without compression (unlike other Sierra On-Line resource files) or encryption.
+That means if you want to play/extract AUD file from the RESOURCE.SFX/.AUD
+resource you just need to search for szID id-string ("SOL\0") and
+read AUDHeader starting at the position two bytes before found id-string.
+This will give you starting point of the file and the size of the file will
+be (dwDataSize+bShift+2).
+
+===========
+8. Credits
+===========
+
+Anthony Larme (larme@bit.net.au)
+http://www.bit.net.au/~larme/
+[Phantasmagoria Memorial Websites]
+
+It was just him who inspired me to explore this format deeper and helped me
+much with the AUDs from Sierra's games I had no access to.
+It was also him who tested my Game Audio Player on many Sierra's games and
+reported me results.
+
+-------------------------------------------
+
+Valery V. Anisimovsky (son_of_the_north@mail.ru)
+http://bim.km.ru/gap/
+http://www.anxsoft.newmail.ru
+http://anx.da.ru
+On these sites you can find my GAP program which can search for SOL audio
+files in .SFX/.AUD resources, extract them, convert them to WAV and play
+them back.
+There's also complete source code of GAP and all its plug-ins there,
+including SOL plug-in, which could be used for further details on how you
+can deal with this format.

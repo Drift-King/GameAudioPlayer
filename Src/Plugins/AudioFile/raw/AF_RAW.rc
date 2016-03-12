@@ -1,0 +1,269 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "winver.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+ABOUT DIALOG DISCARDABLE  0, 0, 164, 165
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About ANX RAW Plug-In"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Credits",IDC_STATIC,5,3,153,96,BS_LEFT
+    LTEXT           "",ID_COPYRIGHT,13,13,140,82,NOT WS_GROUP
+    GROUPBOX        "License",IDC_STATIC,5,101,153,41,BS_LEFT
+    LTEXT           "This plug-in is freeware. There is NO WARRANTY for this software, you use it at your own risk.",
+                    IDC_STATIC,13,112,141,25,NOT WS_GROUP
+    DEFPUSHBUTTON   "O&K",IDOK,57,147,50,14
+END
+
+INFOBOX DIALOG DISCARDABLE  0, 0, 215, 99
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "RAW File Info Box"
+FONT 8, "MS Sans Serif"
+BEGIN
+    RTEXT           "Resource Name",IDC_STATIC,4,8,52,8,NOT WS_GROUP
+    EDITTEXT        ID_RESNAME,58,6,150,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "File Data String",IDC_STATIC,4,22,51,8,NOT WS_GROUP
+    EDITTEXT        ID_DATASTR,58,20,150,12,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "Data Format",IDC_STATIC,5,33,107,60,BS_LEFT
+    EDITTEXT        ID_DATAFMT,9,43,99,46,ES_MULTILINE | ES_READONLY
+    RTEXT           "File Size",IDC_STATIC,115,39,27,8,NOT WS_GROUP
+    EDITTEXT        ID_FILESIZE,145,37,63,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "Length",IDC_STATIC,115,54,27,8,NOT WS_GROUP
+    EDITTEXT        ID_LENGTH,145,52,63,12,ES_AUTOHSCROLL | ES_READONLY
+    DEFPUSHBUTTON   "O&K",IDOK,163,79,45,14
+END
+
+ASKRAWDIALOG DIALOGEX 0, 0, 219, 105
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_WINDOWEDGE
+CAPTION "Raw File Type"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "&Sample rate:",IDC_STATIC,5,2,43,8,NOT WS_GROUP
+    EDITTEXT        ID_RATE,5,11,48,12,ES_AUTOHSCROLL | ES_NUMBER
+    LISTBOX         ID_RATELIST,5,25,48,74,LBS_HASSTRINGS | 
+                    LBS_NOINTEGRALHEIGHT | WS_TABSTOP
+    GROUPBOX        "&Channels",IDC_STATIC,58,6,42,31,BS_LEFT | WS_GROUP
+    CONTROL         "Mono",ID_MONO,"Button",BS_AUTORADIOBUTTON | BS_LEFT | 
+                    WS_TABSTOP,62,15,32,9
+    CONTROL         "Stereo",ID_STEREO,"Button",BS_AUTORADIOBUTTON | BS_LEFT | 
+                    WS_TABSTOP,62,25,33,9
+    GROUPBOX        "&Resolution",IDC_STATIC,104,6,43,31,BS_LEFT | WS_GROUP
+    CONTROL         "8-bit",ID_8BIT,"Button",BS_AUTORADIOBUTTON | BS_LEFT | 
+                    WS_TABSTOP,108,15,37,9
+    CONTROL         "16-bit",ID_16BIT,"Button",BS_AUTORADIOBUTTON | BS_LEFT | 
+                    WS_TABSTOP,108,25,37,9
+    GROUPBOX        "&Byte order",IDC_STATIC,58,37,89,32,BS_LEFT | WS_GROUP
+    CONTROL         "Little-endian (Intel)",ID_INTEL,"Button",
+                    BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,62,47,81,9
+    CONTROL         "Big-endian (Motorola)",ID_MOTOROLA,"Button",
+                    BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,62,56,81,9
+    GROUPBOX        "&Format",IDC_STATIC,151,6,63,63,BS_LEFT | WS_GROUP
+    CONTROL         "Signed",ID_SIGNED,"Button",BS_AUTORADIOBUTTON | BS_LEFT | 
+                    WS_TABSTOP,155,15,39,9
+    CONTROL         "Unsigned",ID_UNSIGNED,"Button",BS_AUTORADIOBUTTON | 
+                    BS_LEFT | WS_TABSTOP,155,25,46,9
+    CONTROL         "Sign bit",ID_SIGNBIT,"Button",BS_AUTORADIOBUTTON | 
+                    BS_LEFT | WS_TABSTOP,155,35,40,9
+    CONTROL         "G.711 u-Law",ID_U_LAW,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,155,45,57,10
+    CONTROL         "G.711 A-Law",ID_A_LAW,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,155,55,57,10
+    PUSHBUTTON      "&Defaults",ID_DEFAULTS,73,86,45,14
+    DEFPUSHBUTTON   "O&K",IDOK,121,86,45,14
+    PUSHBUTTON      "Ca&ncel",IDCANCEL,169,86,45,14
+END
+
+CONFIG DIALOGEX 0, 0, 229, 183
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_WINDOWEDGE
+CAPTION "RAW Plug-In Configuration"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "&Add files",IDC_STATIC,5,2,124,42,BS_LEFT | WS_GROUP
+    CONTROL         "Always",ID_ADD_ALWAYS,"Button",BS_AUTORADIOBUTTON | 
+                    BS_LEFT | WS_TABSTOP,9,11,40,10
+    CONTROL         "Only with RAW/SND extensions",ID_ADD_EXT,"Button",
+                    BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,9,21,115,10
+    CONTROL         "Never",ID_ADD_NEVER,"Button",BS_AUTORADIOBUTTON | 
+                    BS_LEFT | WS_TABSTOP,9,31,40,10
+    GROUPBOX        "Raw &parameters",IDC_STATIC,136,2,88,42,BS_LEFT | 
+                    WS_GROUP
+    CONTROL         "Ask user",ID_PARAMS_ASK,"Button",BS_AUTORADIOBUTTON | 
+                    BS_LEFT | WS_TABSTOP,140,14,45,10
+    CONTROL         "Assume defaults",ID_PARAMS_DEFAULTS,"Button",
+                    BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,140,27,65,10
+    GROUPBOX        "D&efault parameters",IDC_STATIC,5,47,219,113,BS_LEFT
+    LTEXT           "&Sample rate:",IDC_STATIC,12,56,43,8,NOT WS_GROUP
+    EDITTEXT        ID_RATE,12,66,48,12,ES_AUTOHSCROLL | ES_NUMBER
+    LISTBOX         ID_RATELIST,12,80,48,74,LBS_HASSTRINGS | 
+                    LBS_NOINTEGRALHEIGHT | WS_TABSTOP
+    GROUPBOX        "&Channels",IDC_STATIC,63,62,42,31,BS_LEFT | WS_GROUP
+    CONTROL         "Mono",ID_MONO,"Button",BS_AUTORADIOBUTTON | BS_LEFT | 
+                    WS_TABSTOP,67,71,33,9
+    CONTROL         "Stereo",ID_STEREO,"Button",BS_AUTORADIOBUTTON | BS_LEFT | 
+                    WS_TABSTOP,67,81,35,9
+    GROUPBOX        "&Resolution",IDC_STATIC,109,62,43,31,BS_LEFT | WS_GROUP
+    CONTROL         "8-bit",ID_8BIT,"Button",BS_AUTORADIOBUTTON | BS_LEFT | 
+                    WS_TABSTOP,113,71,37,9
+    CONTROL         "16-bit",ID_16BIT,"Button",BS_AUTORADIOBUTTON | BS_LEFT | 
+                    WS_TABSTOP,113,81,37,9
+    GROUPBOX        "&Byte order",IDC_STATIC,63,93,89,32,BS_LEFT | WS_GROUP
+    CONTROL         "Little-endian (Intel)",ID_INTEL,"Button",
+                    BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,67,103,81,9
+    CONTROL         "Big-endian (Motorola)",ID_MOTOROLA,"Button",
+                    BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,67,112,81,9
+    GROUPBOX        "&Format",IDC_STATIC,156,62,63,63,BS_LEFT | WS_GROUP
+    CONTROL         "Signed",ID_SIGNED,"Button",BS_AUTORADIOBUTTON | BS_LEFT | 
+                    WS_TABSTOP,160,71,39,9
+    CONTROL         "Unsigned",ID_UNSIGNED,"Button",BS_AUTORADIOBUTTON | 
+                    BS_LEFT | WS_TABSTOP,160,81,46,9
+    CONTROL         "Sign bit",ID_SIGNBIT,"Button",BS_AUTORADIOBUTTON | 
+                    BS_LEFT | WS_TABSTOP,160,91,40,9
+    CONTROL         "G.711 u-Law",ID_U_LAW,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,160,101,57,10
+    CONTROL         "G.711 A-Law",ID_A_LAW,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,160,111,57,10
+    PUSHBUTTON      "&Defaults",ID_DEFAULTS,83,165,45,14
+    DEFPUSHBUTTON   "O&K",IDOK,131,165,45,14
+    PUSHBUTTON      "Ca&ncel",IDCANCEL,179,165,45,14
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,1,0
+ PRODUCTVERSION 1,3,2,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "ANX Software\0"
+            VALUE "FileDescription", "ANX RAW Audio File Plug-In\0"
+            VALUE "FileVersion", "1.01\0"
+            VALUE "InternalName", "AF_RAW\0"
+            VALUE "LegalCopyright", "Copyright © 1999-2000 ANX Software\0"
+            VALUE "OriginalFilename", "AF_RAW.DLL\0"
+            VALUE "ProductName", "Game Audio Player\0"
+            VALUE "ProductVersion", "1.32\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""winver.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXT
+//
+
+IDR_CREDITS             TEXT    DISCARDABLE     "Credits.bin"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NONODE              "Required node data is missing."
+    IDS_NOPARAMS            "No RAW file parameters."
+    IDS_NOMEM               "Failed to allocate memory for RAW data block."
+    IDS_NOBUFFER            "Failed to allocate memory for RAW decoding buffer."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

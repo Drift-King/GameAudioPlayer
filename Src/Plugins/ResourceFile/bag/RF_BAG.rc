@@ -1,0 +1,207 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "winver.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+CONFIG DIALOGEX 0, 0, 175, 84
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_WINDOWEDGE
+CAPTION "BAG Plug-In Configuration"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "BAG files list",IDC_STATIC,5,2,119,37
+    CONTROL         "Ask user to &select files from list",ID_ASKSELECT,
+                    "Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,11,12,
+                    108,10
+    CONTROL         "&Add file index to filename",ID_ADDINDEX,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,24,94,10
+    GROUPBOX        "Exported files handling",IDC_STATIC,5,41,119,37
+    CONTROL         "&Emulate WAV for SFX files",ID_EMULATEWAV,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,51,99,10
+    CONTROL         "Supply file name e&xtensions",ID_SUPPLYEXT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,63,103,10
+    DEFPUSHBUTTON   "O&K",IDOK,129,6,40,15
+    PUSHBUTTON      "Ca&ncel",IDCANCEL,129,24,40,15
+    PUSHBUTTON      "&Defaults",ID_DEFAULTS,129,42,40,15
+END
+
+SELECT DIALOGEX 0, 0, 266, 135
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_WINDOWEDGE
+CAPTION "Select files to process"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LISTBOX         ID_LIST,5,7,202,112,LBS_HASSTRINGS | LBS_USETABSTOPS | 
+                    LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | WS_VSCROLL | 
+                    WS_HSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "O&K",IDOK,213,7,48,14
+    PUSHBUTTON      "Ca&ncel",IDCANCEL,213,25,48,14
+    PUSHBUTTON      "Select &All",ID_SELALL,213,43,48,14
+    PUSHBUTTON      "Select &None",ID_SELNONE,213,61,48,14
+    PUSHBUTTON      "&Invert ",ID_INVERT,213,79,48,14
+    LTEXT           "&Filter",IDC_STATIC,213,95,20,8,NOT WS_GROUP
+    COMBOBOX        ID_FILTER,213,105,48,58,CBS_DROPDOWNLIST | 
+                    CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",ID_STATUS,"msctls_statusbar32",0x0,0,122,145,12
+    CONTROL         "",ID_PROGRESS,"msctls_progress32",0x0,146,124,119,10
+END
+
+ABOUT DIALOG DISCARDABLE  0, 0, 146, 111
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About ANX BAG Plug-In"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Credits",IDC_STATIC,5,3,135,41,BS_LEFT
+    LTEXT           "ANX BAG Resource File Plug-In v0.90\nCopyright© 2001 ANX Software\nE-mail: son_of_the_north@mail.ru",
+                    IDC_STATIC,11,14,123,24,NOT WS_GROUP
+    GROUPBOX        "License",IDC_STATIC,5,46,135,41,BS_LEFT
+    LTEXT           "This plug-in is freeware. There is NO WARRANTY for this software, you use it at your own risk.",
+                    IDC_STATIC,11,57,123,25,NOT WS_GROUP
+    DEFPUSHBUTTON   "O&K",IDOK,48,92,50,14
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,9,0,0
+ PRODUCTVERSION 1,3,2,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "ANX Software\0"
+            VALUE "FileDescription", "ANX BAG Resource File Plug-In\0"
+            VALUE "FileVersion", "0.90\0"
+            VALUE "InternalName", "RF_BAG\0"
+            VALUE "LegalCopyright", "Copyright © 2001 ANX Software\0"
+            VALUE "OriginalFilename", "RF_BAG.DLL\0"
+            VALUE "ProductName", "Game Audio Player\0"
+            VALUE "ProductVersion", "1.32\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""winver.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "CONFIG", DIALOG
+    BEGIN
+        BOTTOMMARGIN, 68
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NOMEM               "Failed to allocate memory for handle."
+    IDS_NOTOURFILE          "The file is not a valid BAG resource file."
+    IDS_NOFILE              "No file with the specified name in the BAG."
+    IDS_WALKERROR           "Error while walking BAG directory."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

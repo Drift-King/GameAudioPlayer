@@ -1,0 +1,111 @@
+=============================================================================
+		   Sound Effects in Descent and Descent 2	    5-01-2002
+=============================================================================
+
+By Valery V. Anisimovsky (son_of_the_north@mail.ru)
+
+In this document I'll try to describe how sound effects are stored in the
+.PIG/.S11/.S22 resource files of Interplay/Parallax games Descent 1 and
+Descent 2.
+
+The files this document deals with have extensions: .PIG, .S11, .S22.
+
+Throughout this document I use C-like notation.
+
+All numbers in all structures described in this document are stored in files
+using little-endian (Intel) byte order.
+
+======================
+1. Descent 1 Sound FX
+======================
+
+In Descent 1 all sound files are stored in DESCENT.PIG file except for one
+file: DIGITEST.RAW which is in DESCENT.HOG.
+As to Descent 1 (v1.0) .PIG file, it has the following header:
+
+struct PIGHeader
+{
+  DWORD nFiles;
+  DWORD nSoundFiles;
+};
+
+nFiles -- this is the number of non-sound files in the PIG,
+
+nSoundFiles -- this is the number of RAW sounds in the PIG.
+
+Following the header go (nFiles) records describing non-sound files.
+What we need to know about these records that each of them is 17 bytes long.
+
+After those records go (nSoundFiles) records describing sounds. Each record
+has the following format:
+
+struct DSNDEntry
+{
+  char	szFileName[8];
+  DWORD nSamples;
+  DWORD dwFileSize;
+  DWORD dwFileStart;
+};
+
+szFileName -- this is the name for sound padded with zeroes. Note that
+there're some 8 bytes long filenames which are thus not zero-terminated.
+
+nSamples -- the number of samples in RAW file.
+
+dwFileSize -- the size of RAW file (in bytes).
+
+dwFileStart -- the starting position of the RAW file relative to the beginning
+of data files in PIG. That is, to get the starting position of the RAW file
+relative to the beginning of the PIG file you need to add (dwFileStart) to
+(sizeof(PIGHeader)+nFiles*17+nSoundFiles*sizeof(DSNDEntry)).
+
+So, starting at that position goes RAW 8-bit unsigned mono data.
+All sound files in Descent 1 .PIG should be played at 11025 Hz.
+
+Note that Descent v1.4 has slightly different .PIG file. Namely, it starts
+with a DWORD value which is the position (relative to the .PIG file beginning)
+of PIGHeader. Starting at that position is a PIGHeader which is just the same
+to the described above.
+
+======================
+2. Descent 2 Sound FX
+======================
+
+In Descent 2 all sound files are stored in DESCENT2.S11 and DESCENT2.S22
+except for DIGITEST.RAW in DESCENT2.HOG.
+.S11 and .S22 files have the following header:
+
+struct DSNDHeader
+{
+  char	szID[4];
+  DWORD dwDummy;
+  DWORD nFiles;
+};
+
+szID -- string ID is always "DSND",
+
+dwDummy -- ??? looks like has no reasonable meaning,
+
+nFiles -- the number of files in .S11/.S22 file.
+
+After the header go (nFiles) DSNDEntry records (just the same as for Descent 1).
+Just like in Descent 1, (dwFileStart) field of each entry is the starting
+position of the RAW file relative to the beginning of RAW files. That is,
+to get the starting position of the RAW file relative to the beginning of
+the .S11/.S22 file you need to add (dwFileStart) to
+(sizeof(DSNDHeader)+nFiles*sizeof(DSNDEntry)).
+
+Each file in .S11/.S22 is 8-bit unsigned RAW. RAWs from .S11 should be played
+at 11025 Hz and from .S22 -- at 22050 Hz.
+
+-------------------------------------------
+
+Valery V. Anisimovsky (son_of_the_north@mail.ru)
+http://bim.km.ru/gap/
+http://www.anxsoft.newmail.ru
+http://anx.da.ru
+On these sites you can find my GAP program which can deal with PIG/S11/S22
+resource files, extract RAWs from them and play back those RAWs.
+There's also complete source code of GAP and all its plug-ins there,
+including DSND plug-in, which could be used for further details on how you
+can deal with this format.

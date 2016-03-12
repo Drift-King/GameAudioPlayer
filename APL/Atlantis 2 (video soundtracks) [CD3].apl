@@ -1,0 +1,15 @@
+<cine021.APC> <APC> <> <[CD]\datas_a2\apc\cine021.APC> <PLAIN> <> 0 DE28A
+<cine022.APC> <APC> <> <[CD]\datas_a2\apc\cine022.APC> <PLAIN> <> 0 10520
+<cine023.APC> <APC> <> <[CD]\datas_a2\apc\cine023.APC> <PLAIN> <> 0 15A20
+<cine024.APC> <APC> <> <[CD]\datas_a2\apc\cine024.APC> <PLAIN> <> 0 129A0
+<cine025.APC> <APC> <> <[CD]\datas_a2\apc\cine025.APC> <PLAIN> <> 0 11420
+<cine026.APC> <APC> <> <[CD]\datas_a2\apc\cine026.APC> <PLAIN> <> 0 E9020
+<cine027.APC> <APC> <> <[CD]\datas_a2\apc\cine027.APC> <PLAIN> <> 0 A1E20
+<cine028.APC> <APC> <> <[CD]\datas_a2\apc\cine028.APC> <PLAIN> <> 0 13C04
+<cine029.APC> <APC> <> <[CD]\datas_a2\apc\cine029.APC> <PLAIN> <> 0 D720
+<cine030.APC> <APC> <> <[CD]\datas_a2\apc\cine030.APC> <PLAIN> <> 0 13C04
+<cine032.APC> <APC> <> <[CD]\datas_a2\apc\cine032.APC> <PLAIN> <> 0 9D020
+<cine034.APC> <APC> <> <[CD]\datas_a2\apc\cine034.APC> <PLAIN> <> 0 15A20
+<cine200.apc> <APC> <> <[CD]\datas_a2\apc\cine200.apc> <PLAIN> <> 0 4801F
+<cine201.apc> <APC> <> <[CD]\datas_a2\apc\cine201.apc> <PLAIN> <> 0 4801F
+<intro00.APC> <APC> <> <[CD]\datas_a2\apc\intro00.APC> <PLAIN> <> 0 4BBBA

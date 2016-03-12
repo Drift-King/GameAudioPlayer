@@ -1,0 +1,9 @@
+<Be_pau1.asf> <EACS> <> <[CD]\AUDIO\MUSC\Be_pau1.asf> <PLAIN> <> 0 150C24
+<Be_pau2.asf> <EACS> <> <[CD]\AUDIO\MUSC\Be_pau2.asf> <PLAIN> <> 0 15EBC4
+<Be_pau3.asf> <EACS> <> <[CD]\AUDIO\MUSC\Be_pau3.asf> <PLAIN> <> 0 1368F8
+<Be_pau4.asf> <EACS> <> <[CD]\AUDIO\MUSC\Be_pau4.asf> <PLAIN> <> 0 29B3B8
+<Be_pau5.asf> <EACS> <> <[CD]\AUDIO\MUSC\Be_pau5.asf> <PLAIN> <> 0 1CB664
+<Fe_boyy.asf> <EACS> <> <[CD]\AUDIO\MUSC\Fe_boyy.asf> <PLAIN> <> 0 3D0F64
+<Fe_fluk.asf> <EACS> <> <[CD]\AUDIO\MUSC\Fe_fluk.asf> <PLAIN> <> 0 40B7F4
+<Fe_hard.asf> <EACS> <> <[CD]\AUDIO\MUSC\Fe_hard.asf> <PLAIN> <> 0 41F71C
+<Fe_tube.asf> <EACS> <> <[CD]\AUDIO\MUSC\Fe_tube.asf> <PLAIN> <> 0 41F848

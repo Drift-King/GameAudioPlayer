@@ -1,0 +1,19 @@
+<Protoss Defeat> <WAV> <> <[CD]\Install.exe> <MPQ> <music\pdefeat.wav> 0 55BB28
+<Protoss Briefing> <WAV> <> <[CD]\Install.exe> <MPQ> <music\prdyroom.wav> 0 822024
+<Protoss 1> <WAV> <> <[CD]\Install.exe> <MPQ> <music\protoss1.wav> 0 1788028
+<Protoss 2> <WAV> <> <[CD]\Install.exe> <MPQ> <music\protoss2.wav> 0 18D6028
+<Protoss 3> <WAV> <> <[CD]\Install.exe> <MPQ> <music\protoss3.wav> 0 19C166C
+<Protoss Victory> <WAV> <> <[CD]\Install.exe> <MPQ> <music\pvict.wav> 0 2A1074
+<Terran Defeat> <WAV> <> <[CD]\Install.exe> <MPQ> <music\tdefeat.wav> 0 45E228
+<Terran 1> <WAV> <> <[CD]\Install.exe> <MPQ> <music\terran1.wav> 0 1902F2C
+<Terran 2> <WAV> <> <[CD]\Install.exe> <MPQ> <music\terran2.wav> 0 141382C
+<Terran 3> <WAV> <> <[CD]\Install.exe> <MPQ> <music\terran3.wav> 0 169C728
+<StarCraft Main Title> <WAV> <> <[CD]\Install.exe> <MPQ> <music\title.wav> 0 BF38FC
+<Terran Briefing> <WAV> <> <[CD]\Install.exe> <MPQ> <music\trdyroom.wav> 0 44E02C
+<Terran Victory> <WAV> <> <[CD]\Install.exe> <MPQ> <music\tvict.wav> 0 40A10C
+<Zerg Defeat> <WAV> <> <[CD]\Install.exe> <MPQ> <music\zdefeat.wav> 0 1A8A58
+<Zerg 1> <WAV> <> <[CD]\Install.exe> <MPQ> <music\zerg1.wav> 0 17BB02C
+<Zerg 2> <WAV> <> <[CD]\Install.exe> <MPQ> <music\zerg2.wav> 0 193C02C
+<Zerg 3> <WAV> <> <[CD]\Install.exe> <MPQ> <music\zerg3.wav> 0 19E5028
+<Zerg Briefing> <WAV> <> <[CD]\Install.exe> <MPQ> <music\zrdyroom.wav> 0 25225C
+<Zerg Victory> <WAV> <> <[CD]\Install.exe> <MPQ> <music\zvict.wav> 0 2A0260

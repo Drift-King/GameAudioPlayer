@@ -1,0 +1,743 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "winver.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+PLAYERICON              ICON                    "Resource\\GAP.ico"
+PLAYLISTICON            ICON                    "Resource\\Playlist.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+ID_BUTTONS              BITMAP                  "Resource\\Buttons.bmp"
+ID_PLAYLISTBUTTONS      BITMAP                  "Resource\\PlaylistButtons.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+INFOMAINPAGE DIALOGEX 0, 0, 281, 233
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_WINDOWEDGE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    ICON            "PlayerIcon",IDC_STATIC,9,5,20,20
+    LTEXT           "ANX Game Audio Player v1.32\nCopyright© 1998-2001 ANX Software",IDC_STATIC,33,7,122,16,NOT WS_GROUP
+    LTEXT           "E-mail:",IDC_STATIC,157,7,22,8
+    CONTROL         "son_of_the_north@mail.ru",ID_ANXMAIL,"Button",BS_OWNERDRAW | BS_CENTER | BS_VCENTER | BS_FLAT | WS_TABSTOP,182,6,93,8
+    LTEXT           "Web:",IDC_STATIC,157,15,18,8
+    CONTROL         "http://www.anxsoft.newmail.ru",ID_ANXURL,"Button",BS_OWNERDRAW | BS_CENTER | BS_VCENTER | BS_FLAT | WS_TABSTOP,175,15,98,8
+    GROUPBOX        "Author",IDC_STATIC,9,27,262,38
+    LTEXT           "If you have problems, suggestions, comments, questions regarding this program, please mail them to the author of Game Audio Player and all ANX plug-ins:",IDC_STATIC,15,36,251,18
+    LTEXT           "Valery V. Anisimovsky:",IDC_STATIC,15,53,72,8
+    CONTROL         "son_of_the_north@mail.ru",ID_SAMAELMAIL,"Button",BS_OWNERDRAW | BS_CENTER | BS_VCENTER | BS_FLAT | WS_TABSTOP,88,53,86,8
+    GROUPBOX        "Official GAP site",IDC_STATIC,9,68,262,26
+    CONTROL         "http://bim.km.ru",ID_BIMURL,"Button",BS_OWNERDRAW | BS_CENTER | BS_VCENTER | BS_FLAT | WS_TABSTOP,15,78,53,8
+    LTEXT           "by Ilya Beshlebniy:",IDC_STATIC,70,78,58,8
+    CONTROL         "ilya_bim@mail.ru",ID_BIMMAIL,"Button",BS_OWNERDRAW | BS_CENTER | BS_VCENTER | BS_FLAT | WS_TABSTOP,130,78,56,8
+    GROUPBOX        "Other GAP sites",IDC_STATIC,9,89,262,33
+    CONTROL         "http://anx.da.ru",ID_SHEPURL,"Button",BS_OWNERDRAW | BS_CENTER | BS_VCENTER | BS_FLAT | WS_TABSTOP,15,99,53,8
+    LTEXT           "by Alexey Schepetilnikov:",IDC_STATIC,80,99,81,8
+    CONTROL         "a.shepetilnikov@globalone.ru",ID_SHEPMAIL,"Button",BS_OWNERDRAW | BS_CENTER | BS_VCENTER | BS_FLAT | WS_TABSTOP,162,99,97,8
+    CONTROL         "http://denver.da.ru",ID_DENVERURL,"Button",BS_OWNERDRAW | BS_CENTER | BS_VCENTER | BS_FLAT | WS_TABSTOP,15,109,64,8
+    LTEXT           "by Valentin Plotnichenko:",IDC_STATIC,80,109,81,8
+    CONTROL         "valentin@nsc.gpi.ru",ID_DENVERMAIL,"Button",BS_OWNERDRAW | BS_CENTER | BS_VCENTER | BS_FLAT | WS_TABSTOP,162,109,66,8
+    PUSHBUTTON      "&View docs",ID_README,221,216,50,14
+END
+
+PLAYDIALOG DIALOGEX 0, 0, 270, 56
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_MINIMIZEBOX | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_ACCEPTFILES | WS_EX_WINDOWEDGE
+CAPTION "Game Audio Player"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "CurPos",ID_CURPOS,"msctls_trackbar32",TBS_ENABLESELRANGE | WS_TABSTOP,1,2,267,17
+    CTEXT           "0:00",ID_LABEL1,0,19,20,8,NOT WS_GROUP
+    CTEXT           "0:00",ID_LABEL2,35,19,20,8,NOT WS_GROUP
+    CTEXT           "0:00",ID_LABEL3,70,19,20,8,NOT WS_GROUP
+    CTEXT           "0:00",ID_LABEL4,105,19,20,8,NOT WS_GROUP
+    CTEXT           "0:00",ID_LABEL5,141,19,20,8,NOT WS_GROUP
+    CTEXT           "0:00",ID_LABEL6,177,19,20,8,NOT WS_GROUP
+    CTEXT           "0:00",ID_LABEL7,213,19,20,8,NOT WS_GROUP
+    CTEXT           "0:00",ID_LABEL8,250,19,20,8,NOT WS_GROUP
+    LTEXT           "",ID_TBWND,1,27,129,17,NOT WS_GROUP
+    LTEXT           "",IDC_STATIC,130,27,139,1,SS_SUNKEN | NOT WS_GROUP
+    LTEXT           "",IDC_STATIC,132,30,136,12,SS_SUNKEN | NOT WS_GROUP
+    EDITTEXT        ID_CURNAME,134,32,132,8,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    CONTROL         "Stats",ID_STATS,"msctls_statusbar32",0x0,119,121,270,12
+END
+
+PLAYLISTDIALOG DIALOGEX 0, 0, 279, 204
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_ACCEPTFILES | WS_EX_WINDOWEDGE
+CAPTION "GAP Playlist"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "",ID_PLAYLIST,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_EDITLABELS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,200,156,WS_EX_CLIENTEDGE
+    DEFPUSHBUTTON   "O&K",IDOK,214,7,58,14
+    PUSHBUTTON      "&Load List(s)...",ID_LOAD,214,27,58,14
+    PUSHBUTTON      "&Save List...",ID_SAVE,214,43,58,14
+    PUSHBUTTON      "&Add File(s)...",ID_ADD,214,63,58,14
+    PUSHBUTTON      "Add Director&y...",ID_ADDDIR,214,79,58,14
+    PUSHBUTTON      "Scan &File(s)...",ID_FIND,214,95,58,14
+    PUSHBUTTON      "Scan Directory...",ID_SCANDIR,214,111,58,14
+    PUSHBUTTON      "&Play",ID_PLAY,214,131,58,14
+    PUSHBUTTON      "Sa&ve File(s)...",ID_SAVEFILE,214,151,58,14
+    PUSHBUTTON      "C&onvert File(s)...",ID_CONVERT,214,167,58,14
+    PUSHBUTTON      "&Clear List",ID_CLEAR,214,183,58,14
+    PUSHBUTTON      "Move &Up",ID_MOVEUP,7,167,47,14
+    PUSHBUTTON      "Move Do&wn",ID_MOVEDOWN,7,183,47,14
+    PUSHBUTTON      "&Remove",ID_REMOVE,58,167,47,14
+    PUSHBUTTON      "&Duplicate",ID_DUPLICATE,58,183,47,14
+    PUSHBUTTON      "S&elect...",ID_SELECT,109,167,47,14
+    PUSHBUTTON      "Sort List...",ID_SORT,109,183,47,14
+    PUSHBUTTON      "File &Info",ID_FILEINFO,160,167,47,14
+    PUSHBUTTON      "File &Title",ID_TITLE,160,183,47,14
+END
+
+DOUBLEPROGRESSDIALOG DIALOGEX 0, 0, 190, 79
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_WINDOWEDGE
+CAPTION "Progress"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        ID_MASTERHEADER,7,4,173,8,ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    CONTROL         "",ID_MASTERPROGRESS,"msctls_progress32",0x0,7,14,152,12
+    RTEXT           "100% ",ID_MASTERPERCENT,161,14,21,12,SS_CENTERIMAGE | SS_SUNKEN | NOT WS_GROUP
+    EDITTEXT        ID_HEADER,7,27,173,8,ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    CONTROL         "",ID_PROGRESS,"msctls_progress32",0x0,7,36,152,12
+    RTEXT           "100% ",ID_PERCENT,161,36,21,12,SS_CENTERIMAGE | SS_SUNKEN | NOT WS_GROUP
+    EDITTEXT        ID_STATE,7,49,173,8,ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    DEFPUSHBUTTON   "&Skip",IDCANCEL,41,59,50,14
+    PUSHBUTTON      "&Cancel",ID_CANCELALL,97,59,50,14
+END
+
+PLAYBACKOPTIONSPAGE DIALOG 0, 0, 264, 132
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&WaveOut device:",IDC_STATIC,7,4,60,8,NOT WS_GROUP
+    COMBOBOX        ID_WAVEDEVS,7,15,116,54,CBS_DROPDOWNLIST | CBS_HASSTRINGS | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Process &priority class",IDC_STATIC,7,34,116,33,BS_LEFT
+    CONTROL         "",ID_PCLASS,"msctls_trackbar32",TBS_AUTOTICKS | WS_TABSTOP,9,44,111,11
+    LTEXT           "Idle",IDC_STATIC,10,57,14,8,NOT WS_GROUP
+    LTEXT           "Normal",IDC_STATIC,36,57,24,8,NOT WS_GROUP
+    LTEXT           "High",IDC_STATIC,73,57,16,8,NOT WS_GROUP
+    LTEXT           "Realtime",IDC_STATIC,93,57,28,8,NOT WS_GROUP
+    GROUPBOX        "Playback &buffer",IDC_STATIC,7,73,116,33,BS_LEFT
+    CONTROL         "",ID_BUFFER,"msctls_trackbar32",TBS_AUTOTICKS | WS_TABSTOP,9,83,111,11
+    LTEXT           "Memory required: 512 KB",ID_BUFFERSIZE,14,96,90,8,NOT WS_GROUP
+    GROUPBOX        "&GAP priority",IDC_STATIC,127,11,63,96,BS_LEFT | WS_GROUP
+    CONTROL         "Idle",ID_MIDLE,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,131,21,31,10
+    CONTROL         "Lowest",ID_MLOWEST,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,131,33,40,10
+    CONTROL         "Below normal",ID_MBELOWNORMAL,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,131,45,55,10
+    CONTROL         "Normal",ID_MNORMAL,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,131,57,40,10
+    CONTROL         "Above normal",ID_MABOVENORMAL,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,131,69,55,10
+    CONTROL         "Highest",ID_MHIGHEST,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,131,81,40,10
+    CONTROL         "Time critical",ID_MTIMECRITICAL,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,131,93,53,10
+    GROUPBOX        "Playback pri&ority",IDC_STATIC,194,11,63,96,BS_LEFT | WS_GROUP
+    CONTROL         "Idle",ID_PIDLE,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,198,21,31,10
+    CONTROL         "Lowest",ID_PLOWEST,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,198,33,40,10
+    CONTROL         "Below normal",ID_PBELOWNORMAL,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,198,45,55,10
+    CONTROL         "Normal",ID_PNORMAL,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,198,57,40,10
+    CONTROL         "Above normal",ID_PABOVENORMAL,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,198,69,55,10
+    CONTROL         "Highest",ID_PHIGHEST,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,198,81,40,10
+    CONTROL         "Time critical",ID_PTIMECRITICAL,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,198,93,53,10
+    PUSHBUTTON      "De&faults",ID_DEFAULTS,204,113,50,14
+END
+
+ARFPLUGINSOPTIONSPAGE DIALOG 0, 0, 264, 134
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Audio file plug-in &directory",ID_PLUGINDIR,1,1,261,28,WS_GROUP
+    PUSHBUTTON      "",ID_DIR,5,11,253,14
+    GROUPBOX        "Audio file &plug-ins",ID_PLUGINLIST,1,30,261,101
+    LISTBOX         ID_PLUGINS,5,40,253,69,LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "&Configure",ID_PLUGINCONFIG,5,113,50,14
+    PUSHBUTTON      "&About",ID_PLUGINABOUT,57,113,50,14
+    CONTROL         "Allow &multiple plug-ins handle one file",ID_PLUGINALLOW,
+                    "Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,111,116,146,10
+END
+
+PLAYLISTOPTIONSPAGE DIALOG 0, 0, 264, 134
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Playlist loading",IDC_STATIC,2,0,145,37
+    CONTROL         "&Load last playlist on startup",ID_AUTOLOAD,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,7,9,97,10
+    CONTROL         "&Play loaded playlist on startup",ID_AUTOPLAY,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,7,20,114,10
+    GROUPBOX        "Playlist playback",IDC_STATIC,2,32,145,71,BS_LEFT | WS_GROUP
+    CONTROL         "&Estimate time only before playback",ID_NOTIME,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,42,121,10
+    CONTROL         "Play &next file in playlist",ID_PLAYNEXT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,53,85,10
+    CONTROL         "&Repeat:",ID_REPEAT,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,7,64,39,10
+    CONTROL         "One",ID_REPEAT_ONE,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,47,65,27,10
+    CONTROL         "All",ID_REPEAT_ALL,"Button",BS_AUTORADIOBUTTON | BS_LEFT | WS_TABSTOP,77,65,23,10
+    CONTROL         "Sh&uffle",ID_SHUFFLE,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,7,75,41,10
+    CONTROL         "&IntroScan length:",ID_INTROSCAN,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,7,86,67,10
+    EDITTEXT        ID_INTROSCAN_EDIT,76,84,52,12,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",ID_INTROSCAN_UPDN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_ARROWKEYS | WS_TABSTOP,116,84,11,12
+    LTEXT           "sec",IDC_STATIC,130,86,14,8,NOT WS_GROUP
+    GROUPBOX        "CD drive letter independent playlists",IDC_STATIC,2,98,181,34
+    CONTROL         "&When loading playlist replace [CD] with:",ID_TREATCD,
+                    "Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,7,107,136,10
+    COMBOBOX        ID_CDDRIVE,149,106,27,78,CBS_DROPDOWNLIST | CBS_HASSTRINGS | CBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "When &saving playlist put [CD] for CD drive letter",ID_PUTCD,
+                    "Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,7,119,162,10
+    GROUPBOX        "Playlist &type",IDC_STATIC,146,0,116,37,WS_GROUP
+    CONTROL         "Fixed-size dialog (old)",ID_PLAYLIST_DIALOG,"Button",BS_AUTORADIOBUTTON,151,10,83,10
+    CONTROL         "Resizeable window (new)",ID_PLAYLIST_WINDOW,"Button",BS_AUTORADIOBUTTON,151,21,96,10
+    GROUPBOX        "&Drag && Drop support",IDC_STATIC,146,32,116,71,WS_GROUP
+    CONTROL         "None",ID_DROP_OFF,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,151,43,33,10
+    CONTROL         "Ask user on drop",ID_DROP_ASK,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,151,54,69,10
+    CONTROL         "Add dropped files to playlist",ID_DROP_ADD,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,151,65,101,10
+    CONTROL         "Scan dropped files",ID_DROP_SCAN,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,151,76,75,10
+    CONTROL         "Load dropped files as playlists",ID_DROP_LOAD,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,151,87,107,10
+    PUSHBUTTON      "De&faults",ID_DEFAULTS,204,113,50,14
+END
+
+PROGRESSDIALOG DIALOGEX 0, 0, 190, 57
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_WINDOWEDGE
+CAPTION "Progress"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        ID_HEADER,7,5,173,8,ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    CONTROL         "",ID_PROGRESS,"msctls_progress32",0x0,7,15,152,12
+    RTEXT           "100% ",ID_PERCENT,161,15,21,12,SS_CENTERIMAGE | SS_SUNKEN | NOT WS_GROUP
+    EDITTEXT        ID_STATE,7,28,173,8,ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    DEFPUSHBUTTON   "&Cancel",ID_CANCELALL,69,38,50,14
+END
+
+SAVINGOPTIONSPAGE DIALOG 0, 0, 264, 132
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "&MultiSaving filename",IDC_STATIC,10,6,144,44,WS_GROUP
+    CONTROL         "Ask user for filename for every file",ID_ASKFILENAME,
+                    "Button",BS_AUTORADIOBUTTON | WS_TABSTOP,15,15,121,10
+    CONTROL         "Ask user for filename template",ID_ASKTEMPLATE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,15,25,110,10
+    CONTROL         "Use default filename template",ID_USETEMPLATE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,15,35,109,10
+    GROUPBOX        "Default template &directory",IDC_STATIC,10,52,144,51,WS_GROUP
+    CONTROL         "Current",ID_DIRCURRENT,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,15,61,39,10
+    CONTROL         "Custom:",ID_DIRCUSTOM,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,15,71,43,10
+    EDITTEXT        ID_CUSTOMDIR,15,85,134,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Browse...",ID_BROWSEDIR,99,67,50,14
+    GROUPBOX        "Default template file &title",IDC_STATIC,158,6,96,66,WS_GROUP
+    CONTROL         "Use audio file title",ID_AFTITLE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,163,15,71,10
+    CONTROL         "Use resource file title",ID_RFTITLE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,163,25,81,10
+    CONTROL         "Custom:",ID_TITLECUSTOM,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,163,35,37,10
+    EDITTEXT        ID_CUSTOMTITLE,163,49,85,12,ES_AUTOHSCROLL
+    GROUPBOX        "&Extension",IDC_STATIC,158,67,96,36,WS_GROUP
+    CONTROL         "Default",ID_EXTDEFAULT,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,163,76,39,10
+    CONTROL         "Custom:",ID_EXTCUSTOM,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,163,86,41,10
+    EDITTEXT        ID_CUSTOMEXT,205,85,43,12,ES_AUTOHSCROLL
+    GROUPBOX        "MultiConverting &WAV format",IDC_STATIC,10,104,190,26
+    COMBOBOX        ID_WAVETAGS,15,113,179,78,CBS_DROPDOWNLIST | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "De&faults",ID_DEFAULTS,204,113,50,14
+END
+
+FILENAMETEMPLATEDIALOG DIALOG 0, 0, 254, 142
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "File Name Template"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "&Directory",IDC_STATIC,5,3,144,59,WS_GROUP
+    CONTROL         "Current",ID_DIRCURRENT,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,10,15,39,10
+    CONTROL         "Custom:",ID_DIRCUSTOM,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,10,27,43,10
+    EDITTEXT        ID_CUSTOMDIR,10,44,134,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Browse...",ID_BROWSEDIR,94,26,50,14
+    GROUPBOX        "File &title",IDC_STATIC,153,3,96,59,WS_GROUP
+    CONTROL         "Use audio file title",ID_AFTITLE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,158,12,71,10
+    CONTROL         "Use resource file title",ID_RFTITLE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,158,22,81,10
+    CONTROL         "Custom:",ID_TITLECUSTOM,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,158,32,37,10
+    EDITTEXT        ID_CUSTOMTITLE,158,44,85,12,ES_AUTOHSCROLL
+    GROUPBOX        "&Extension",IDC_STATIC,153,57,96,35,WS_GROUP
+    CONTROL         "Default",ID_EXTDEFAULT,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,158,66,39,10
+    CONTROL         "Custom:",ID_EXTCUSTOM,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,158,76,41,10
+    EDITTEXT        ID_CUSTOMEXT,200,74,43,12,ES_AUTOHSCROLL
+    LTEXT           "Current template:",IDC_STATIC,7,67,54,8
+    EDITTEXT        ID_TEMPLATE,7,76,140,12,ES_READONLY | NOT WS_TABSTOP
+    GROUPBOX        "&WAV format",ID_WAVFORMAT,5,92,244,26
+    COMBOBOX        ID_WAVETAGS,10,101,233,60,CBS_DROPDOWNLIST | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "O&K",IDOK,93,123,50,14
+    PUSHBUTTON      "Ca&ncel",IDCANCEL,146,123,50,14
+    PUSHBUTTON      "De&faults",ID_DEFAULTS,199,123,50,14
+END
+
+SIMPLEPROGRESS DIALOG 0, 0, 217, 45
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Progress"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Current file",IDC_STATIC,4,2,209,23
+    EDITTEXT        ID_HEADER,11,11,195,8,ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    DEFPUSHBUTTON   "Ca&ncel",ID_CANCELALL,83,28,50,14
+END
+
+PROGRESSDIALOG2 DIALOGEX 0, 0, 190, 57
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_WINDOWEDGE
+CAPTION "Progress"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        ID_HEADER,7,5,173,8,ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    CONTROL         "",ID_PROGRESS,"msctls_progress32",0x0,7,15,152,12
+    RTEXT           "100% ",ID_PERCENT,161,15,21,12,SS_CENTERIMAGE | SS_SUNKEN | NOT WS_GROUP
+    EDITTEXT        ID_STATE,7,28,173,8,ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    DEFPUSHBUTTON   "&Skip",IDCANCEL,42,38,50,14
+    PUSHBUTTON      "&Cancel",ID_CANCELALL,97,38,50,14
+END
+
+INFOCREDITSPAGE DIALOGEX 0, 0, 281, 233
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_WINDOWEDGE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        ID_TEXT,4,5,273,223,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL | NOT WS_TABSTOP
+END
+
+INFOHELPPAGE DIALOGEX 0, 0, 281, 233
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_WINDOWEDGE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        ID_TEXT,4,5,273,223,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL | NOT WS_TABSTOP
+END
+
+INFOTIPSPAGE DIALOGEX 0, 0, 281, 233
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_WINDOWEDGE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        ID_TEXT,4,5,273,223,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL | NOT WS_TABSTOP
+END
+
+INFOPROJECTPAGE DIALOGEX 0, 0, 281, 233
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_WINDOWEDGE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        ID_TEXT,4,5,273,223,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL | NOT WS_TABSTOP
+END
+
+INFOOPTIONSPAGE DIALOGEX 0, 0, 281, 233
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_WINDOWEDGE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        ID_TEXT,4,5,273,223,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | WS_VSCROLL | NOT WS_TABSTOP
+END
+
+WAIT DIALOG 0, 0, 216, 26
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Wait"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CTEXT           "",ID_WAITMSG,6,9,204,8,NOT WS_GROUP
+END
+
+CONVERTFILEDLG DIALOG 0, 0, 280, 21
+STYLE DS_SETFONT | DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Wave format:",IDC_STATIC,5,3,47,8,SS_NOTIFY | NOT WS_GROUP
+    COMBOBOX        ID_WAVETAGS,54,1,218,100,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,3,2,0
+ PRODUCTVERSION 1,3,2,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "ANX Software"
+            VALUE "FileDescription", "Game Audio Player"
+            VALUE "FileVersion", "1.32"
+            VALUE "InternalName", "GAP"
+            VALUE "LegalCopyright", "Copyright © 1998-2001 ANX Software"
+            VALUE "OriginalFilename", "GAP.EXE"
+            VALUE "ProductName", "Game Audio Player"
+            VALUE "ProductVersion", "1.32"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""winver.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_PLAYER ACCELERATORS
+BEGIN
+    "A",            ID_ADD,                 VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_PREV,                VIRTKEY, NOINVERT
+    "D",            ID_PLAYNEXT,            VIRTKEY, NOINVERT
+    "E",            ID_EQUALIZER,           VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_FIND,                VIRTKEY, CONTROL, NOINVERT
+    "I",            ID_INTROSCAN,           VIRTKEY, NOINVERT
+    "I",            ID_FILEINFO,            VIRTKEY, CONTROL, NOINVERT
+    "L",            ID_LOAD,                VIRTKEY, CONTROL, NOINVERT
+    "M",            ID_EASYMOVE,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_REPEAT_ONE,          VIRTKEY, NOINVERT
+    "O",            ID_OPTIONS,             VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_LIST,                VIRTKEY, CONTROL, NOINVERT
+    "R",            ID_REPEAT_ALL,          VIRTKEY, NOINVERT
+    "R",            ID_TIME_TOGGLE,         VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_SHUFFLE,             VIRTKEY, NOINVERT
+    "T",            ID_ONTOP,               VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_NEXT,                VIRTKEY, NOINVERT
+    VK_CLEAR,       ID_PLAY,                VIRTKEY, NOINVERT
+    VK_F1,          ID_INFO,                VIRTKEY, NOINVERT
+    VK_F4,          IDQUIT,                 VIRTKEY, ALT, NOINVERT
+    VK_INSERT,      ID_LOAD,                VIRTKEY, NOINVERT
+    VK_LEFT,        ID_PREV,                VIRTKEY, NOINVERT
+    VK_RIGHT,       ID_NEXT,                VIRTKEY, NOINVERT
+    "X",            ID_STOP,                VIRTKEY, NOINVERT
+    "Z",            ID_PLAY,                VIRTKEY, NOINVERT
+END
+
+IDR_PLAYLIST ACCELERATORS
+BEGIN
+    "A",            ID_ADD,                 VIRTKEY, ALT, NOINVERT
+    "C",            ID_CLEAR,               VIRTKEY, ALT, NOINVERT
+    "D",            ID_DUPLICATE,           VIRTKEY, ALT, NOINVERT
+    "E",            ID_SELECT,              VIRTKEY, ALT, NOINVERT
+    "F",            ID_FIND,                VIRTKEY, ALT, NOINVERT
+    "I",            ID_FILEINFO,            VIRTKEY, ALT, NOINVERT
+    "K",            ID_LIST,                VIRTKEY, ALT, NOINVERT
+    "L",            ID_LOAD,                VIRTKEY, ALT, NOINVERT
+    "O",            ID_CONVERT,             VIRTKEY, ALT, NOINVERT
+    "P",            ID_PLAY,                VIRTKEY, ALT, NOINVERT
+    "R",            ID_REMOVE,              VIRTKEY, ALT, NOINVERT
+    "S",            ID_SORT,                VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_SAVE,                VIRTKEY, ALT, NOINVERT
+    "T",            ID_TITLE,               VIRTKEY, ALT, NOINVERT
+    "U",            ID_MOVEUP,              VIRTKEY, ALT, NOINVERT
+    "V",            ID_SAVEFILE,            VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_REMOVE,              VIRTKEY, NOINVERT
+    VK_RETURN,      ID_PLAY,                VIRTKEY, NOINVERT
+    "W",            ID_MOVEDOWN,            VIRTKEY, ALT, NOINVERT
+    "X",            ID_SCANDIR,             VIRTKEY, ALT, NOINVERT
+    "Y",            ID_ADDDIR,              VIRTKEY, ALT, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINMENU MENU
+BEGIN
+    POPUP "Main Menu"
+    BEGIN
+        MENUITEM "ANX &GAP Info...\tF1",        ID_INFO
+        MENUITEM SEPARATOR
+        MENUITEM "&Add File(s)...\tCtrl+A",     ID_ADD
+        MENUITEM "&Scan File(s)...\tCtrl+F",    ID_FIND
+        MENUITEM "&Load List(s)...\tCtrl+L",    ID_LOAD
+        MENUITEM "View File &Info\tCtrl+I",     ID_FILEINFO
+        MENUITEM SEPARATOR
+        MENUITEM "&Playlist Window\tCtrl+P",    ID_LIST
+        MENUITEM "Graphical &Equalizer\tCtrl+E", ID_EQUALIZER
+        MENUITEM SEPARATOR
+        POPUP "Prefere&nces"
+        BEGIN
+            MENUITEM "&Options...\tCtrl+O",         ID_OPTIONS
+            MENUITEM SEPARATOR
+            MENUITEM "Time &elapsed\t(Ctrl+R toggles)", ID_TIME_ELAPSED
+            MENUITEM "Time &remaining\t(Ctrl+R toggles)", ID_TIME_REMAINING
+            MENUITEM SEPARATOR
+            MENUITEM "Always On &Top\tCtrl+T",      ID_ONTOP
+            MENUITEM "Easy &Move\tCtrl+M",          ID_EASYMOVE
+        END
+        POPUP "Play&back"
+        BEGIN
+            MENUITEM "&Play/Pause\tZ",              ID_PLAY
+            MENUITEM "&Stop\tX",                    ID_STOP
+            MENUITEM "Pre&vious\tC",                ID_PREV
+            MENUITEM "&Next\tV",                    ID_NEXT
+            MENUITEM SEPARATOR
+            MENUITEM "No &Repeat",                  ID_REPEAT
+            MENUITEM "Repeat &One\tO",              ID_REPEAT_ONE
+            MENUITEM "Repeat &All\tR",              ID_REPEAT_ALL
+            MENUITEM SEPARATOR
+            MENUITEM "No Playlist A&dvance\tD",     ID_PLAYNEXT
+            MENUITEM "Sh&uffle\tS",                 ID_SHUFFLE
+            MENUITEM "&IntroScan\tI",               ID_INTROSCAN
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit\tAlt+F4",               IDQUIT
+    END
+    POPUP "Playlist Node"
+    BEGIN
+        MENUITEM "&Play\tEnter",                ID_PLAY
+        MENUITEM SEPARATOR
+        MENUITEM "File &Info\tAlt+I",           ID_FILEINFO
+        MENUITEM "File &Title\tAlt+T",          ID_TITLE
+        MENUITEM SEPARATOR
+        MENUITEM "&Remove\tDelete",             ID_REMOVE
+        MENUITEM "&Duplicate\tAlt+D",           ID_DUPLICATE
+        MENUITEM SEPARATOR
+        POPUP "&Sort list"
+        BEGIN
+            MENUITEM "By audio file title",         ID_SORT_AFTITLE
+            MENUITEM "By audio file time",          ID_SORT_AFTIME
+            MENUITEM "By audio file type",          ID_SORT_AFTYPE
+            MENUITEM "By resource file title",      ID_SORT_RFTITLE
+            MENUITEM "By resource file name",       ID_SORT_RFNAME
+            MENUITEM "By resource file type",       ID_SORT_RFTYPE
+            MENUITEM "By audio file start",         ID_SORT_START
+            MENUITEM "By audio file length",        ID_SORT_LENGTH
+            MENUITEM "By audio file data string",   ID_SORT_AFDATA
+            MENUITEM "By resource file data string", ID_SORT_RFDATA
+            MENUITEM SEPARATOR
+            MENUITEM "R&everse list",               ID_SORT_REVERSE
+            MENUITEM "&Randomize list",             ID_SORT_RANDOMIZE
+        END
+    END
+    POPUP "Select"
+    BEGIN
+        MENUITEM "&Select all",                 ID_SELECTALL
+        MENUITEM "&Invert selection",           ID_INVERTSEL
+    END
+    POPUP "Drop"
+    BEGIN
+        MENUITEM "&Add file(s)",                ID_DROP_ADD
+        MENUITEM "&Scan file(s)",               ID_DROP_SCAN
+        MENUITEM "&Load as playlist(s)",        ID_DROP_LOAD
+    END
+END
+
+IDR_PLAYLISTMENU MENU
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "&Load List(s)...\tAlt+L",     ID_LOAD
+        MENUITEM "&Save List...\tAlt+S",        ID_SAVE
+        MENUITEM SEPARATOR
+        MENUITEM "&Add File(s)...\tAlt+A",      ID_ADD
+        MENUITEM "Add &Directory...\tAlt+Y",    ID_ADDDIR
+        MENUITEM "Scan &File(s)...\tAlt+F",     ID_FIND
+        MENUITEM "Scan Director&y...\tAlt+X",   ID_SCANDIR
+        MENUITEM SEPARATOR
+        MENUITEM "&Play\tAlt+P",                ID_PLAY
+        MENUITEM SEPARATOR
+        MENUITEM "Sa&ve File(s)...\tAlt+V",     ID_SAVEFILE
+        MENUITEM "&Convert File(s)...\tAlt+O",  ID_CONVERT
+        MENUITEM SEPARATOR
+        MENUITEM "Close List\tAlt+K",           ID_LIST
+    END
+    POPUP "List &Node(s)"
+    BEGIN
+        MENUITEM "Move &Up\tAlt+U",             ID_MOVEUP
+        MENUITEM "Move Do&wn\tAlt+W",           ID_MOVEDOWN
+        MENUITEM SEPARATOR
+        MENUITEM "&Remove\tAlt+R",              ID_REMOVE
+        MENUITEM "&Duplicate\tAlt+D",           ID_DUPLICATE
+        MENUITEM SEPARATOR
+        MENUITEM "File &Info\tAlt+I",           ID_FILEINFO
+        MENUITEM "File &Title\tAlt+T",          ID_TITLE
+    END
+    POPUP "Select"
+    BEGIN
+        MENUITEM "&Select all",                 ID_SELECTALL
+        MENUITEM "&Invert selection",           ID_INVERTSEL
+    END
+    POPUP "Sort List"
+    BEGIN
+        MENUITEM "By audio file title",         ID_SORT_AFTITLE
+        MENUITEM "By audio file time",          ID_SORT_AFTIME
+        MENUITEM "By audio file type",          ID_SORT_AFTYPE
+        MENUITEM "By resource file title",      ID_SORT_RFTITLE
+        MENUITEM "By resource file name",       ID_SORT_RFNAME
+        MENUITEM "By resource file type",       ID_SORT_RFTYPE
+        MENUITEM "By audio file start",         ID_SORT_START
+        MENUITEM "By audio file length",        ID_SORT_LENGTH
+        MENUITEM "By audio file data string",   ID_SORT_AFDATA
+        MENUITEM "By resource file data string", ID_SORT_RFDATA
+        MENUITEM SEPARATOR
+        MENUITEM "R&everse list",               ID_SORT_REVERSE
+        MENUITEM "&Randomize list",             ID_SORT_RANDOMIZE
+    END
+    MENUITEM "&Clear List",                 ID_CLEAR
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXT
+//
+
+IDR_CREDITS             TEXT                    "Resource\\Credits.bin"
+IDR_HELP                TEXT                    "Resource\\Help.bin"
+IDR_TIPS                TEXT                    "Resource\\Tips.bin"
+IDR_OPTIONS             TEXT                    "Resource\\Options.bin"
+IDR_PROJECT             TEXT                    "Resource\\Project.bin"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_LINK                CURSOR                  "Resource\\link.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    "INFOMAINPAGE", DIALOG
+    BEGIN
+    END
+
+    "INFOCREDITSPAGE", DIALOG
+    BEGIN
+    END
+
+    "INFOHELPPAGE", DIALOG
+    BEGIN
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_CLEARLIST           "Clear list"
+    IDS_LOADLIST            "Load list(s)"
+    IDS_SAVELIST            "Save list"
+    IDS_ADDFILE             "Add file(s)"
+    IDS_ADDDIR              "Add directory"
+    IDS_SCANFILE            "Scan file(s)"
+    IDS_SCANDIR             "Scan directory"
+    IDS_PLAY                "Play"
+    IDS_STOP                "Stop"
+    IDS_PREVIOUS            "Previous"
+    IDS_NEXT                "Next"
+    IDS_SAVEFILE            "Save file(s)"
+    IDS_CONVERTFILE         "Convert file(s)"
+    IDS_MOVEUP              "Move up"
+    IDS_MOVEDOWN            "Move down"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_REMOVE              "Remove"
+    IDS_DUPLICATE           "Duplicate"
+    IDS_FILEINFO            "File info"
+    IDS_FILETITLE           "File title"
+    IDS_SELECTALL           "Select all"
+    IDS_INVERTSEL           "Invert selection"
+    IDS_SORTLIST            "Sort list"
+    IDS_PAUSE               "Pause"
+    IDS_PLAYLIST            "Playlist"
+    IDS_EQUALIZER           "Equalizer"
+    IDS_OPTIONS             "Options"
+    IDS_INFO                "Info"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

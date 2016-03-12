@@ -1,0 +1,209 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "winver.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+ABOUT DIALOG DISCARDABLE  0, 0, 167, 145
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About ANX SOL Plug-In"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Credits",IDC_STATIC,5,3,157,75,BS_LEFT
+    LTEXT           "ANX SOL Audio File Plug-In v0.98\nCopyright© 1999-2000 ANX Software\nE-mail: son_of_the_north@mail.ru\n\nThe author is very grateful to Anthony Larme:\nE-mail: larme@bit.net.au\nFor the invaluable help with SOL file format.",
+                    IDC_STATIC,12,15,146,58,NOT WS_GROUP
+    GROUPBOX        "License",IDC_STATIC,5,81,157,41,BS_LEFT
+    LTEXT           "This plug-in is freeware. There is NO WARRANTY for this software, you use it at your own risk.",
+                    IDC_STATIC,12,92,142,25,NOT WS_GROUP
+    DEFPUSHBUTTON   "O&K",IDOK,59,127,50,14
+END
+
+INFOBOX DIALOG DISCARDABLE  0, 0, 215, 98
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "SOL File Info Box"
+FONT 8, "MS Sans Serif"
+BEGIN
+    RTEXT           "Resource Name",IDC_STATIC,4,8,52,8,NOT WS_GROUP
+    EDITTEXT        ID_RESNAME,58,6,150,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "File Data String",IDC_STATIC,4,22,51,8,NOT WS_GROUP
+    EDITTEXT        ID_DATASTR,58,20,150,12,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "Data Format",IDC_STATIC,4,33,117,60,BS_LEFT
+    EDITTEXT        ID_DATAFMT,7,43,110,46,ES_MULTILINE | ES_READONLY
+    RTEXT           "File Size",IDC_STATIC,123,39,27,8,NOT WS_GROUP
+    EDITTEXT        ID_FILESIZE,154,37,54,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "Length",IDC_STATIC,123,54,27,8,NOT WS_GROUP
+    EDITTEXT        ID_LENGTH,154,52,54,12,ES_AUTOHSCROLL | ES_READONLY
+    DEFPUSHBUTTON   "O&K",IDOK,163,79,45,14
+END
+
+CONFIG DIALOGEX 0, 0, 159, 111
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_WINDOWEDGE
+CAPTION "SOL Plug-In Configuration"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "SOL search and verification",IDC_STATIC,5,3,103,24
+    CONTROL         "Enable extra &checks",ID_EXTRACHECKS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,12,80,10
+    GROUPBOX        "Decoding &scheme detection",IDC_STATIC,5,28,103,32,
+                    WS_GROUP
+    CONTROL         "Use header",ID_USEHEADER,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,11,37,53,10
+    CONTROL         "Decode first 1 KB of data",ID_USEDATA,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,11,47,95,10
+    GROUPBOX        "SOL ADPCM decompression",IDC_STATIC,5,62,148,43
+    CONTROL         "&Use sample clipping for decompression",ID_USECLIPPING,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,71,138,10
+    CONTROL         "Use SOL low-pass filter for &8-bit sound",ID_USEFILTER8,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,81,135,10
+    CONTROL         "Use SOL low-pass filter for &16-bit sound",
+                    ID_USEFILTER16,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,
+                    91,139,10
+    DEFPUSHBUTTON   "O&K",IDOK,113,7,40,14
+    PUSHBUTTON      "Ca&ncel",IDCANCEL,113,24,40,14
+    PUSHBUTTON      "De&faults",ID_DEFAULTS,113,41,40,14
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,9,8,0
+ PRODUCTVERSION 1,3,2,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "ANX Software\0"
+            VALUE "FileDescription", "ANX SOL Audio File Plug-In\0"
+            VALUE "FileVersion", "0.98\0"
+            VALUE "InternalName", "AF_SOL\0"
+            VALUE "LegalCopyright", "Copyright © 1999-2000 ANX Software\0"
+            VALUE "OriginalFilename", "AF_SOL.DLL\0"
+            VALUE "ProductName", "Game Audio Player\0"
+            VALUE "ProductVersion", "1.32\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""winver.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "CONFIG", DIALOG
+    BEGIN
+        BOTTOMMARGIN, 110
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NOTOURFILE          "This file is not a valid SOL audio file."
+    IDS_NOMEM               "Failed to allocate memory for SOL data block."
+    IDS_NOBUFFER            "Failed to allocate memory for SOL decompression buffer."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

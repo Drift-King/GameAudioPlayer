@@ -1,0 +1,565 @@
+=============================================================================
+		     Game Software Links/Mails Compilation	   15-04-2001
+=============================================================================
+		      Compiled by Valery V. Anisimovsky (son_of_the_north@mail.ru)
+
+This compilation contains links to game-related utilities (and other stuff)
+and mails of their authors. Utilities and stuff include: extractors/rippers
+for game files, players/converters for game audio/video files, game file
+formats specifications, game audio/video files. Info includes: URLs, e-mail
+addresses, ICQ numbers.
+
+The distribution of this compilation is thankfully appreciated as long as
+it's distributed without any destructive changes which haven't been discussed
+with the author. Some links and addresses may appear to be valid no more (or
+temporarily unavailable). This does not mean that the correspondent link/address
+should be removed from the compilation -- it may start to work again in the
+future! Any additions are appreciated, but note that this compilation is aimed
+mostly at game audio/video conversion/playback, game resources extraction
+and game audio/video/resource file specifications. The most consistent way
+to add new info to this compilation (at least in my opinion) is to place the
+info into the appropriate section and add the e-mail address of the adder to
+the list of contributors at the end of compilation. Sending new info to the
+author also looks like a good idea.
+
+===================================
+1. Extraction/Conversion Utilities
+===================================
+
+* Extractor by Nova Software:
+http://www.volny.cz/nova-software/download.htm
+Email: nova-software@volny.cz
+Multi-format extractor supporting many game audio/video/resource formats.
+
+* MRIP: multi-ripper by Matteo Baccan (baccan@infomedia.it, baccan@isanet.it)
+and Peruch Emiliano (peruch@softway.it):
+http://www.volftp.vol.it/IT/IT/ITALIANI/BACCAN/index.htm
+http://www.geocities.com/siliconvalley/Heights/8481/
+ftp.elf.stuba.sk/pub/pc
+ftp.vse.cz/pub/msdos/SAC/pc
+ftp-beer.bke.hu/vol1/pub/sac/pc
+ftp.cs.tu-berlin.de/pub/msdos/mirrors/ftp.elf.stuba.sk/pc
+ftp.pwr.wroc.pl/pub/pc/sac
+192.217.228.45/SAC
+
+* WAV -> EA ASF converter:
+http://data.nfs.ru/pub/pu/music_in_nfs.rar
+Backward converter for Electronic Arts ASF (NFS5, NFS6: HP 2)
+
+* Ripper 5.00 by JoNas (til@informatik.tu-chemnitz.de):
+HTTP://WWW.TU-CHEMNITZ.DE/~TIL/RIPPER5.HTML
+HTTP://WWW.TH-ZWICKAU.DE/~MAZ
+FTP://FTP.CDROM.COM/PUB/DEMOS/INCOMING/MUSIC/PROGRAMS
+Finds and extracts lots of file formats.
+
+Ripper5 package includes converters:
+amf2mod.exe: Asylum AMF -> MOD (Crusader: No Remorse, No Regret)
+amf2s3m.exe: DSMI AMF -> S3M (Aladdin, Bolz!, etc.)
+mconv.exe: DSMI AMF -> S3M
+cmf2mid.exe: Creative CMF -> MID
+hmp2mid.exe: Human Machine Interfaces HMP -> MID: Descent, etc.
+mtm2mod.exe: MTM -> MOD
+mus2midi.exe: MUS -> MID (Doom, Doom2, Heretic, Hexen)
+psm2scrm.exe: MASI PSM -> STM (Jazz JackRabbit, Epic Pinball, OMF 2097)
+rol2midi.exe: ROL -> MID
+xmi2mid.exe: Miles Sound System XMI -> MID (WarCraft 1,2, Settlers, etc.)
+
+* AMF2S3M: DSMI AMF -> S3M
+ftp://x2ftp.oulu.fi/pub/msdos/programming/mxutil/amf2s3m.zip
+
+* Chronos Module Converter by Garth Pickell (chronos@guild.bc.ca)
+ftp://x2ftp.oulu.fi/pub/msdos/programming/convert/cmc101.zip
+PSM/DSM/MTM/MOD -> DSM/CCM/S3M converter
+
+* MpqEditor by Tom Amigo (tomamigo@apexmail.com):
+http://www.angelfire.com/sc/mpq/
+Does not require STORM.DLL or filelists for dealing with Blizzard MPQ files.
+Includes source code for stormless/listless MPQ dealing.
+
+* Mo'PaQ 2000 by Justin Olbrantz (omega@dragonfire.net):
+http://www.campaigncreations.com/starcraft/mpq2k/
+MPQ editing/extraction command-line tool.
+
+* MPQ API DLL by Andrey Lelikov (alelikov@mail.ru):
+http://www.chat.ru/~lelmpq/
+DLL for dealing with MPQ archives (editing/extraction).
+
+* ACM2WAV and DAT extractor by Alexander Belyakov (abel@krasu.ru):
+<see Fallout-related sites below>
+ACM2WAV converts ACM music/sound/speech files of Fallout 1,2 to WAV and
+DAT extractor unpacks Fallout DAT resources.
+
+* Sox:
+http://www.spies.com/Sox/
+Converter for many sound formats.
+
+* Convert by Jesus Villena (usufi4@finf.upv.es):
+Sound formats converion utility.
+
+* XMI Rippers and converters:
+http://sunsite.doc.ic.ac.uk/packages/ultrasound/sound/xmi/
+Extraction and conversion of Miles Sound System XMI files.
+
+* Mix Manager and AUD2WAV by Vladan Bato (bat22@geocities.com):
+http://www.geocities.com/SiliconValley/8682
+Dealing with Westwood MIX & AUD files, specs for MIX, AUD, VQA, etc.
+
+* RA-MIXer & AUD Player by Moritz Mertinkat (ramixer@gmx.net, ramixer@forfree.at):
+http://come.to/tesla
+Extracts files from Westwood Studios MIX files and plays Westwood's AUD
+audio files.
+
+* HSCPLAY4 by Gergely Gyimesi Mate (gg342@hszk.bme.hu, ggyimesi@freemail.hu)
+Cool HSC FM music player.
+
+* RAC and RdosPlay by Roman Dolejsi (roman@sorry.vse.cz):
+http://sorry.vse.cz/dimension
+http://sorry.vse.cz/rdos
+FM music grabbing and playback -- many game FM formats supported.
+
+* SNDVIEW/GFXPAK by Toni Wilen (nhlinfo@nhl-online.com, nhlinfo@gameshock.com):
+www.nhl-online.com/nhlinfo/
+www.gameshock.com/nhl/
+Extracts and converts Electronic Arts audio files to WAV and back:
+ASF/KSF/MUS music, BNK/VIV sfx/speech, TGV/DCT/MAD/WVE/TGQ/UV/UV2 video
+soundtracks.
+
+* WAVCAP by Tarmo Pikaro (tpikaro@turkuamk.fi):
+http://members.xoom.com/atzteam/download/wavcap/
+www.tekniikka.turkuamk.fi/~tpikaro
+Game audio utility -- ripper and converter.
+
+* ModPlug Player/Tracker by Olivier Lapicque (olivierl@jps.net):
+www.modplug.com
+http://www.castlex.com/modplug
+Plays UMX files from Unreal and Unreal Tournament, DSM, PSM and AMF -- both
+types: Asylum (Crusader series) and DSMI (Bolz!, Aladdin, etc.).
+
+* VQAPlayer and MIXViewer by Raymond Tan (raymtan@hotmail.com):
+http://raymtan.hypermart.net
+Plays Westwood VQAs from C&C/RedAlert/TS/Dune2000/etc. MIXes.
+
+* SCUMM Revisited by Serge (scumm@teliamail.dk):
+http://www.mixnmojo.com/scumm
+Extracts files from LucasArts LAB archives and plays music from them.
+
+* VMDPLAY by Basti Gruenwald (rcssg@joymail.com, Basti@coaster.de):
+http://www.gruen-wald.de
+ICQ#: 29 24 94 35
+Player for Sierra On-Line VMD movie files.
+
+* MPQ utils and docs by Ladislav Zezula (systek@iol.cz, zezula@volny.cz):
+http://www.volny.cz/zezula
+StormLib library for dealing with Blizzard MPQ archives which does not
+require STORM.DLL or filelists, HTrainer (Hellfire trainer, includes MPQ
+extractor) and docs/specs on MPQ archives.
+
+* F2RE by Borg Locutus (dystopia@iname.com):
+http://fragland.net/madcow
+Fallout 2 DAT extractor.
+
+* Game Resource Tool:
+http://pluto.spaceports.com/~rview
+The utility which extracts resources of several games.
+
+* Full Throttle Music Player by Bill Neisius (neisius@netcom.com):
+* MM_VIEW by Jens Ch. Restemeier (jchrr@hrz.uni-bielefeld.de):
+* IMX2WAV and UNLAB by (beowulf@main.com):
+* LAB Explorer by (chicken@planetquake.com):
+See LucasArts utilities site below.
+
+* TZPLAY:
+http://www.inf.tu-dresden.de/~mk2/TZPlay/
+Player for several audio formats.
+
+* HMP2MID and XMI2MID by Josef Drexler (jdrexler@julian.uwo.ca):
+http://www3.sympatico.ca/jdrexler/midi/
+http://publish.uwo.ca/~jdrexler/
+Converters for HMI's HMP/HMI and Miles XMI (source code is available).
+
+* UNofficial NFS3 VIV decoder/encoder by Mike 'Thommson' (editor@nd4spd.com):
+http://editor.nd4spd.com
+VIV extraction and construction utilities.
+
+* Game utilities by Peter Pawlowski (peterpw666@hotmail.com, piotrpw@polbox.com):
+http://members.fortunecity.com/pp666/
+http://pp666.cjb.net/
+http://www.geocities.com/pp_666/
+http://www.blorp.com/~peter/
+WinAMP plug-in for HMP/HMI/XMI MIDI files and IMA/DirectMusic files (used in
+Shogo, Blood2, Final Fantasy 8, etc.), XMI->MID converter, WinRipper,
+AUD player for C&C/RedAlert, AUD plug-in for WinAMP.
+
+* TFMX input plug-in and TFMX player by Per Linden (per@snakebite.com):
+www.winamp.com
+http://listen.to/tfmx
+Player/plug-in for TFMX modules used, e.g. in Turrican II game.
+
+* AdPlug plug-in by Simon Peter (dynamite.tlp@t-online.de, dn.tlp@gmx.net):
+http://members.xoom.com/lostpatrol/adplug/
+http://dfg.theunderdogs.org/adlib/adplug/
+www.winamp.com
+http://www.scene.de/tlp
+death-adder@juno.com
+WinAMP plug-in for HSC/SA2/S3M/MTK/RAW FM music files.
+
+* WinAMP C&C input plug-in by Mirko Buffoni (mb432377@saturn.media.dsi.unimi.it):
+http://www.media.dsi.unimi.it/~mb432377/
+mix@lalim.lim.dsi.unimi.it
+WinAMP input plug-in for C&C/RedAlert/TiberianSun music.
+
+* Nosefart Winamp Plugin v1.6 by Shady Matt Conte (zeus@nofrendo.org):
+http://nofrendo.org
+WinAMP plug-in for NSF files (NES game music).
+
+* AIFx plug-in by Janik Joire (janik@relic.com):
+www.sierrastudios.com/games/homeworld
+www.winamp.com
+WinAMP plug-in for Relic AIFR audio files (the compression used in HomeWorld).
+
+* XCC utils by Olaf van der Spek (Olaf@XCC.TMFWeb.NL):
+http://xcc.tiberian.com/
+Audio/Video Player and Mixer for C&C, RedAlert and Tiberian Sun (almost all
+file formats are supported).
+
+* Game Audio Player (GAP) by Valery Anisimovsky (son_of_the_north@mail.ru):
+http://www.anxsoft.newmail.ru
+http://anx.da.ru
+Finds/extracts/plays/converts various game audio formats.
+
+* VQA Player by Gordan Ugarkovic (ugordan@yahoo.com):
+http://members.xoom.com/ugordan
+Plays VQA video from Westwood games: Legend Of Kyrandia 3, C&C, RedAlert,
+Dune2000, TS, etc.
+
+* CV5 game graphics and archives viewer by TeLAMoN (the.TeLAMoN@gmx.net):
+http://www.cs.tu-berlin.de/~mickyk/cv.html.
+Viewer/extractor for game graphics/archives. Supports plug-ins for graphics
+and archive file formats, including Blizzard MPQ archives.
+
+===================================
+2. Audio Software/Docs Sites/Mails
+===================================
+
+* Game File Formats site by Benjamin Haisch (gamefileformats@exit.de):
+http://www.gamefileformats.com/
+Specs, utils, source code for game file formats, incluing audio/video formats.
+
+* C&C utilities site:
+http://www.cncnz.com
+http://www.cnc.net.nz
+sonic@cnc.net.nz
+cyclone@cnc.net.nz
+dextr3me@cnc.net.nz
+Many utilities for games from C&C series, e.g. VQA player.
+
+* Wing Commander series game utilities:
+www.wcnews.com/files
+Utilities for WC'x.
+
+* Wolfenstein 3D resource site by Florian St†hr (flo@wolfnode.de):
+http://www.wolfnode.de
+Utilities for Wolf3D.
+
+* SCI project site (gissi@sti.com.br, bfe2257@mail.telepac.pt):
+http://members.xoom.com/sci_project/
+Utilities to deal with Sierra On-Line games resource, sound/music and
+graphic file formats.
+
+* SCI games forum:
+http://www.InsideTheWeb.com/messageboard/mbs.cgi?acct=mb173941
+Internet forum dedicated to SCI games, decoding of Sierra game formats and
+SCI game utilities.
+
+* FreeSCI project:
+http://freesci.cx
+Carl Muckenhoupt (carl@wurb.com)
+Christoph Reichenbach (creichen@rbg.informatik.tu-darmstadt.de, jameson@linuxgames.com)
+Dmitry Jemerov (yole@exch.nnz.spb.su)
+Lars Skovlund (lskovlun@image.dk)
+Magnus Reftel (d96reftl@dtek.chalmers.se)
+Rickard Lind (rpl@dd.chalmers.se)
+Rink Springer (rink@springer.cx)
+Sergey Lapin (slapin@karelia.ru)
+FreeSCI program for dealing with Sierra On-Line game resource files and
+graphics/sound/music files in them.
+
+* BIM Studio Games site by Ilya Beshlebniy (ilya_bim@mail.ru):
+http://www.bim.hotmail.ru
+Game utilities for NFS'x, Tomb Raider, Heretic 2, etc.
+
+* Game Utilities Site:
+ftp://blacklance.org/pub/cic/
+Utilities for games, e.g. WC'x.
+
+* The Real Tiberian Sun Site (Jimmy@RealTS.com):
+www.realts.com
+
+* Game Rippers World:
+http://xorggroup.virtualave.net
+Serg Serkov (sergserkov@mtu-net.ru)
+Game utilities site and home of XRipper, Sierra On-Line AUD->WAV converter
+and EAViewer (viewer for NFS'x, NBA'xx, NHL'xx, FIFA'xx graphics).
+
+* NFS utilities site by Jesper Juul-Mortensen (jjm@danbbs.dk, ICQ#43452941):
+http://www.danbbs.dk/~jjm
+http://nfstoolbox.homepage.dk
+http://nfscheats.com/nfstoolbox
+http://nfstoolbox.suckosaurus.dk
+Utilities for NFS (and other EA games), including audio.
+
+* NFS World by Stephen Cameron (nfs_world@yahoo.com, ICQ#21522491):
+http://www.nfsworld.net
+http://nfs.tsx.org
+http://www.interworx.com.au/users/cameron/
+www.spyder.f2s.com
+Utilities for NFS (and other EA games).
+
+* NFS utilities site:
+http://www.nd4spd.com
+ftp://ftp.nd4spd.com
+Utilities for NFS2, including audio/video player.
+
+* NFS Cheats:
+http://design.nfscheats.com (idekker@xs4all.nl, design@nfscheats.com, ICQ#34635086)
+bcrt2000@home.com
+bigtymer@home.com
+Utilities for NFS (and other EA games).
+
+* Game utilities collection by Hou Gang (hou_gang@hotmail.com, hougun@sina.com):
+http://ca8.yeah.net
+Utilities for viewing game graphic files.
+
+* MAZ (maz@fh-zwickau.de) audio site:
+www.maz-sound.com
+Lots of audio extraction/conversion/playback utilities.
+
+* COOLS site:
+http://listen.to/cools (cools@iname.com)
+
+* Game utilities site by Super Soosk (ep9134@rncb.ac.uk):
+http://www.ednun.freeserve.co.uk/index.htm
+Utilities (including audio-related) for games.
+
+* RAD Software site:
+http://www.radgametools.com
+Miles audio tools for XMI playback/conversion.
+
+* Pages of Michiel Hendriks (thekiller@cyberjunkie.com, ICQ: 48951239):
+http://members.xoom.com/lbawld
+Little Big Adventure 1 & 2 utilities.
+
+* Game Programming Site:
+ftp://x2ftp.oulu.fi
+Lots of extraction/convertion software.
+
+* Human Machine Interfaces site:
+http://www.humanmachine.com
+HMP/HMI utilities.
+
+* Descent Developer Network:
+http://descent2.com/ddn/
+HMP/HMI and Descent 1,2 source code and utilities.
+
+* Utilities for LucasArts games:
+http://www.code-alliance.com
+http://www.mixnmojo.com/scumm
+http://scummrev.mixnmojo.com
+http://userwww.service.emory.edu/~anoviko/
+www.planetquake.com/chicken
+WWW.RAZOR1911.COM
+jimmith@teliamail.dk
+darius@darius.demon.nl
+japj@darius.demon.nl
+Many utilities/docs/specs for LucasArts games: Dark Forces, Jedi Knight,
+Outlaws, X-Wing vs TIE Fighter, Grim Fandango, The Dig, etc.
+
+* Utilities for Fallout 1,2:
+http://www.fallout.ru/	 (swan@fallout.ru)
+www.ukr-fallout.da.ru/	 (anatoliy@pcg.kiev.ua)
+www.fortunecity.com/underworld/track/293/  (dudar33@chat.ru)
+http://www.chat.ru/~dudar33
+www.lgg.ru/~skive/fallout/    (skive@mail.ru)
+http://fragland.net/madcow/   (madcow@fragland.net)
+http://fallout.gamestats.com/ (miroslav@gamestats.com)
+http://veles.net.ru/volos/    (volos@veles.net.ru)
+http://www.bgrealms.com/teambg/
+http://www.pipboy2000le.f2s.com/fo/utils.php3
+Many utilities for Fallout 1,2, e.g. ACM2WAV.
+
+* Wotsit File Formats Site:
+www.wotsit.org
+Lots of file formats specs.
+
+ftp://us.hornet.org/pub/demos/code/audio/
+ftp.cdrom.com/pub/demos/music/programms/
+Lots of useful utilities.
+
+* Diablo/Hellfire/StarCraft/BroodWar MPQ filelists/software:
+Merlin (Merlin@Warzone.com)
+KingArthur@warzone.com
+http://www.geocities.com/SiliconValley/Park/8429/index.html
+http://www.egroups.com/list/starcrack
+http://www.starshack.com
+http://www.scinfinity.com
+http://starcraft.warzone.com
+http://screalm.gamescentral.com
+http://www.jps.net/loeung
+http://www.fortunecity.com/underworld/spaceinvader/659
+http://www.blizzardgames.com
+http://www.starcraft.org
+http://www.sclegacy.com
+http://infoceptor.warzone.com
+http://starhack.ml.org
+http://camelot.warzone.com
+http://www.camsys.org
+
+* Sites of Jamal Hannah (jamal@bronze.lcs.mit.edu):
+http://www.tigerden.com/~berios/macmusic.html
+http://www.jmac.org/~jah/
+Specs/utilities for module files.
+
+* Electronic Arts game utilities (NBA'xx, NHL'xx, FIFA'xx, NFSx):
+http://www.tassoft.com/nbalive/
+http://www.nba-live.com
+
+* C&C: Tiberian Sun info/software/files(music/video):
+http://rcd.zone.ru
+http://yame.tiberian.com/
+http://www.casualforums.com/hollywood/tiberian_sun/
+http://www.tiberiumsun.com/
+
+* Trespasser tools site:
+http://gameznet.com/ths/
+A bunch of utilities for Trespasser, including the one to extract music
+and sound files.
+
+* File Formats Encyclopedia by Salvatore Meschini (smeschini@ermes.it):
+http://www.ermes.it/pws/mesk/
+http://www.gdsoft.com/swag/swag.html
+
+* Author of DSMI sound system and AMF module format:
+Otto Chrons (otto.chrons@cc.tut.fi)
+
+* Author of DSIK sound system and DSM module format:
+Carlos Hasan (chasan@dcc.uchile.cl)
+
+* Audio FAQ by Chris Bagwell (cbagwell@tddtx.fujitsu.com):
+http://home.sprynet.com/sprynet/cbagwell/audio.html
+http://www.python.org/~guido/
+
+* Author of file format list:
+Max Maischein (max.maischein@econsult.de)
+
+* The Unofficial NFS File Format Specifications:
+Denis AUROUX (MXK) (auroux@clipper.ens.fr, auroux@math.polytechnique.fr)
+http://www.eleves.ens.fr:8080/home/auroux/nfsspecs.txt
+NFS file format specs including audio.
+
+* File formats site:
+http://fileformat.da.ru
+Leonid V. Shcherbakov (fileformat@mail.ru)
+
+* File formats site:
+http://www.neutralzone.org/home/faqsys/index.html
+
+* PC Game Programmers Encyclopedia:
+ftp://ftp.mgul.ac.ru/pub/Doc/Guide/wpcgpe10.arj
+ftp://ftp.nsu.ru/pub/docs/software/pcgpe10.zip
+ftp://ftp.informika.ru/pub/docs/programming/pcgpe/pcgpe10.zip
+ftp://ftp.rt.mipt.ru/pub/Help%26Doc/Help%20systems/pcgpe10.zip
+ftp://ftp.chg.ru/.8/simtelnet/msdos/info/pcgpe10.zip
+Many docs/specs/sources related to PC games.
+
+* General Sound Interface by WHS (whs@xs4all.nl):
+http://www.xs4all.nl/~whs/gsi/
+GSI with source code, game audio formats.
+
+* PlanetQuake:
+http://www.planetquake.com
+Game sources, editors, utils.
+
+==========================
+3. Game Music Sites/Mails
+==========================
+
+* Sierra On-Line game music:
+http://www.QuestStudios.com
+Tom Lewandowski (tom@queststudios.com, ICQ# 7444188)
+
+* HomeWorld music:
+www.sierrastudios.com/games/homeworld
+
+* Phantasmagoria Memorial Websites by Anthony Larme (larme@bit.net.au):
+http://www.bit.net.au/~larme/
+Music from Phantasmagoria 1,2
+
+* Sierra On-Line musician:
+Mark Seibert (Mark.Seibert@sierra.com)
+
+* Game Music Site by Gektor (gektor@ag.ru, ICQ: 10336025):
+http://www.music.ag.ru
+Lots of game music.
+
+* Game media utils article by Steven Xu (stevenxu@21cn.com):
+http://gmw.yeah.net
+http://go.163.com/~gamemedia
+The article dedicated to game audio and video formats and utilities.
+
+* Game Music Site by Dr. Savage (savage@ufps.belcom.khv.ru):
+http://gamemusic.boom.ru
+Lots of game music, utils.
+
+* Quest music site by Valentin Efimov (garden@mail.ru):
+http://qmusic.da.ru
+Music from quest games as well as music utilities for those games.
+
+* Quest music site by (questmusic@narod.ru):
+http://questmusic.narod.ru
+Music from quest games and music utils.
+
+* Sound site by Alex Y. Radzishevsky (sayr@techst02.technion.ac.il, aradzish@hotmail.com):
+http://sound.irk.ru
+Many audio utilities (players, converters, encoders, rippers, etc.), and
+lots of information regarding audio.
+
+=============================================
+4. Credits: Contributors of this compilation
+=============================================
+
+Vladimir Goryachev (Nomad_is@land.ru)
+Jesper Juul-Mortensen (jjm@danbbs.dk)
+Carlos Hasan (chasan@dcc.uchile.cl)
+Alexander Belyakov (abel@krasu.ru)
+Vladan Bato (bat22@geocities.com)
+Toni Wilen (nhlinfo@nhl-online.com)
+Olivier Lapicque (olivierl@jps.net)
+Ladislav Zezula (zezula@volny.cz)
+Serg Serkov (sergserkov@mtu-net.ru)
+Michiel Hendriks (thekiller@cyberjunkie.com)
+Chris Bagwell (cbagwell@tddtx.fujitsu.com)
+Leonid V. Shcherbakov (fileformat@mail.ru)
+Anthony Larme (larme@bit.net.au)
+Kay Bruns (kay@xss.com)
+Steven Green (greenius@sprynet.com)
+Splice (beta@rogers.wave.ca)
+Merlin (merlin@warzone.com)
+Al Lowe (al@allowe.com)
+Alois Fischer (Alois@compuserve.com)
+David Welch (dwelch@zianet.com)
+Max Ushakov (ushakov@mccme.ru)
+Max Schipka (maksym@bigfoot.com)
+Ted Lyngmo (ted@lyncon.se)
+Moritz Mertinkat (ramixer@forfree.at)
+Anton Logvinov (ail@dubna.ru)
+Stephen Cameron (nfs_world@yahoo.com)
+Ilya Maharinsky (luke_home@mail.ru)
+Tarmo Pikaro (tpikaro@turkuamk.fi)
+Hou Gang (hou_gang@hotmail.com, hougun@sina.com)
+Super Soosk (ep9134@rncb.ac.uk)
+Oleksandr Kudriawczenko (kudr@erriu.ukrpack.net)
+Olaf van der Spek (Olaf@XCC.TMFWeb.NL)
+TeLAMoN (the.TeLAMoN@gmx.net)
+Justin Olbrantz (omega@dragonfire.net)
+Christoph Reichenbach (jameson@linuxgames.com)
+Valentin Efimov (garden@mail.ru)

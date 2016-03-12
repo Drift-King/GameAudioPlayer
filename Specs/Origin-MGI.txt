@@ -1,0 +1,309 @@
+=============================================================================
+		  Origin MGI Audio File Format Description	    5-01-2002
+=============================================================================
+
+By Valery V. Anisimovsky (son_of_the_north@mail.ru)
+
+In this document I'll try to describe audio file format used in some Origin
+games, in particlular, Wing Commander: Prophecy (perhaps, in some other Origin
+games) for music files.
+
+The files this document deals with have extensions: .MGI, .TRE. Note that the
+extensions of audio files of this format may be different from that as well as
+the extensions of the resource files containing MGI audio files.
+
+Throughout this document I use C-like notation.
+
+All numbers in all structures described in this document are stored in files
+using little-endian (Intel) byte order.
+
+===================
+1. MGI File Header
+===================
+
+The MGI file has the following header:
+
+struct MGIHeader
+{
+  char	szID[4];
+  DWORD dwUnknown1;
+  DWORD dwNumSecIndices;
+  DWORD dwUnknown2;
+  DWORD dwNumIntIndices;
+};
+
+szID -- string ID, which is equal to "\x8F\xC2\x35\x3F".
+
+dwUnknown1, dwUnknown2 -- seem to be always 0.
+
+dwNumSecIndices -- the number of section indices used in section descriptors
+(see below).
+
+dwNumIntIndices -- seems to be the number of indices used in interactive
+playback descriptors (see below).
+
+After the header comes the table of interactive playback descriptors. Each
+descriptor has the following format:
+
+struct MGIIntDesc
+{
+  LONG	lIndex;
+  DWORD dwSection;
+};
+
+lIndex -- seems to be the index of interactive sequence. Note that some
+indices are negative values.
+
+dwSection -- the pointer to the section (that is, the index of the section
+descriptor correspondent to the section, NOT the index of section given in
+the descriptor itself!)
+
+The number of descriptors in this table (its size) is very uncertain. I use
+a kind of heuristic approach to get past this table, outlined below.
+
+After the table of interactive playback descriptors comes the (DWORD) number
+of sections in the file (let it be denoted as dwNumSections). After this
+number comes the table of (dwNumSections) section descriptors. Each descriptor
+has the following format:
+
+struct MGISecDesc
+{
+  DWORD dwStart;
+  DWORD dwIndex;
+  DWORD dwOutSize;
+};
+
+dwStart -- the starting position of the audio data for the section.
+
+dwIndex -- the index of the section (NOT the index of the correspondent
+descriptor). Several different sections may have the same index. The meaning
+of this index seems to be quite uncertain, though it is not required for
+non-interactive playback of MGI files.
+
+dwOutSize -- the output size of the audio stream stored in the section
+(in bytes). May be used for section length (in seconds) calculation.
+Includes the outsizes for both compressed and non-compressed parts of the
+section, that is, it's the whole outsize of the section.
+
+Now, here's the approach I use to get to the start of section descriptors
+table. First, we should read MGIHeader. Then, we may read the interactive
+playback table -- descriptor by descriptor and for each descriptor we should
+check whether its (dwIndex) is less than header values (dwNumSecIndices)
+and (dwNumIntIndices). If the suspicious descriptor is found (for which
+the index value is out of range -- note that the descriptors with negative
+indices are correct!) we may check whether this descriptors is really the
+beginning of the section descriptors table. This check is simple to perform:
+assume that audio data for the first section starts right after the section
+descriptors table, then we can get the following equation:
+(dwDescPos)+4+(lIndex)*sizeof(MGISecDesc)=(dwSection),
+where (dwDescPos) is the position in MGI file at which starts the suspicious
+descriptor, (lIndex) and (dwSection) are the values from that descriptor.
+When this equation holds we most likely found the beginning of the section
+descriptors table.
+
+After the section descriptors table comes the audio data for the sections.
+
+==========================
+2. MGI Section Audio Data
+==========================
+
+For each section we can get the starting position of the audio data from
+the section's descriptor. Note that the last section seems to be always
+empty (it starts at the end of the MGI file, has zero outsize and zero index).
+Each section consists of two parts: EA ADPCM compressed and non-compressed.
+First comes the compressed part and right after that comes non-compressed
+part. To get the size of non-compressed tail you can use the following formula:
+dwTailSize=(dwSectionSize*0x70-dwOutSize*0x1E)/0x52,
+where (dwSectionSize) is the size of the whole section (which may be calculated
+as the difference between the start positions of the next and the current
+sections), (dwOutSize) is the value from the section's descriptor. This
+formula can be easily derived knowing the fact the compressed data is composed
+of blocks (0x1E bytes each -- for stereo stream) which are decompressed into
+0x1C*4 bytes each (for stereo stream). Note that this formula is valid for
+both stereo and mono MGI files.
+
+The compressed part contains EA ADPCM compressed stream. It's devided into
+small blocks of 0x1E (stereo) or 0xF (mono) bytes. The non-compressed part
+contains raw (16-bit signed) PCM data. All MGI files I've seen are stereo
+22050 Hz 16-bit. The non-compressed part may be played right after the
+compressed part.
+
+All sections may be played consequently right in their turn. Some MGI files
+contain several quite independent tunes, though when played consequently,
+those tunes form relatively seamless composition.
+
+====================================
+3. EA ADPCM Decompression Algorithm
+====================================
+
+During the decompression four LONG variables must be maintained for stereo
+stream: lCurSampleLeft, lCurSampleRight, lPrevSampleLeft, lPrevSampleRight
+and two -- for mono stream: lCurSample, lPrevSample. At the beginning of each
+section you must initialize these variables to zeros.
+Note that LONG here is signed.
+
+The stream is divided into small blocks of 0x1E (stereo) or 0xF (mono) bytes.
+You should process all blocks in their turn. Here's the code which
+decompresses one stereo stream block.
+
+BYTE  InputBuffer[InputBufferSize]; // buffer containing data for one block
+BYTE  bInput;
+DWORD i;
+LONG  c1left,c2left,c1right,c2right,left,right;
+BYTE  dleft,dright;
+
+bInput=InputBuffer[0];
+c1left=EATable[HINIBBLE(bInput)];   // predictor coeffs for left channel
+c2left=EATable[HINIBBLE(bInput)+4];
+c1right=EATable[LONIBBLE(bInput)];  // predictor coeffs for right channel
+c2right=EATable[LONIBBLE(bInput)+4];
+
+bInput=InputBuffer[1];
+dleft=HINIBBLE(bInput)+8;   // shift value for left channel
+dright=LONIBBLE(bInput)+8;  // shift value for right channel
+
+for (i=2;i<0x1E;i++)
+{
+  left=HINIBBLE(InputBuffer[i]);  // HIGHER nibble for left channel
+  left=(left<<0x1c)>>dleft;
+  left=(left+lCurSampleLeft*c1left+lPrevSampleLeft*c2left+0x80)>>8;
+  left=Clip16BitSample(left);
+  lPrevSampleLeft=lCurSampleLeft;
+  lCurSampleLeft=left;
+
+  right=LONIBBLE(InputBuffer[i]); // LOWER nibble for right channel
+  right=(right<<0x1c)>>dright;
+  right=(right+lCurSampleRight*c1right+lPrevSampleRight*c2right+0x80)>>8;
+  right=Clip16BitSample(right);
+  lPrevSampleRight=lCurSampleRight;
+  lCurSampleRight=right;
+
+  // Now we've got lCurSampleLeft and lCurSampleRight which form one stereo
+  // sample and all is set for the next step...
+  Output((SHORT)lCurSampleLeft,(SHORT)lCurSampleRight); // send the sample to output
+}
+
+HINIBBLE and LONIBBLE are higher and lower 4-bit nibbles:
+#define HINIBBLE(byte) ((byte) >> 4)
+#define LONIBBLE(byte) ((byte) & 0x0F)
+Note that depending on your compiler you may need to use additional nibble
+separation in these defines, e.g. (((byte) >> 4) & 0x0F).
+
+EATable is the table given in the next section of this document.
+
+Output() is just a placeholder for any action you would like to perform for
+decompressed sample value.
+
+Clip16BitSample is quite evident:
+
+LONG Clip16BitSample(LONG sample)
+{
+  if (sample>32767)
+     return 32767;
+  else if (sample<-32768)
+     return (-32768);
+  else
+     return sample;
+}
+
+As to mono sound, it's just analoguous -- you should process the blocks each
+being 0xF bytes long:
+
+bInput=InputBuffer[0];
+c1=EATable[HINIBBLE(bInput)];	// predictor coeffs
+c2=EATable[HINIBBLE(bInput)+4];
+d=LONIBBLE(bInput)+8;  // shift value
+
+for (i=1;i<0xF;i++)
+{
+  left=HINIBBLE(InputBuffer[i]);  // HIGHER nibble for left channel
+  left=(left<<0x1c)>>dleft;
+  left=(left+lCurSampleLeft*c1left+lPrevSampleLeft*c2left+0x80)>>8;
+  left=Clip16BitSample(left);
+  lPrevSampleLeft=lCurSampleLeft;
+  lCurSampleLeft=left;
+
+  // Now we've got lCurSampleLeft which is one mono sample and all is set
+  // for the next input nibble...
+  Output((SHORT)lCurSampleLeft); // send the sample to output
+
+  left=LONIBBLE(InputBuffer[i]);  // LOWER nibble for left channel
+  left=(left<<0x1c)>>dleft;
+  left=(left+lCurSampleLeft*c1left+lPrevSampleLeft*c2left+0x80)>>8;
+  left=Clip16BitSample(left);
+  lPrevSampleLeft=lCurSampleLeft;
+  lCurSampleLeft=left;
+
+  // Now we've got lCurSampleLeft which is one mono sample and all is set
+  // for the next input byte...
+  Output((SHORT)lCurSampleLeft); // send the sample to output
+}
+
+Note that HIGHER nibble is processed first for mono sound and corresponds to
+LEFT channel for stereo.
+
+Of course, this decompression routine may be greatly optimized.
+
+==================
+4. EA ADPCM Table
+==================
+
+LONG EATable[]=
+{
+  0x00000000,
+  0x000000F0,
+  0x000001CC,
+  0x00000188,
+  0x00000000,
+  0x00000000,
+  0xFFFFFF30,
+  0xFFFFFF24,
+  0x00000000,
+  0x00000001,
+  0x00000003,
+  0x00000004,
+  0x00000007,
+  0x00000008,
+  0x0000000A,
+  0x0000000B,
+  0x00000000,
+  0xFFFFFFFF,
+  0xFFFFFFFD,
+  0xFFFFFFFC
+};
+
+===================================
+5. MGI Audio Files in TRE Archives
+===================================
+
+When stored in .TRE resources, MGI audio files are stored "as is", without
+compression or encryption. That means if you want to play/extract MGI
+file from the TRE resource you just need to search for (szID) id-string
+("\x8F\xC2\x35\x3F"), read MGI header starting at the beginning position of
+found id-string and then use the approach outlined above to find the
+section descriptors table. The found id-string will give you starting point
+of MGI file and the size of the file will be the (dwStart) value in the
+descriptor of the last section.
+
+===========
+6. Credits
+===========
+
+Dmitry Kirnocenskij (ejt@mail.ru)
+Worked out EA ADPCM decompression algorithm.
+
+Vladimir Goryachev (Nomad_is@land.ru)
+Provided me with Wing Commander: Prophecy decoding stuff thereby
+inspired me to decode the formats and write the plug-in for GAP.
+
+-------------------------------------------
+
+Valery V. Anisimovsky (son_of_the_north@mail.ru)
+http://bim.km.ru/gap/
+http://www.anxsoft.newmail.ru
+http://anx.da.ru
+On these sites you can find my GAP program which can search for MGI audio
+files in game resources, extract them, convert them to WAV and play them back.
+There's also complete source code of GAP and all its plug-ins there,
+including MGI plug-in, which could be used for further details on how you
+can deal with this format.

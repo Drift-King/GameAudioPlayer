@@ -1,0 +1,15 @@
+<Tpoint.asf> <EACS> <> <[CD]\NBA99\SONGS\Tpoint.asf> <PLAIN> <> 0 2FEB14
+<Menu2.asf> <EACS> <> <[CD]\NBA99\SONGS\Menu2.asf> <PLAIN> <> 0 3C52D8
+<Menu3.asf> <EACS> <> <[CD]\NBA99\SONGS\Menu3.asf> <PLAIN> <> 0 3C9FC4
+<Menu4.asf> <EACS> <> <[CD]\NBA99\SONGS\Menu4.asf> <PLAIN> <> 0 3EAF2C
+<Menu5.asf> <EACS> <> <[CD]\NBA99\SONGS\Menu5.asf> <PLAIN> <> 0 3CA87C
+<Runon1.asf> <EACS> <> <[CD]\NBA99\SONGS\Runon1.asf> <PLAIN> <> 0 58708
+<Runon2.asf> <EACS> <> <[CD]\NBA99\SONGS\Runon2.asf> <PLAIN> <> 0 58AC0
+<Runon3.asf> <EACS> <> <[CD]\NBA99\SONGS\Runon3.asf> <PLAIN> <> 0 58A14
+<Runon4.asf> <EACS> <> <[CD]\NBA99\SONGS\Runon4.asf> <PLAIN> <> 0 58814
+<Runon5.asf> <EACS> <> <[CD]\NBA99\SONGS\Runon5.asf> <PLAIN> <> 0 583AC
+<Runon6.asf> <EACS> <> <[CD]\NBA99\SONGS\Runon6.asf> <PLAIN> <> 0 58350
+<Runon7.asf> <EACS> <> <[CD]\NBA99\SONGS\Runon7.asf> <PLAIN> <> 0 58724
+<Runon8.asf> <EACS> <> <[CD]\NBA99\SONGS\Runon8.asf> <PLAIN> <> 0 58634
+<Runon9.asf> <EACS> <> <[CD]\NBA99\SONGS\Runon9.asf> <PLAIN> <> 0 58708
+<Menu1.asf> <EACS> <> <[CD]\NBA99\SONGS\Menu1.asf> <PLAIN> <> 0 364B2C

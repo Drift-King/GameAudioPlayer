@@ -1,0 +1,307 @@
+=============================================================================
+		   FunCom ISS Audio File Format Description	    5-01-2002
+=============================================================================
+
+By Valery V. Anisimovsky (son_of_the_north@mail.ru)
+
+In this document I'll try to describe ISS audio file format used in the
+FunCom game The Longest Journey for music, sound effects and speech. Other
+FunCom games may also prove to be using that format.
+
+The files this document deals with have extensions: .ISS, .XARC.
+
+Throughout this document I use C-like notation.
+
+All numbers in all structures described in this document are stored in files
+using little-endian (Intel) byte order.
+
+===================
+1. ISS Audio Files
+===================
+
+The music, sfx and speech in The Longest Journey are .ISS files, either
+stand-alone or stored in XARC archives.
+The ISS file has some kind of a textual header -- the header fields are just
+decimal string representations of correspondent fields values, separated
+by spaces. So, to get the parameters of an ISS file, you should parse its
+textual header, using the function like this one:
+
+// read the file (f) into string (szValue) until the space character is
+// encountered (taking into account the string size (dwSize) and EOF)
+void ReadUntilSpace(FILE* f, char *szValue, DWORD dwSize)
+{
+  char	ch;
+  DWORD i=0;
+
+  while ((!feof(f)) && (i<dwSize-1))
+  {
+    fread(&ch,1,1,f);
+    if (ch==' ') // space character (0x20)
+       break;
+    szValue[i++]=ch;
+  }
+
+  szValue[i]=0;
+}
+
+Of course, it's not the most optimal means to parse ISS header. Anyway,
+once you've got the way to obtain the textual fields of ISS header, you'll
+see the following structure of that header (all numbers are decimal!):
+<szID> <dwBlockSize> <szFileID> <dwOutSize> <dwStereo> <dwUnknown1>
+<dwRateDevider> <dwUnknown2> <szVersion> <dwSize>
+
+szID -- ID string, which is "IMA_ADPCM_Sound".
+
+dwBlockSize -- the block size for the audio stream in the file (see below).
+The music (stereo) files has this value set to 2048 and the speech/sfx (mono)
+files has this set to 512. Though, those values may vary.
+
+szFileID -- the string ID of the given file. It seems to be the internal
+name for the file (which coincides with the file title for stand-alone files).
+
+dwOutSize -- number of samples in the file. May be used for song length
+(in seconds) calculation.
+
+dwStereo -- this seems to be boolean stereo flag: if this is not zero, the
+audio stream in the file is stereo (music), otherwise it's mono (sfx, speech).
+
+dwUnknown1 -- the unknown field. All ISS files in The Longest Journey have
+this field set to 1.
+
+dwRateDevider -- the value which determines sample rate for the file: the
+sample rate is equal to (44100/dwRateDevider).
+
+dwUnknown2 -- the unknown field. All ISS files in The Longest Journey have
+this value set to 0.
+
+szVersion -- version ID string, all files in The Longest Journey have this
+set to "1.000". Note that this field may, in principle, vary.
+
+dwSize -- the size of the audio stream in the file. The total filesize is
+the sum of the header size and this value.
+
+The resolution is NOT specified in the header, so the default value (16-bit)
+should be used.
+
+After the ISSHeader IMA ADPCM compressed sound data comes. The stream is
+devided into the blocks each being (dwBlockSize) long. Each block begins
+with the small header, containing initial values for IMA ADPCM decompression:
+
+struct ISSBlockHeader
+{
+  SHORT iSample;
+  SHORT iIndex;
+};
+
+For mono audio stream there's only one such header, while for stereo stream
+there're two consecutive headers -- for left and right channels. Right after
+the block header (or two of them for stereo stream) comes IMA ADPCM compressed
+audio data. You may find IMA ADPCM decompression scheme description further
+in this document.
+
+=====================================
+2. IMA ADPCM Decompression Algorithm
+=====================================
+
+During the decompression four LONG variables must be maintained for stereo
+stream: lIndexLeft, lIndexRight, lCurSampleLeft, lCurSampleRight and two --
+for mono stream: lIndex, lCurSample. At the beginning of each block you must
+initialize lCurSampleLeft/Right and lIndexLeft/Right variables to the values
+from ISSBlockHeader.
+Note that both LONG and SHORT here are signed (so initialize LONG variables
+by the SHORT initial values with sign extention).
+
+Here's the code which decompresses one byte of IMA ADPCM compressed
+stereo stream. Other bytes are processed in the same way.
+
+BYTE Input; // current byte of compressed data
+BYTE Code;
+LONG Delta;
+
+Code=HINIBBLE(Input); // get HIGHER 4-bit nibble
+
+Delta=StepTable[lIndexLeft]>>3;
+if (Code & 4)
+   Delta+=StepTable[lIndexLeft];
+if (Code & 2)
+   Delta+=StepTable[lIndexLeft]>>1;
+if (Code & 1)
+   Delta+=StepTable[lIndexLeft]>>2;
+if (Code & 8) // sign bit
+   lCurSampleLeft-=Delta;
+else
+   lCurSampleLeft+=Delta;
+
+// clip sample
+if (lCurSampleLeft>32767)
+   lCurSampleLeft=32767;
+else if (lCurSampleLeft<-32768)
+   lCurSampleLeft=-32768;
+
+lIndexLeft+=IndexAdjust[Code]; // adjust index
+
+// clip index
+if (lIndexLeft<0)
+   lIndexLeft=0;
+else if (lIndexLeft>88)
+   lIndexLeft=88;
+
+Code=LONIBBLE(Input); // get LOWER 4-bit nibble
+
+Delta=StepTable[lIndexRight]>>3;
+if (Code & 4)
+   Delta+=StepTable[lIndexRight];
+if (Code & 2)
+   Delta+=StepTable[lIndexRight]>>1;
+if (Code & 1)
+   Delta+=StepTable[lIndexRight]>>2;
+if (Code & 8) // sign bit
+   lCurSampleRight-=Delta;
+else
+   lCurSampleRight+=Delta;
+
+// clip sample
+if (lCurSampleRight>32767)
+   lCurSampleRight=32767;
+else if (lCurSampleRight<-32768)
+   lCurSampleRight=-32768;
+
+lIndexRight+=IndexAdjust[Code]; // adjust index
+
+// clip index
+if (lIndexRight<0)
+   lIndexRight=0;
+else if (lIndexRight>88)
+   lIndexRight=88;
+
+// Now we've got lCurSampleLeft and lCurSampleRight which form one stereo
+// sample and all is set for the next input byte...
+Output((SHORT)lCurSampleLeft,(SHORT)lCurSampleRight); // send the sample to output
+
+HINIBBLE and LONIBBLE are higher and lower 4-bit nibbles:
+#define HINIBBLE(byte) ((byte) >> 4)
+#define LONIBBLE(byte) ((byte) & 0x0F)
+Note that depending on your compiler you may need to use additional nibble
+separation in these defines, e.g. (((byte) >> 4) & 0x0F).
+
+StepTable and IndexAdjust are the tables given in the next section of
+this document.
+
+Output() is just a placeholder for any action you would like to perform for
+decompressed sample value.
+
+Of course, this decompression routine may be greatly optimized.
+
+As to mono sound, it's just analoguous:
+
+Code=LONIBBLE(Input); // get LOWER 4-bit nibble
+
+Delta=StepTable[lIndex]>>3;
+if (Code & 4)
+   Delta+=StepTable[lIndex];
+if (Code & 2)
+   Delta+=StepTable[lIndex]>>1;
+if (Code & 1)
+   Delta+=StepTable[lIndex]>>2;
+if (Code & 8) // sign bit
+   lCurSample-=Delta;
+else
+   lCurSample+=Delta;
+
+// clip sample
+if (lCurSample>32767)
+   lCurSample=32767;
+else if (lCurSample<-32768)
+   lCurSample=-32768;
+
+lIndex+=IndexAdjust[Code]; // adjust index
+
+// clip index
+if (lIndex<0)
+   lIndex=0;
+else if (lIndex>88)
+   lIndex=88;
+
+Output((SHORT)lCurSample); // send the sample to output
+
+Code=HINIBBLE(Input); // get HIGHER 4-bit nibble
+// ...just the same as above for higher nibble
+
+Note that LOWER nibble is processed first for mono sound while for stereo
+sound HIGHER nibble corresponds to LEFT channel.
+
+====================
+3. IMA ADPCM Tables
+====================
+
+LONG IndexAdjust[]=
+{
+    -1,
+    -1,
+    -1,
+    -1,
+     2,
+     4,
+     6,
+     8,
+    -1,
+    -1,
+    -1,
+    -1,
+     2,
+     4,
+     6,
+     8
+};
+
+LONG StepTable[]=
+{
+    7,	   8,	  9,	 10,	11,    12,     13,    14,    16,
+    17,    19,	  21,	 23,	25,    28,     31,    34,    37,
+    41,    45,	  50,	 55,	60,    66,     73,    80,    88,
+    97,    107,   118,	 130,	143,   157,    173,   190,   209,
+    230,   253,   279,	 307,	337,   371,    408,   449,   494,
+    544,   598,   658,	 724,	796,   876,    963,   1060,  1166,
+    1282,  1411,  1552,  1707,	1878,  2066,   2272,  2499,  2749,
+    3024,  3327,  3660,  4026,	4428,  4871,   5358,  5894,  6484,
+    7132,  7845,  8630,  9493,	10442, 11487,  12635, 13899, 15289,
+    16818, 18500, 20350, 22385, 24623, 27086,  29794, 32767
+};
+
+====================================
+4. ISS Audio Files in XARC Archives
+====================================
+
+When stored in .XARC resources, ISS audio files are stored "as is", without
+compression or encryption. That means if you want to play/extract ISS
+file from the XARC resource you just need to search for (szID) id-string
+("IMA_ADPCM_Sound") and read ISS header starting at the beginning position of
+found id-string. This will give you starting point of the file and the size
+of the file will be the sum of header size (its size may vary!) and (dwSize).
+
+===========
+5. Credits
+===========
+
+Peter Pawlowski (peterpw666@hotmail.com, piotrpw@polbox.com)
+http://members.fortunecity.com/pp666/
+http://pp666.cjb.net/
+http://www.geocities.com/pp_666/
+Pointed out corrections in IMA ADPCM decoder.
+
+Valentin Efimov (garden@postman.ru)
+http://qmusic.wciom.ru
+Provided me with The Longest Journey decoding stuff thereby inspired
+me to decode the format and write the plug-in for GAP.
+
+-------------------------------------------
+
+Valery V. Anisimovsky (son_of_the_north@mail.ru)
+http://bim.km.ru/gap/
+http://www.anxsoft.newmail.ru
+http://anx.da.ru
+On these sites you can find my GAP program which can search for ISS audio
+files in game resources, extract them, convert them to WAV and play them back.
+There's also complete source code of GAP and all its plug-ins there,
+including ISS plug-in, which could be used for further details on how you
+can deal with this format.

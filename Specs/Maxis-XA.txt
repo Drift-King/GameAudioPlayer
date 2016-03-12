@@ -1,0 +1,249 @@
+=============================================================================
+		    Maxis XA Audio File Format Description	    5-01-2002
+=============================================================================
+
+By Valery V. Anisimovsky (son_of_the_north@mail.ru)
+
+In this document I'll try to describe audio file format used in some Maxis
+games, in particlular, SimCity3000 (perhaps, in some other Maxis games) for
+music, speech and sfx files.
+
+The files this document deals with have extension: .XA. Note that the
+extension of audio files of this format may be different from that.
+
+Throughout this document I use C-like notation.
+
+All numbers in all structures described in this document are stored in files
+using little-endian (Intel) byte order.
+
+==================
+1. XA File Header
+==================
+
+The XA file has the following header:
+
+struct XAHeader
+{
+  char	szID[4];
+  DWORD dwOutSize;
+  WORD	wTag;
+  WORD	wChannels;
+  DWORD dwSampleRate;
+  DWORD dwAvgByteRate;
+  WORD	wAlign;
+  WORD	wBits;
+};
+
+szID -- string ID, which is equal to "XAI\0" (sound/speech) or "XAJ\0" (music).
+
+dwOutSize -- the output size of the audio stream stored in the file (in bytes).
+
+wTag -- seems to be PCM waveformat tag (0x0001). This corresponds to the
+(decompressed) output audio stream, of course.
+
+wChannels -- number of channels for the file.
+
+dwSampleRate -- sample rate for the file.
+
+dwAvgByteRate -- average byte rate for the file (equal to (dwSampleRate)*(wAlign)).
+Note that this also corresponds to the decompressed output audio stream.
+
+wAlign -- the sample align value for the file (equal to (wBits/8)*(wChannels)).
+Again, this corresponds to the decompressed output audio stream.
+
+wBits -- resolution of the file (8 (8-bit), 16 (16-bit), etc.).
+
+Note that the part of the header from (wTag) until (wBits) is really
+WAVEFORMATEX structure (the contents of PCM .WAV fmt chunk).
+
+================
+2. XA File Data
+================
+
+Right after the XA header comes the compressed audio stream. The compression
+algorithm used is EA ADPCM (see below). Music files in SimCity3000 are
+stereo 22050 Hz 16-bit, and speech/sfx are mono 22050 Hz 16-bit.
+
+====================================
+3. EA ADPCM Decompression Algorithm
+====================================
+
+During the decompression four LONG variables must be maintained for stereo
+stream: lCurSampleLeft, lCurSampleRight, lPrevSampleLeft, lPrevSampleRight
+and two -- for mono stream: lCurSample, lPrevSample. At the beginning of the
+audio stream you must initialize these variables to zeros.
+Note that LONG here is signed.
+
+The stream is divided into small blocks of 0x1E (stereo) or 0xF (mono) bytes.
+You should process all blocks in their turn. Here's the code which
+decompresses one stereo stream block.
+
+BYTE  InputBuffer[InputBufferSize]; // buffer containing data for one block
+BYTE  bInput;
+DWORD i;
+LONG  c1left,c2left,c1right,c2right,left,right;
+BYTE  dleft,dright;
+
+bInput=InputBuffer[0];
+c1left=EATable[HINIBBLE(bInput)];   // predictor coeffs for left channel
+c2left=EATable[HINIBBLE(bInput)+4];
+dleft=LONIBBLE(bInput)+8;   // shift value for left channel
+
+bInput=InputBuffer[1];
+c1right=EATable[HINIBBLE(bInput)];  // predictor coeffs for right channel
+c2right=EATable[HINIBBLE(bInput)+4];
+dright=LONIBBLE(bInput)+8;  // shift value for right channel
+
+for (i=2;i<0x1E;i+=2)
+{
+  left=HINIBBLE(InputBuffer[i]);  // HIGHER nibble for left channel
+  left=(left<<0x1c)>>dleft;
+  left=(left+lCurSampleLeft*c1left+lPrevSampleLeft*c2left+0x80)>>8;
+  left=Clip16BitSample(left);
+  lPrevSampleLeft=lCurSampleLeft;
+  lCurSampleLeft=left;
+
+  right=HINIBBLE(InputBuffer[i+1]); // HIGHER nibble for right channel
+  right=(right<<0x1c)>>dright;
+  right=(right+lCurSampleRight*c1right+lPrevSampleRight*c2right+0x80)>>8;
+  right=Clip16BitSample(right);
+  lPrevSampleRight=lCurSampleRight;
+  lCurSampleRight=right;
+
+  // Now we've got lCurSampleLeft and lCurSampleRight which form one stereo
+  // sample and all is set for the next step...
+  Output((SHORT)lCurSampleLeft,(SHORT)lCurSampleRight); // send the sample to output
+
+  // now do just the same for LOWER nibbles...
+  // note that nubbles for each channel are packed pairwise into one byte
+
+  left=LONIBBLE(InputBuffer[i]);  // LOWER nibble for left channel
+  left=(left<<0x1c)>>dleft;
+  left=(left+lCurSampleLeft*c1left+lPrevSampleLeft*c2left+0x80)>>8;
+  left=Clip16BitSample(left);
+  lPrevSampleLeft=lCurSampleLeft;
+  lCurSampleLeft=left;
+
+  right=LONIBBLE(InputBuffer[i+1]); // LOWER nibble for right channel
+  right=(right<<0x1c)>>dright;
+  right=(right+lCurSampleRight*c1right+lPrevSampleRight*c2right+0x80)>>8;
+  right=Clip16BitSample(right);
+  lPrevSampleRight=lCurSampleRight;
+  lCurSampleRight=right;
+
+  // Now we've got lCurSampleLeft and lCurSampleRight which form one stereo
+  // sample and all is set for the next step...
+  Output((SHORT)lCurSampleLeft,(SHORT)lCurSampleRight); // send the sample to output
+}
+
+HINIBBLE and LONIBBLE are higher and lower 4-bit nibbles:
+#define HINIBBLE(byte) ((byte) >> 4)
+#define LONIBBLE(byte) ((byte) & 0x0F)
+Note that depending on your compiler you may need to use additional nibble
+separation in these defines, e.g. (((byte) >> 4) & 0x0F).
+
+EATable is the table given in the next section of this document.
+
+Output() is just a placeholder for any action you would like to perform for
+decompressed sample value.
+
+Clip16BitSample is quite evident:
+
+LONG Clip16BitSample(LONG sample)
+{
+  if (sample>32767)
+     return 32767;
+  else if (sample<-32768)
+     return (-32768);
+  else
+     return sample;
+}
+
+As to mono sound, it's just analoguous -- you should process the blocks each
+being 0xF bytes long:
+
+bInput=InputBuffer[0];
+c1=EATable[HINIBBLE(bInput)];	// predictor coeffs
+c2=EATable[HINIBBLE(bInput)+4];
+d=LONIBBLE(bInput)+8;  // shift value
+
+for (i=1;i<0xF;i++)
+{
+  left=HINIBBLE(InputBuffer[i]);  // HIGHER nibble for left channel
+  left=(left<<0x1c)>>dleft;
+  left=(left+lCurSampleLeft*c1left+lPrevSampleLeft*c2left+0x80)>>8;
+  left=Clip16BitSample(left);
+  lPrevSampleLeft=lCurSampleLeft;
+  lCurSampleLeft=left;
+
+  // Now we've got lCurSampleLeft which is one mono sample and all is set
+  // for the next input nibble...
+  Output((SHORT)lCurSampleLeft); // send the sample to output
+
+  left=LONIBBLE(InputBuffer[i]);  // LOWER nibble for left channel
+  left=(left<<0x1c)>>dleft;
+  left=(left+lCurSampleLeft*c1left+lPrevSampleLeft*c2left+0x80)>>8;
+  left=Clip16BitSample(left);
+  lPrevSampleLeft=lCurSampleLeft;
+  lCurSampleLeft=left;
+
+  // Now we've got lCurSampleLeft which is one mono sample and all is set
+  // for the next input byte...
+  Output((SHORT)lCurSampleLeft); // send the sample to output
+}
+
+So, you should process HIGHER nibble of the input byte first and then
+LOWER nibble for mono sound.
+
+Of course, this decompression routine may be greatly optimized.
+
+==================
+4. EA ADPCM Table
+==================
+
+LONG EATable[]=
+{
+  0x00000000,
+  0x000000F0,
+  0x000001CC,
+  0x00000188,
+  0x00000000,
+  0x00000000,
+  0xFFFFFF30,
+  0xFFFFFF24,
+  0x00000000,
+  0x00000001,
+  0x00000003,
+  0x00000004,
+  0x00000007,
+  0x00000008,
+  0x0000000A,
+  0x0000000B,
+  0x00000000,
+  0xFFFFFFFF,
+  0xFFFFFFFD,
+  0xFFFFFFFC
+};
+
+===========
+5. Credits
+===========
+
+Dmitry Kirnocenskij (ejt@mail.ru)
+Worked out EA ADPCM decompression algorithm.
+
+Nicholas Sales (nicsales@mweb.co.za)
+Provided me with SimCity3000 decoding stuff thereby inspired
+me to decode the formats and write the plug-in for GAP.
+
+-------------------------------------------
+
+Valery V. Anisimovsky (son_of_the_north@mail.ru)
+http://bim.km.ru/gap/
+http://www.anxsoft.newmail.ru
+http://anx.da.ru
+On these sites you can find my GAP program which can search for XA audio
+files in game resources, extract them, convert them to WAV and play them back.
+There's also complete source code of GAP and all its plug-ins there,
+including XA plug-in, which could be used for further details on how you
+can deal with this format.

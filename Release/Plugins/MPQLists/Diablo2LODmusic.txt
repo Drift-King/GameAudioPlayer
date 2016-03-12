@@ -1,0 +1,10 @@
+data\global\music\introedit.wav
+data\global\music\act4\diabloaction.wav
+data\global\music\act5\baal.wav
+data\global\music\act5\baalmusic.wav
+data\global\music\act5\icecaves.wav
+data\global\music\act5\nihlathakmusic.wav
+data\global\music\act5\shenkmusic.wav
+data\global\music\act5\siege.wav
+data\global\music\act5\xtemple.wav
+data\global\music\act5\xtown.wav

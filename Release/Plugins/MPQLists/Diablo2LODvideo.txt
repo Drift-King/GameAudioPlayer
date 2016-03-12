@@ -1,0 +1,4 @@
+data\local\video\eng\d2x_intro_640x146.bik
+data\local\video\eng\d2x_intro_640x292.bik
+data\local\video\eng\d2x_out_640x146.bik
+data\local\video\eng\d2x_out_640x292.bik

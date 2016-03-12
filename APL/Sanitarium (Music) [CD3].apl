@@ -1,0 +1,10 @@
+<<Unknown>> <WAV> <> <[CD]\Data\Music\MUS.011> <PLAIN> <> 78 3E80BA
+<<Unknown>> <WAV> <> <[CD]\Data\Music\MUS.012> <PLAIN> <> 78 53BB88
+<<Unknown>> <WAV> <> <[CD]\Data\Music\MUS.012> <PLAIN> <> 53BC00 34D4E8
+<<Unknown>> <WAV> <> <[CD]\Data\Music\MUS.013> <PLAIN> <> 78 204D78
+<<Unknown>> <WAV> <> <[CD]\Data\Music\MUS.013> <PLAIN> <> 204DF0 2AA2BA
+<<Unknown>> <WAV> <> <[CD]\Data\Music\MUS.013> <PLAIN> <> 4AF0AA 278388
+<<Unknown>> <WAV> <> <[CD]\Data\Music\MUS.013> <PLAIN> <> 727432 2811AA
+<<Unknown>> <WAV> <> <[CD]\Data\Music\MUS.013> <PLAIN> <> 9A85DC 265C1A
+<<Unknown>> <WAV> <> <[CD]\Data\Music\MUS.016> <PLAIN> <> 78 34D4E8
+<<Unknown>> <WAV> <> <[CD]\Data\Music\MUS.017> <PLAIN> <> 78 243BE2

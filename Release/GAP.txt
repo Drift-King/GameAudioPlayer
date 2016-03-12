@@ -1,0 +1,1349 @@
+============================================================================
+		 Game Audio Player v1.32 Documentation		  10-03-2001
+============================================================================
+					Copyright (C) 1999-2001 ANX Software
+
+Table of Contents
+==================
+
+1     Introduction to GAP
+2     Disclaimer
+3     GAP files
+4     GAP actions:
+4.1	Main (playback) window
+4.2	Playlist window
+4.3	Keyboard shortcuts
+4.4	Resource file extraction capabilities
+5     Options:
+5.1	Playback
+5.2	Playlist
+5.3	Saving
+5.4	Audio file plug-ins (AF plug-ins)
+5.5	Resource file plug-ins (RF plug-ins)
+6     Audio file plug-ins configurations:
+6.1	ACM plug-in configuration
+6.2	ASF plug-in configuration
+6.3	AUD plug-in configuration
+6.4	RAW plug-in configuration
+6.5	SOL plug-in configuration
+6.6	EACS plug-in configuration
+6.7	WADSFX plug-in configuration
+6.8	MVE plug-in configuration
+6.9	BNK plug-in configuration
+6.10	APC plug-in configuration
+6.11	ISS plug-in configuration
+6.12	XA plug-in configuration
+6.13	CMP plug-in configuration
+6.14	FST plug-in configuration
+6.15	MGI plug-in configuration
+7     Resource file plug-ins configurations:
+7.1	MPQ plug-in configuration
+7.2	WAD plug-in configuration
+7.3	DSND plug-in configuration
+7.4	GRP plug-in configuration
+7.5	BLB plug-in configuration
+7.6	CLU plug-in configuration
+8     Credits
+9     Known problems
+10    Future plans
+11    Project
+12    Support the author of GAP
+13    Appendix: ANX APL playlist format
+
+1 Introduction to GAP
+======================
+
+Game Audio Player (GAP) is an utility capable of...
+1) Searching various games resource files for various audio files (music/sfx/speech)
+2) Extracting found files "as is" and converting them to WAVs
+3) Playing found/added files with seeking and other features
+4) Extracting any files from various resource archives
+
+Features supported include...
+1) Plug-in system: plug-ins for audio files and resource files
+2) Playlist functionality: remove node(s), duplicate node, move up/down,
+   clear, multiselect, add/scan directory, sort list
+3) Saving/Converting multiple files at once using filename template
+4) Game oriented playlist: options for loading/saving playlists so that they can
+   be used on systems with different CD drive letters
+5) Playback options: repeat one/all, shuffle, introscan, single-file playback
+6) Drag'n'Drop support for main (playback) and playlist windows
+7) Several ready-for-use playlists for CD-games: NFS, NFS2, NFS3, NFS4, NFS5,
+   Command & Conquer, Red Alert, Dune 2000, C&C: Tiberian Sun, The Neverhood,
+   Fallout, Fallout 2, Diablo, Diablo 2, StarCraft, NBA Live'96, NBA Live'99,
+   Quake3, Torin's Passage, Gabriel Knight 1 & 2, Phantasmagoria 1 & 2,
+   King's Quest 7 & 8, Leisure Suit Larry 7, Full Throttle, etc.
+
+GAP and all ANX plug-ins are Copyright (C) 1998-2001 ANX Software:
+WWW: http://www.anxsoft.newmail.ru
+E-mail: son_of_the_north@mail.ru
+
+Official GAP site is:
+WWW: http://bim.km.ru
+E-mail: Ilya_BIM@mail.ru
+
+GAP and its plug-ins may also be found on the Internet:
+http://www.fortunecity.com/campus/electrical/81/samael.html,
+http://anx.da.ru (which is just the same as previous),
+http://denver.da.ru,
+
+GAP is completely FREEWARE.
+
+2 DISCLAIMER
+=============
+
+This software comes with NO WARRANTY. You use it at YOUR OWN RISK.
+The author of this software may not be kept responsible for any damage
+caused by any usage of this software.
+
+This software is meant only as an addition to the wonderful games whose
+sound/music/speech/video files it deals with. It's NOT meant to lower those
+games value IN ANY WAY. The creators of the supported games ARE NOT
+RESPONSIBLE for this software and they should not be contacted in case of
+any problems related to this software.
+
+3 GAP files
+============
+
+GAP.ZIP package includes the following files...
+
+GAP.EXE         -- Game Audio Player Win32 Executable
+GAP.TXT         -- This document (main GAP documentation)
+GAP-Games.TXT   -- The list of supported games
+GAP-History.TXT -- History of GAP development
+
+PLUGINS\AF_ACM.DLL    -- ANX ACM Audio File Plug-In
+PLUGINS\AF_ASF.DLL    -- ANX ASF Audio File Plug-In
+PLUGINS\AF_APC.DLL    -- ANX APC Audio File Plug-In
+PLUGINS\AF_BLBSFX.DLL -- ANX BLBSFX Audio File Plug-In
+PLUGINS\AF_CLUSFX.DLL -- ANX CLUSFX Audio File Plug-In
+PLUGINS\AF_CMP.DLL    -- ANX CMP Audio File Plug-In
+PLUGINS\AF_FST.DLL    -- ANX FST Audio File Plug-In
+PLUGINS\AF_AUD.DLL    -- ANX AUD Audio File Plug-In
+PLUGINS\AF_EACS.DLL   -- ANX EACS Audio File Plug-In
+PLUGINS\AF_MGI.DLL    -- ANX MGI Audio File Plug-In
+PLUGINS\AF_MVE.DLL    -- ANX MVE Audio File Plug-In
+PLUGINS\AF_BNK.DLL    -- ANX BNK Audio File Plug-In
+PLUGINS\AF_ISS.DLL    -- ANX ISS Audio File Plug-In
+PLUGINS\AF_RAW.DLL    -- ANX RAW Audio File Plug-In
+PLUGINS\AF_SOL.DLL    -- ANX SOL Audio File Plug-In
+PLUGINS\AF_VOC.DLL    -- ANX VOC Audio File Plug-In
+PLUGINS\AF_WAV.DLL    -- ANX WAV Audio File Plug-In
+PLUGINS\AF_WADSFX.DLL -- ANX WADSFX Audio File Plug-In
+PLUGINS\AF_XA.DLL     -- ANX XA Audio File Plug-In
+PLUGINS\RF_PLAIN.DLL  -- ANX Plain Resource File Plug-In
+PLUGINS\RF_MPQl.DLL   -- ANX MPQ Resource File Plug-In
+PLUGINS\RF_BLB.DLL    -- ANX BLB Resource File Plug-In
+PLUGINS\RF_CLU.DLL    -- ANX CLU Resource File Plug-In
+PLUGINS\RF_WAD.DLL    -- ANX WAD Resource File Plug-In
+PLUGINS\RF_DSND.DLL   -- ANX DSND Resource File Plug-In
+PLUGINS\STORM.DLL     -- StarCraft STORM library (used by RF_MPQl.DLL)
+
+The following DLLs should be put either into GAP's directory  or into 
+WINDOWS\SYSTEM directory:
+ACMStream.dll -- ACM Decompression Engine (used by AF_ACM.DLL)
+pkware.dll    -- PKWARE decompression DLL (used by RF_BLB.DLL)
+
+MPQ Archives Filelists:
+PLUGINS\MPQLists\Diablo.TXT        -- Diablo file list
+PLUGINS\MPQLists\HellFire.TXT      -- HellFire file list
+PLUGINS\MPQLists\StarCraft.TXT     -- StarCraft file list
+PLUGINS\MPQLists\BroodWar.TXT      -- BroodWar file list
+PLUGINS\MPQLists\WarCraft2BNE.TXT  -- WarCraft II: Battle.net Edition file list
+PLUGINS\MPQLists\Diablo2char.TXT   -- Diablo 2 file list (for d2char.mpq)
+PLUGINS\MPQLists\Diablo2data.TXT   -- Diablo 2 file list (for d2data.mpq)
+PLUGINS\MPQLists\Diablo2music.TXT  -- Diablo 2 file list (for d2music.mpq)
+PLUGINS\MPQLists\Diablo2sfx.TXT    -- Diablo 2 file list (for d2sfx.mpq)
+PLUGINS\MPQLists\Diablo2speech.TXT -- Diablo 2 file list (for d2speech.mpq)
+PLUGINS\MPQLists\Diablo2video.TXT  -- Diablo 2 file list (for d2video.mpq)
+
+4 GAP actions
+==============
+
+The following subsections describe the GAP actions which may be performed
+using the controls in the GAP windows.
+
+4.1 Main (playback) window
+===========================
+
+Playback buttons:
+
+PLAY/PAUSE (depending on playback state) -- starts/pauses playback,
+
+STOP -- stops playback,
+
+PREVIOUS -- plays or goes to the previous file in the current playlist,
+
+NEXT -- plays or goes to the next file in the current playlist.
+
+NOTE: Playback trackbar allows you to seek to a position in the played file
+      only if the correspondent audio file plug-in supports seek function.
+      If it does not support seeking, the trackbar will be disabled (its
+      slider will be grayed).
+
+Other buttons:
+
+PLAYLIST -- opens/closes playlist window.
+
+EQUALIZER -- in this version of GAP equalizer is not implemented.
+
+OPTIONS -- brings up options dialog.
+
+INFO -- brings up info dialog.
+
+In the bottom of GAP main window there're current GAP stats:
+GAP state: Idle/Playing/Paused <file number>/<number of files>,
+Current playback time (elapsed/remaining),
+Current audio file type,
+Current resource file type.
+
+Right-click on the main window to bring up main pop-up menu:
+Always On Top -- makes GAP windows be topmost (that is, always above
+all non-topmost ones).
+Easy Move -- enables easy movement of GAP main and playback windows which
+means that those windows may be moved using any point in the window area
+not occupied by any controls.
+No Playlist Advance -- just the opposite to "Play next file in playlist"
+option in Options dialog.
+
+4.2 Playlist window
+====================
+
+Double-clicking on the file in the playlist will start playback of the file.
+Clicking on the selected file will start editing name for the file.
+
+Clicking on listview column header sorts the list by the header parameter.
+
+NOTE: You can select multiple files in the playlist using SHIFT and CTRL.
+
+NOTE: Some playlist buttons will be disabled (grayed) if their actions are
+      not relevant with the selected files in the playlist.
+
+OK -- closes playlist.
+
+LOAD LIST(S)... -- loads APL playlist.
+
+NOTE: You can select multiple playlist files in the playlist loading dialog:
+      press SHIFT and CTRL to use that feature.
+
+SAVE LIST... -- saves APL playlist.
+
+WARNING: Do not try to load files which does not have APL playlist structure.
+	 To produce APL playlist files, use ADD FILES/SCAN FILES and then
+	 SAVE LIST. If you want to produce APLs manually, refer to the APL
+	 format description in the Appendix.
+
+ADD FILE(S)... -- adds files to playlist: select any game files and GAP will
+check whether they are in any of the supported format. As games often use
+various file extensions for audio files, there's no common rule for files to
+try adding. Just try all and see if it works. If not, mail me! If yes, mail
+me anyway!
+
+NOTE: Some audio files could not be verified. For such files the correspondent
+      plug-in may ask user to specify their parameters. Such behaviour of the
+      plug-in is configurable (see Options->AF Plug-Ins->Configuration).
+      If asked, you may select different settings and check the result.
+      For some audio files it's the only way to determine their parameters.
+
+NOTE: Some resource file plug-ins may also ask user to enter information
+      necessary for dealing with resource archives. These plug-ins are also
+      configurable (see Options->RF Plug-Ins->Configuration).
+
+ADD DIRECTORY... -- lets you add files from the directory of your choice.
+
+NOTE: Directory browsing dialog lets you enable or disable recursing of chosen
+      directory subdirectories.
+
+SCAN FILE(S)... -- selects files to search for supported audio files within.
+Same as for ADD FILE(S) button: try to search in all game files.
+
+NOTE: When you select files for ADD or SCAN, GAP checks them all whether they
+      are resource library of any supported format. If a file is a resource
+      library, added/searched are the files found in it via the correspondent
+      resource file plug-in.
+
+NOTE: You can select multiple files in the adding and searching dialogs:
+      press SHIFT and CTRL to use that feature (or select multiple files
+      by dragging mouse cursor over them).
+
+SCAN DIRECTORY... -- lets you scan files from the directory of your choice.
+
+NOTE: Directory browsing dialog lets you enable or disable recursing of chosen
+      directory subdirectories.
+
+PLAY -- plays currently selected audio file.
+
+SAVE FILE(S)... -- saves currently selected audio file(s) "as is". If multiple
+files are selected, the saving depends on the saving settings (Saving tab in
+Options dialog).
+
+CONVERT FILE(S)... -- converts currently selected audio file(s) to WAV(s). If
+multiple files are selected, the saving depends on the saving settings
+(Saving tab in Options dialog).
+
+NOTE: Both filename template (for MultiConverting) and ConvertFileName dialogs
+let you select WAV format (compression) for converting to WAV. Some formats
+may turn out to be not suitable for converting to. GAP will bring up error
+message if such format is chosen.
+
+CLEAR LIST -- clears the playlist.
+
+MOVE UP/DOWN -- moves up/down audio file in playlist.
+
+REMOVE -- removes currently selected file(s) from playlist.
+
+DUPLICATE -- duplicates currently selected file.
+
+SELECT... -- brings up playlist selection pop-up menu.
+
+SORT LIST... -- brings up playlist sorting pop-up menu.
+
+FILE INFO -- displays currently selected audio file info box.
+
+FILE TITLE -- lets you change name for currently selected file: this may differ
+from the name of file this audio is stored in. For audio found
+by SCAN operation, the initial name is <Unknown>. For those added by ADD
+operation, the initial name is the correspondent filename.
+
+Right-click on the playlist window to bring up main popup menu or playlist
+node context menu.
+
+4.3 Keyboard shortcuts
+=======================
+
+General shortcuts (may be used in both main and playlist windows):
+
+Z or Keypad 5		  -- Play/Pause,
+X			  -- Stop,
+C or LeftArrow/Keypad 4   -- Previous,
+V or RightArrow/Keypad 6  -- Next,
+Alt+F4			  -- Quit,
+Ctrl+P			  -- Toggle playlist window,
+Ctrl+E			  -- Toggle equalizer window,
+Ctrl+O			  -- Options dialog,
+Ctrl+R			  -- Toggle time elapsed/remaining,
+F1			  -- GAP Info dialog,
+Ctrl+I			  -- Current audio file info box,
+Ctrl+T			  -- Toggle always on top,
+Ctrl+M			  -- Toggle easy move,
+Ctrl+A			  -- Add file(s),
+Ctrl+F			  -- Scan file(s),
+Ctrl+L or Insert/Keypad 0 -- Load playlist(s),
+D			  -- Toggle no playlist advance,
+S			  -- Toggle shuffle,
+I			  -- Toggle introscan,
+O			  -- Set repeat one mode,
+R			  -- Set repeat all mode.
+
+Playlist window shortcuts:
+
+Enter or Keypad Enter	  -- Play currently selected file,
+Delete or Keypad Delete   -- Remove currently selected file(s),
+Alt+K			  -- Close playlist,
+Alt+L			  -- Load playlist(s),
+Alt+S			  -- Save current playlist,
+Alt+A			  -- Add file(s),
+Alt+Y			  -- Add files from directory,
+Alt+F			  -- Scan file(s),
+Alt+X			  -- Scan files from directory,
+Alt+P			  -- Play currently selected file,
+Alt+V			  -- Save/extract currently selected file(s) "as is",
+Alt+O			  -- Convert currently selected file(s) to WAV(s),
+Alt+C			  -- Clear playlist,
+Alt+U			  -- Move up currently selected file in playlist,
+alt+W			  -- Move down currently selected file in playlist,
+Alt+R			  -- Remove currently selected file(s),
+Alt+D			  -- Duplicate file in playlist,
+Alt+I			  -- File info,
+Alt+T			  -- Edit/enter title for currently selected file,
+Alt+E			  -- Bring up playlist selection pop-up menu,
+Ctrl+S			  -- Bring up playlist sorting pop-up menu.
+
+4.4 Resource file extraction capabilities
+==========================================
+
+If the GAP installation contains RAW plug-in, it's possible to use GAP as
+a resource extraction tool. Namely, you can extract any file (or group of
+any files) from any resource archive supported by GAP via RF plug-ins. To
+be able to do that you should change RAW plug-in options:
+(Options -> AF Plug-Ins -> ANX RAW Audio File Plug-in -> Configure)
+ADD FILES -> Always,
+RAW PARAMETERS -> Use defaults.
+Press OK to confirm the changes and then you should use ADD FILES for resource
+file(s) you want to extract anything from. Depending on the type of resource
+file(s) and the options of correspondent RF plug-in(s), you'll either be able
+to select file|(s) in the file selection dialog box or just get all files from
+the resource file(s) added to the playlist. Now you can select file(s) to
+extract in the playlist (or just select all files using SELECT ALL button) and
+press SAVE FILE(S) button. Using such technique you may extract file(s) from
+the supported resource file(s) even if the files you want to extract are not
+audio files supported by GAP (via AF plug-ins). It's possible due to the
+ability of RAW plug-in to confirm adding of any file (as the reasonable
+verification of RAW files is not possible).
+
+Also, it's possible to create AF plug-in(s) which would support scanning/adding
+for non-audio files (graphics, video, script and any other types of data files
+stored in resource files), but would not support the playback for those files
+(that is, the playback support functions are "fake" ones). Such AF plug-ins
+would allow GAP to find/add almost any type of files stored in resource files,
+thus, enabling you to find/rip/extract those files from resource files.
+
+5 Options
+==========
+
+The following subsections describe the GAP settings which may be set in
+the property pages of the options dialog.
+
+5.1 Playback
+=============
+
+WAVEOUT DEVICE -- lets you select waveform playback device.
+
+PROCESS PRIORITY CLASS -- sets GAP process priority class.
+
+PLAYBACK BUFFER -- sets playback buffers size.
+
+GAP PRIORITY -- sets GAP main thread priority.
+
+PLAYBACK PRIORITY -- sets GAP playback thread priority.
+
+NOTE: Priority class and thread priorities may be set to higher values,
+      if you have audio playback latencies. But the defaults
+      ("Normal" for all) is recommended. Too high values may
+      negatively affect other applicattions, while too low values
+      may negatively affect GAP.
+
+DEFAULTS -- sets default values for all options (RECOMMENDED!).
+
+5.2 Playlist
+=============
+
+PLAYLIST TYPE -- sets the type of playlist:
+FIXED-SIZE DIALOG (OLD) -- playlist is fixed-size dialog (older variant),
+RESIZEABLE WINDOW (NEW) -- playlist is resizeable window (newer variant).
+
+PLAY NEXT FILE IN PLAYLIST -- if checked, the next file in the playlist is
+played after current playback finishes. Otherwise playback stops after that.
+
+INTROSCAN -- sets introscan mode and introscan length in seconds.
+
+SHUFFLE -- sets shuffle mode.
+
+REPEAT/ONE/ALL -- sets repeat mode: repeat one file, repeat whole playlist.
+
+LOAD LAST PLAYLIST ON STARTUP -- allows autoloading last playlist during GAP
+startup.
+
+PLAY LOADED PLAYLIST ON STARTUP -- allows autoplayback of autoloaded last
+playlist just after GAP startup.
+
+ESTIMATE TIME ONLY BEFORE PLAYBACK -- instructs GAP to estimate audio
+file length only before playback. Otherwise it tries to do that during
+playlist loading, adding audio files to playlist and before playback.
+Setting this option is recommended because estimating length for some
+audio files when loading playlist may take some time and may be very
+annoying.
+
+WHEN LOADING PLAYLIST REPLACE [CD] WITH... -- allows replacing of [CD] string
+in the resource filename with CD drive letter of your choice and sets that CD
+drive letter.
+
+WHEN SAVING PLAYLIST PUT [CD] FOR CD DRIVE LETTER -- allows replacing of CD
+drive letter in the resource filename for files situated on CD with [CD]
+string so that saved APL will be usable on systems with other CD drive letter
+than that of the system it was saved on.
+
+DRAG & DROP SUPPORT -- sets the support for Drag'n'Drop:
+NONE -- no support,
+ASK USER ON DROP -- ask user what to do with dropped files,
+ADD DROPPED FILES TO PLAYLIST -- when files are dropped over the main or
+playlist window, they're added to playlist,
+SCAN DROPPED FILES -- when files are dropped over the main or playlist
+window, they're scanned for audio files which are then added to playlist,
+LOAD DROPPED FILES AS PLAYLISTS -- when files are dropped over the main
+or playlist window, they're loaded as APL playlists.
+
+DEFAULTS -- sets default values for all options (RECOMMENDED!).
+
+5.3 Saving
+===========
+
+MultiSaving filename -- defines how GAP gets filenames when saving/converting
+multiple files:
+ASK USER FOR FILENAME FOR EVERY FILE -- when saving/converting multiple files
+GAP will ask user for filename for every file being saved.
+ASK USER FOR FILENAME TEMPLATE -- when saving/converting multiple files GAP
+will ask user for filename template which will then be used for all files
+being saved.
+USE DEFAULT FILENAME TEMPLATE -- when saving/converting multiple files GAP
+will use the default template for all files being saved.
+
+Default template directory -- defines directory for the default filename
+template:
+CURRENT -- the default template directory is current directory.
+CUSTOM -- the default template directory is that in the edit line below.
+BROWSE -- lets user browse the default template directory.
+
+Default template file title -- defines file title for the default template:
+USE AUDIO FILE TITLE -- audio file title is used for the default template
+file title.
+USE RESOURCE FILE TITLE -- resource file title is used for the default
+template file title.
+CUSTOM -- the default template file title is that in the edit control below.
+
+Extension -- defines extension for the default filename tamplate:
+DEFAULT -- the default extension for saved file is used for the default
+template filename extension.
+CUSTOM -- the default filename template extension is that in the edit control
+below. You can set it to single point "." to save to files with no extension.
+
+MILTICONVERTING WAV FORMAT -- lets you select default WAV format (compression)
+for MultiConverting. Listed in this control will be only WAV formats
+supported in your system.
+
+DEFAULTS -- sets default settings.
+
+5.4 Audio file plug-ins (AF plug-ins)
+======================================
+
+AUDIO FILE PLUG-IN DIRECTORY -- defines the directory in which GAP will
+search for audio file plug-ins. When GAP is started for the first time,
+it sets this to "<GAP directory>\Plugins". If you move GAP to other directory
+or move plug-ins to the directory other than "Plugins", change this setting!
+
+CONFIGURE -- calls configuration routine of the chosen plug-in.
+
+NOTE: you can also double-click on plug-in description string in the plug-in
+      list to call its configuration routine.
+
+ABOUT -- calls about routine of the chosen plug-in.
+
+ALLOW MULTIPLE PLUG-INS TO WORK WITH ONE FILE -- allows multiple audio
+plug-ins to try to add files (chosen to add), which may result in many
+annoying RAW Parameters dialogs from RAW Plug-In, but it may be used if you
+want some files to be added as being in different formats.
+
+5.5 Resource file plug-ins (RF plug-ins)
+=========================================
+
+RESOURCE FILE PLUG-IN DIRECTORY -- defines the directory in which GAP will
+search for resource file plug-ins. When GAP is started for the first time,
+it sets this to "<GAP directory>\Plugins". If you move GAP to other directory
+or move plug-ins to the directory other than "Plugins", change this setting!
+
+CONFIGURE -- calls configuration routine of the chosen plug-in.
+
+NOTE: you can also double-click on plug-in description string in the plug-in
+      list to call its configuration routine.
+
+ABOUT -- calls about routine of the chosen plug-in.
+
+ALLOW MULTIPLE PLUG-INS TO WORK WITH ONE FILE -- allows multiple resource
+plug-ins to try to process files (chosen for adding/searching), which may
+result in several addition checks or searches done by different resource file
+plug-ins for one file, but it may be used if you want some resource files to
+be searched as being in PLAIN format (i.e. make plain file search).
+
+6 Audio file plug-ins configurations
+=====================================
+
+The following subsections describe audio file plug-ins configuration
+options (for audio file plug-ins requiring configuration).
+
+6.1 ACM plug-in configuration
+==============================
+
+DISABLE ACM SEARCH -- disables search (SCAN FILES) opportunity for ACMs.
+
+ENABLE CHANNELS CHECK -- enables channels number check when verifying
+added/found file. This's recommended.
+
+ENABLE PACK ATTRIBUTES CHECK -- enables pack attributes check when verifying
+added/found file. This's NOT recommended.
+
+The above two options may be used in order to avoid finding fake (incorrect)
+files.
+
+ACM FILE SIZE -- controls the means plug-in uses to determine found ACM size:
+ESTIMATE -- estimate ACM size using "size" ACM header field (fast, but VERY
+inaccurate).
+WALK THE WHOLE ACM -- walk the whole found ACM file to determine its size.
+This's recommended setting.
+
+ACM CHANNELS -- controls the behaviour of plug-in when determining the number
+of channels for ACM file (which may be 1 or 2 (mono and stereo)):
+USE HEADER VALUE -- plug-in will use channels number value, stored in ACM header.
+TRY TO GUESS -- plug-in will try to determine channels number itself.
+ASK USER     -- plug-in will ask user to set channels number.
+USE DEFAULT  -- plug-in will use the default value for channels number.
+
+NOTE: All music files in Fallout 1,2 are stereo while all sounds/speech are mono.
+
+CHANNELS DEFAULT -- sets the default value for channels number:
+MONO	-- the default is mono (1 channel).
+STEREO	-- the default is stereo (2 channels).
+
+DEFAULTS -- sets the default settings for all options.
+
+6.2 ASF plug-in configuration
+==============================
+
+IGNORE ASF LOOP BLOCKS -- makes plug-in ignore ASF loop blocks, so that
+looped songs are played once (without looping). Otherwise such songs are
+played repeatedly.
+
+WALK ASF BLOCKS CHAIN BEFORE PLAYBACK -- makes plug-in walk ASF blocks
+chain when preparing for playback, so that seeking and looping will be
+done fast. May take much time when starting playback.
+
+CHECK SAMPLE RATE -- check sample rate header field of the file when verifying
+added/found file.
+
+CHECK CHANNELS NUMBER -- check channels number header field of the file when
+verifying added/found file.
+
+CHECK RESOLUTION -- check resolution header field of the file when verifying
+added/found file.
+
+The above three options are recommended in order to avoid finding fake
+(incorrect) files.
+
+USE SAMPLE CLIPPING FOR DECOMPRESSION -- makes plug-in use sample clipping
+for IMA ADPCM data decompression. You may turn this setting on and off to
+avoid "popping" in sound playback.
+
+DEFAULTS -- sets the default settings for all options.
+
+6.3 AUD plug-in configuration
+==============================
+
+USE "OUTSIZE" AUD HEADER FIELD -- instructs plug-in to use "outsize" field of
+AUD header for calculation of AUD time. Fast, but may be inaccurate and is
+only applyable for new AUDs (ignored for others).
+
+USE "SIZE" AUD HEADER FIELD AND ESTIMATE -- instructs plug-in to use "size"
+field of AUD header for calculation of AUD time. Fast, but only applyable for
+IMA ADPCM compressed AUDs (ignored for others).
+
+USE AUD FILE SIZE AND ESTIMATE -- instructs plug-in to use file size of AUD
+file for calculation of AUD time. Fast, but only applyable for IMA ADPCM
+compressed AUDs (ignored for others).
+
+WALK AUD CHUNKS CHAIN -- instructs plug-in to walk AUD chunks chain for
+calculation of AUD time. May be TOO SLOW.
+
+USE "OUTSIZE" AUD CHUNK HEADER FIELD -- makes plug-in use "outsize" AUD
+chunk header field when walking AUD chunks chain for calculation of AUD
+time. May be inaccurate. Applyable for all AUDs.
+
+USE "SIZE" AUD CHUNK HEADER FIELD -- makes plug-in use "size" AUD chunk
+header field when walking AUD chunks chain for calculation of AUD time.
+May be inaccurate. Only applyable for IMA ADPCM compressed AUDs (ignored
+for others).
+
+DON'T USE WALKING IF FAILED TO ESTIMATE BY FAST METHODS -- disables
+walking for the cases when fast methods (all other than walking) failed
+to get data for calculation of AUD time. This IS RECOMMENDED, because
+walking may be TOO SLOW, but if used this setting will disable playback
+trackbar for Westwood-compressed AUDs as well as it will disable you to seek
+in those AUDs.
+
+IMA ADPCM DECOMPRESSION options:
+
+USE SAMPLE CLIPPING FOR DECOMPRESSION -- makes plug-in use 16-bit sample
+clipping for IMA ADPCM data decompression. You may turn this setting on and
+off to avoid "popping" in sound playback.
+
+USE SAMPLE ENHANCEMENT FOR DECOMPRESSION -- makes plug-in use 16-bit sample
+enhancement for IMA ADPCM data decompression. This may improve sound quality
+for some loud files which sound noisy.
+
+DEFAULTS -- sets the default settings for all options.
+
+6.4 RAW plug-in configuration
+==============================
+
+ADD FILES -- sets RAW Plug-In behaviour when adding files:
+ALWAYS			     -- Add any file as RAW.
+ONLY WITH RAW/SND EXTENSIONS -- Add only files with RAW/SND extensions.
+NEVER			     -- Never add files as RAW.
+
+RAW PARAMETERS -- set RAW Plug-In behaviour for getting RAW parameters:
+ASK USER	-- Ask user to specify RAW file parameters.
+ASSUME DEFAULTS -- Assume default values for RAW file parameters.
+
+DEFAULT PARAMETERS -- Default values for RAW file parameters:
+SAMPLE RATE	      -- Sample rate.
+CHANNELS	      -- Channels: mono/stereo/etc.
+RESOLUTION	      -- Resolution: 8-bit/16-bit.
+BYTE ORDER	      -- Byte order: little-endian/big-endian (Intel/Motorola).
+FORMAT		      -- RAW data format: signed/unsigned/sign-bit/u-law/A-law.
+
+DEFAULTS -- sets default values for all options.
+
+6.5 SOL plug-in configuration
+==============================
+
+ENABLE EXTRA CHECKS -- enables some extra checks when searching for SOLs and
+verifying stand-alone SOLs. This should prevent plug-in from finding fake SOLs,
+but this also may prevent it from finding non-standard SOLs.
+
+DECODING SCHEME DETECTION -- defines how the plug-in detects decoding scheme
+for SOL ADPCM-compressed SOLs:
+USE HEADER -- use header to detect decoding scheme: if header size is equal
+to the shift byte in header, "old" scheme is used, otherwise "new" scheme is used,
+DECODE FIRST 1 KB OF DATA -- decode first 1 KB of compressed data to determine
+which scheme is more suitable for that SOL. This is RECOMMENDED, while this
+may sometimes fail.
+
+USE SAMPLE CLIPPING FOR DECOMPRESSION -- makes plug-in use sample clipping
+for SOL ADPCM data decompression. You may turn this setting on and off to
+avoid "popping" in sound playback.
+
+USE SOL LOW-PASS FILTER FOR 8-BIT SOUND -- makes plug-in use SOL low-pass
+filter for SOL ADPCM compressed 8-bit sound. This's aimed at removing minor
+noise in such sound.
+
+USE SOL LOW-PASS FILTER FOR 16-BIT SOUND -- makes plug-in use SOL low-pass
+filter for SOL ADPCM compressed 16-bit sound.
+
+DEFAULTS -- sets default values for all options.
+
+6.6 EACS plug-in configuration
+==================================
+
+DISABLE LOOPING -- plug-in will ignore .ASF loop blocks and .MUS loops in
+.LIN/.MAP. Otherwise files containing loop blocks or .LIN/.MAP loops will
+be played repeatedly.
+
+WALK BLOCKS/SECTIONS CHAIN BEFORE PLAYBACK -- plug-in will walk the whole
+block chain of the file before its playback, so that seek and looping will be
+performed almost without latency, but walking itself may take quite much time.
+
+DISABLE TIME CALCULATION FOR MUS FILES -- disables time calculation for
+.LIN/.MAP-driven multi-header (MUS) files. This procedure may took quite
+long and it also makes many seeks (which is bad for CD drives).
+
+.LIN/.MAP FILE FOR MULTI-HEADER (MUS) FILE -- sets plug-in behaviour when it
+needs .LIN/.MAP file for MUS playback:
+
+DEFAULT: <MUSFILENAME>.LIN/.MAP -- use <MUSFileName>.LIN/.MAP located in
+the same directory as MUS file. Plug-in first tries to open .LIN file and
+then (if it fails) it tries to open .MAP file.
+ASK USER -- ask user for .LIN/.MAP file name.
+
+USE SAMPLE CLIPPING FOR DECOMPRESSION -- makes plug-in use sample clipping
+for EA ADPCM data decompression. You may turn this setting on and off to
+avoid "popping" in sound playback.
+
+DEFAULTS -- sets default values for all options.
+
+6.7 WADSFX plug-in configuration
+=================================
+
+DISABLE WADSFX SEARCH -- disables search (SCAN FILES) opportunity for
+WADSFX files. This IS RECOMMENDED, as enabling WADSFX search will decrease
+the scanning speed a lot! Instead of searching for WADSFXes, use ADD FILES
+for WAD files!
+
+CHECK SAMPLE RATE -- enables sample rate check when searching for WADSFX files.
+This has no effect if WADSFX search is disabled and this's recommended otherwise.
+
+DEFAULTS -- sets the default settings for all options.
+
+6.8 MVE plug-in configuration
+=================================
+
+DON'T USE WALKING FOR TIME CALCULATION -- disables walking for the calculation
+of MVE soundtrack time. This is RECOMMENDED, because walking may be TOO SLOW,
+but if used this setting will disable playback position tracking (as well as
+time counter) when playing back MVE soundtrack.
+
+DEFAULTS -- sets the default settings for all options.
+
+6.9 BNK plug-in configuration
+==============================
+
+USE SAMPLE CLIPPING FOR DECOMPRESSION -- makes plug-in use sample clipping
+for EA ADPCM data decompression. You may turn this setting on and off to
+avoid "popping" in sound playback.
+
+6.10 APC plug-in configuration
+===============================
+
+APC SEARCH AND VERIFICATION options:
+
+CHECK VERSION (1.20) -- check APC file version (equal to 1.20). It
+is not recommended to set this, as different versions may use the same
+format. However, different versions may prove to be incompatible causing
+the plug-in to malfunction, in which case it's wise to perform the
+version check.
+
+CHECK SAMPLE RATE -- check APC file sample rate. It's recommended to
+turn this on, as it's most likely a harmless ckeck.
+
+CHECK CHANNELS NUMBER -- check the number of channels of APC file. It's
+recommended to turn this on in a case when the plug-in finds false or
+unhandlable APCs during scanning.
+
+CHECK IF THE FILE IS AN EMBEDDED SOUNDTRACK -- if the found APC file signature
+corresponds to HNM video soundtrack, the plug-in will skip that signature.
+
+IMA ADPCM DECOMPRESSION options:
+
+USE SAMPLE CLIPPING FOR DECOMPRESSION -- makes plug-in use 16-bit sample
+clipping for IMA ADPCM data decompression. You may turn this setting on and
+off to avoid "popping" in sound playback.
+
+USE SAMPLE ENHANCEMENT FOR DECOMPRESSION -- makes plug-in use 16-bit sample
+enhancement for IMA ADPCM data decompression. This may improve sound quality
+for some loud files which sound noisy.
+
+DEFAULTS -- sets the default settings for all options.
+
+6.11 ISS plug-in configuration
+===============================
+
+ISS SEARCH AND VERIFICATION options:
+
+CHECK BLOCK SIZE -- check ISS block size (equal to 512 or 2048). This's
+not recommended to use. Turn this on only in case of finding too many
+false ISSes when scanning files.
+
+CHECK CHANNELS NUMBER -- check the number of channels of ISS file. It's
+recommended to turn this on in a case when the plug-in finds false or
+unhandlable ISSes during scanning.
+
+CHECK FIELD "UNKNOWN1" -- check ISS header field "unknown1". Use this
+ONLY in case of finding too many false ISSes when scanning files.
+
+CHECK SAMPLE RATE -- check ISS file sample rate. Use this ONLY in case
+of finding too many false ISSes when scanning files.
+
+CHECK FIELD "UNKNOWN2" -- check ISS header field "unknown2". Use this
+ONLY in case of finding too many false ISSes when scanning files.
+
+CHECK VERSION (1.000) -- check ISS file version (equal to 1.000). It
+is not recommended to set this, as different versions may use the same
+format. However, different versions may prove to be incompatible causing
+the plug-in to malfunction, in which case it's wise to perform the
+version check.
+
+SET AUDIO FILE NAME TO THE ID STORED IN FILE -- makes the plug-in set
+the audio file name (when adding a found/verified file to the playlist)
+to the internal name stored in ISS file.
+
+IMA ADPCM DECOMPRESSION options:
+
+USE SAMPLE CLIPPING FOR DECOMPRESSION -- makes plug-in use 16-bit sample
+clipping for IMA ADPCM data decompression. You may turn this setting on and
+off to avoid "popping" in sound playback.
+
+USE SAMPLE ENHANCEMENT FOR DECOMPRESSION -- makes plug-in use 16-bit sample
+enhancement for IMA ADPCM data decompression. This may improve sound quality
+for some loud files which sound noisy.
+
+DEFAULTS -- sets the default settings for all options.
+
+6.12 XA plug-in configuration
+==============================
+
+XA SEARCH/VERIFICATION options:
+
+CHECK TAG -- check XA header tag (equal to 0x0001). This's
+not recommended to use. Turn this on only in case of finding too many
+false XAs when scanning files.
+
+CHECK CHANNELS NUMBER -- check the number of channels of XA file. It's
+recommended to turn this on in a case when the plug-in finds false or
+unhandlable XAs during scanning.
+
+CHECK SAMPLE RATE -- check XA header sample rate. It's recommended to
+turn this on in a case when the plug-in finds false or unhandlable XAs
+during scanning.
+
+CHECK AVERAGE BYTE RATE -- check XA header average byte rate. It's
+recommended to turn this on as it should not cause any harm.
+
+CHECK ALIGN -- check XA header align value. It's recommended to turn
+this on as it should not cause any harm.
+
+CHECK RESOLUTION -- check XA header sample resolution. It's recommended
+to turn this on in a case when the plug-in finds false or unhandlable
+XAs during scanning.
+
+EA ADPCM DECOMPRESSION options:
+
+USE SAMPLE CLIPPING FOR DECOMPRESSION -- makes plug-in use 16-bit sample
+clipping for EA ADPCM data decompression. You may turn this setting on and
+off to avoid "popping" in sound playback.
+
+DEFAULTS -- sets the default settings for all options.
+
+6.13 CMP plug-in configuration
+===============================
+
+CMP SEARCH AND VERIFICATION options:
+
+CHECK RESOLUTION -- check CMP header sample resolution. It's recommended
+to turn this on in a case when the plug-in finds false or unhandlable
+CMPs during scanning.
+
+CHECK SAMPLE RATE -- check CMP file sample rate. It's recommended to
+turn this on, as it's most likely a harmless ckeck.
+
+COMPRESSED STREAM START/STOP POSITIONS -- defines the start/stop positions of
+the compressed stream in CMP file (relative to the file beginning):
+Start at 0xE  -- stream starts at 0xE (right after CMP header),
+Start at 0x12 -- stream starts at 0x12 (after odd after-header values),
+Start at 0x45 -- stream starts at 0x45 (after all after-header data).
+The last choice seems to be the most reasonable.
+
+SKIP STREAM TAIL -- skip the ending 17 bytes of compressed stream. For some
+CMP files this tail consists of garbage data, resulting in considerable "popping"
+at the end of CMP file playback. Most of CMP files have the correct tails.
+
+IMA ADPCM DECOMPRESSION options:
+
+USE SAMPLE CLIPPING FOR DECOMPRESSION -- makes plug-in use 16-bit sample
+clipping for IMA ADPCM data decompression. You may turn this setting on and
+off to avoid "popping" in sound playback.
+
+USE SAMPLE ENHANCEMENT FOR DECOMPRESSION -- makes plug-in use 16-bit sample
+enhancement for IMA ADPCM data decompression. This may improve sound quality
+for some loud files which sound noisy.
+
+DEFAULTS -- sets the default settings for all options.
+
+6.14 FST plug-in configuration
+===============================
+
+FST SEARCH AND VERIFICATION options:
+
+CHECK IMAGE WIDTH -- check FST video file image width. It's recommended
+to turn this on, as it's most likely a harmless ckeck.
+
+CHECK IMAGE HEIGHT -- check FST video file image height. It's recommended
+to turn this on, as it's most likely a harmless ckeck.
+
+CHECK FIELD "UNKNOWN1" -- check FST header field "unknown1". It's recommended
+to turn this on ONLY in a case when the plug-in finds false or unhandlable
+FSTs during scanning.
+
+CHECK FRAME RATE -- check FST video file frame rate. It's recommended to turn
+this on ONLY in a case when the plug-in finds false or unhandlable FSTs
+during scanning.
+
+CHECK SAMPLE RATE -- check FST file sample rate. It's recommended
+to turn this on, as it's most likely a harmless ckeck.
+
+CHECK RESOLUTION -- check FST header sample resolution. It's recommended
+to turn this on, as it's most likely a harmless ckeck.
+
+CHECK FIELD "UNKNOWN2" -- check FST header field "unknown2". It's recommended
+to turn this on ONLY in a case when the plug-in finds false or unhandlable
+FSTs during scanning.
+
+DEFAULTS -- sets the default settings for all options.
+
+6.15 MGI plug-in configuration
+===============================
+
+MGI SEARCH/VERIFICATION options:
+
+CHECK HEADER FIELD "UNKNOWN1" -- check MGI header field "unknown1" (equal 
+to 0). This's not recommended to use. Turn this on only in case of finding 
+too many false MGIs when scanning/adding files.
+
+CHECK HEADER FIELD "UNKNOWN2" -- check MGI header field "unknown2" (equal 
+to 0). This's not recommended to use. Turn this on only in case of finding 
+too many false MGIs when scanning/adding files.
+
+CHECK NUMBER OF SECTIONS -- check whether the number of MGI sections stored 
+in the beginning of section descriptors table is greater than any section 
+pointer in the interactive playback descriptors table. It's recommended to 
+turn this on in a case when the plug-in finds false or unhandlable MGIs 
+during scanning/adding files.
+
+CHECK DATA START POSITION -- check whether data start position for the 
+first section descriptor corresponds to the end of MGI section descriptors 
+table. It's recommended to turn this on in a case when the plug-in finds 
+false or unhandlable MGIs during scanning/adding files.
+
+CHECK SECTIONS INDICES -- check whether any section index in the MGI section 
+descriptors table is less than the number of section indices stored in the 
+MGI header. It's recommended to turn this on in a case when the plug-in 
+finds false or unhandlable MGIs during scanning/adding files.
+
+CHECK THE LAST SECTION DESCRIPTOR -- check the last section descriptor: 
+it should describe the empty section with zero index. It's recommended to 
+turn this on in a case when the plug-in finds false or unhandlable MGIs 
+during scanning/adding files.
+
+STORE SECTIONS TABLE POSITION (IN AFDATA) -- instructs the plug-in to 
+store the starting position of MGI section descriptors table in the 
+AFDataString corresponding to the given audio file. This helps to speed up 
+the initialization of the audio file playback.
+
+PERFORM THOROUGH SEARCH/VERIFICATION -- instructs the plug-in to perform 
+thorough checks of MGI file when scanning/adding, namely, with this 
+option on, the verification will include MGI section descriptors table 
+checks. It's recommended to turn this on in a case when the plug-in finds 
+false or unhandlable MGIs during scanning/adding files.
+
+EA ADPCM DECOMPRESSION options:
+
+USE SAMPLE CLIPPING FOR DECOMPRESSION -- makes plug-in use 16-bit sample
+clipping for EA ADPCM data decompression. You may turn this setting on and
+off to avoid "popping" in sound playback.
+
+DEFAULTS -- sets the default settings for all options.
+
+7 Resource file plug-ins configurations
+========================================
+
+The following subsections describe resource file plug-ins configuration
+options (for resource file plug-ins requiring configuration).
+
+7.1 MPQ plug-in configuration
+==============================
+
+PATH TO STORM.DLL -- sets the path (with filename) to Blizzard STORM library.
+This setting takes effect only on the start of Storm operation, e.g. on
+the start of WAV playback, etc.
+
+SPEEDING UP MPQ VERIFICATION -- allows to speed up MPQ verification for
+add/search actions:
+CHECK EXTENSION  -- enables file extension check.
+CHECK MPQ HEADER -- enables file header check.
+
+NOTE: MPQ verification (without speed-ups like the above) may be VERY LONG
+      for large files which ARE NOT MPQs! So speeding up MPQ verification is
+      RECOMMENDED. But be careful: MPQ header check is not recommended because
+      for many MPQ-containing files (like some EXEs) this check fails!
+      Moreover, extension check may fail for non-standard MPQ-containing files
+      (I have not seen such files yet, but they may exist), so for such
+      "suspecious" files I can recommend TURNING OFF ANY speeding up for
+      MPQ verification, but ONLY for such files!
+
+ASK USER TO SELECT FILES FROM LIST -- ask user to select files from opened
+MPQ archive for adding/searching. Otherwise, all files from the archive will
+be processed.
+
+FILE LIST FOR MPQ ARCHIVE -- sets the MPQ Plug-In behaviour for getting file
+list for MPQ archive:
+USE DEFAULT: <MPQFILENAME>.TXT	    -- use default file list filename.
+ASK USER FOR MPQ FILE LIST FILENAME -- ask user to set file list filename.
+
+NOTE: MPQ filelists shipped with GAP does not bear default names, so usage
+      of default file list filename is NOT RECOMMENDED.
+
+FILE LISTS DIRECTORY -- sets the default directory for filelists (used to
+access files in MPQ archives). This directory will be the first directory
+in filelist selection dialog (when user is asked for filelist filename) and
+it will be used for default filelist filename composition (if the default
+filelist is used). It's recommended to keep all MPQ filelists in one directory
+and configure the plug-in to use that directory.
+
+DEFAULTS -- sets the default settings for all options.
+
+7.2 WAD plug-in configuration
+==============================
+
+ASK USER TO SELECT LUMPS FROM LIST -- ask user to select lumps from opened
+WAD archive for adding/searching. Otherwise, all files from the archive will
+be processed.
+
+ADD LUMP INDEX TO LUMPNAME -- prepends lump index to resource file data string.
+This helps the plug-in to open that lump faster.
+
+DEFAULTS -- sets the default settings for all options.
+
+7.3 DSND plug-in configuration
+===============================
+
+ASK USER TO SELECT FILES FROM LIST -- ask user to select files from opened
+DSND/PIG archive for adding/searching. Otherwise, all files from the archive
+will be processed.
+
+ADD FILE INDEX TO FILENAME -- prepends file index to resource file data string.
+This helps the plug-in to open that file faster.
+
+DEFAULTS -- sets the default settings for all options.
+
+7.4 GRP plug-in configuration
+==============================
+
+ASK USER TO SELECT FILES FROM LIST -- ask user to select files from opened
+GRP archive for adding/searching. Otherwise, all files from the archive will
+be processed.
+
+ADD FILE INDEX TO FILENAME -- prepends file index to resource file data string.
+This helps the plug-in to open that file faster.
+
+DEFAULTS -- sets the default settings for all options.
+
+7.5 BLB plug-in configuration
+==============================
+
+ASK USER TO SELECT FILES FROM LIST -- ask user to select files from opened
+BLB archive for adding/searching. Otherwise, all files from the archive will
+be processed.
+
+ADD FILE INDEX TO FILENAME -- prepends file index to resource file data string.
+This helps the plug-in to open that file faster.
+
+SUPPORT PKWARE-COMPRESSED FILES -- enables the support for PKWARE-compressed
+files in BLB resources. This support requires PKWARE.DLL. If you turn it off
+PKWARE.DLL will not be loaded or used, so you may delete this DLL.
+
+NOTE: Music files in BLB resources are not PKWARE-compressed, while the most
+      of sounds are compressed.
+
+CHECK DECOMPRESSION RESULT -- when PKWARE-compressed files support is active,
+this setting lets the plug-in check whether PKWARE-compressed files
+decompression was successful. This may prevent the plug-in from opening some
+oddly-compressed files. Turn it off to be able to handle such files.
+
+DEFAULTS -- sets the default settings for all options.
+
+7.6 CLU plug-in configuration
+==============================
+
+ASK USER TO SELECT FILES FROM LIST -- ask user to select files from opened
+CLU archive for adding/searching. Otherwise, all files from the archive will
+be processed.
+
+DEFAULTS -- sets the default settings for all options.
+
+8 Credits
+==========
+
+GAP and ANX plug-ins are written by:
+Valery V. Anisimovsky (son_of_the_north@mail.ru)
+
+Current web-support, GAP site mastering, GAP docs HTML-translation:
+Ilya Beshlebniy (ilya_bim@mail.ru)
+
+Initial web-support is courtesy of...
+Alexey Schepetilnikov (a.shepetilnikov@globalone.ru)
+
+Testing:
+Alexander Belyakov (abel@krasu.ru)
+Anthony Larme (larme@bit.net.au)
+Tarek Al-Azem (talazem@hotmail.com)
+Benjamin Grussi (bgrussi@ix.netcom.com)
+Gektor (gektor@ag.ru)
+Vladimir Goryachev (Nomad_is@land.ru)
+Dan Robert Polsrod (Jimmern16@hotmail.com, bendel@sensewave.com)
+Ladislav Zezula (zezula@volny.cz)
+Steven Xu (stevenxu@21cn.com)
+Tireces (team.norden@telia.se, tireces@hotmail.com)
+Valentin Efimov (garden@postman.ru)
+
+Knuth-Morris-Pratt algorithm implementation (used for pattern search) is
+based on the one given in the book
+"Algorithms and Programming: Theorems and Problems" Birkhauser, 1997 by
+Alexander Shen (shen@mccme.ru)
+
+ACM plug-in is based on the ACM2WAV converter written by
+Alexander Belyakov (abel@krasu.ru)
+
+AUD plug-in is based on the specs written by Vladan Bato:
+E-mail: bat22@geocities.com
+http://www.geocities.com/SiliconValley/8682
+And also on the VQA specs written by Aaron Glover (arn@ibm.net)
+
+IMA ADPCM decoder corrections for ASF, AUD, APC, ISS, CMP plug-ins were
+pointed out by Peter Pawlowski (peterpw666@hotmail.com, piotrpw@polbox.com):
+http://www.geocities.com/pp_666/
+http://members.xoom.com/pp_666/
+
+EACS, BNK, XA, MGI plug-ins are based on the WVE2PCM converter written by
+Dmitry Kirnocenskij (ejt@mail.ru)
+Info on new SCDl blocks is provided by Toni Wilen (nhlinfo@nhl-online.com):
+http://www.nhl-online.com/nhlinfo/
+
+MVE plug-in is based on the MVE2PCM program written by
+Dmitry Kirnocenskij (ejt@mail.ru)
+
+RAW plug-in uses A-law/u-law->PCM parts of g711.c by Sun Microsystems, Inc.
+
+VOC plug-in is based on the VOC file format description by:
+galt@dsd.es.com
+and uses parts of VOC-dealing SOX source code which is
+Copyright 1991 Lance Norskog and Sundry Contributors
+
+WAD and WADSFX plug-ins are based on the Unofficial DOOM specs written by
+Matthew S Fell (msfell@aol.com)
+
+GRP plug-in is based on the DN3D-DC.C written by
+Daniel Mecklenburg Jr (codewar@ns.cencom.net)
+
+Info on PKWARE-compressed files (in BLB archives) dealing is provided by
+Dmitry Kirnocenskij (ejt@mail.ru)
+
+The author is also very grateful to...
+
+Valentin Efimov (garden@postman.ru, http://qmusic.wciom.ru)
+For providing me with Broken Sword 2, Atlantis 2 and The Longest Journey
+decoding stuff.
+
+Nicholas Sales (nicsales@mweb.co.za)
+For providing me with SimCity3000 decoding stuff.
+
+Aleck (aleck_horn@chat.ru)
+For providing me with Harvester decoding stuff.
+
+Vladimir Goryachev (Nomad_is@land.ru)
+For providing me with Wing Commander: Prophecy decoding stuff.
+
+Andrey Filimonov (filim@aha.ru) FIDO: 2:5020/779
+For finding AUD docs for me on the Internet.
+
+Peter Pawlowski (peterpw666@hotmail.com, http://www.geocities.com/pp_666/)
+For pointing out corrections in IMA ADPCM decoders of AUD, ASF, APC, ISS plug-ins.
+
+Valentin Plotnichenko (valentin@nsc.gpi.ru, http://denver.da.ru)
+For finding ACM2WAV for me on the Internet.
+
+Steven Xu (stevenxu@21cn.com, http://gmw.yeah.net, http://go.163.com/~gamemedia)
+For the help with FIFA'2000 music.
+
+Max Ushakov (ushakov@mccme.ru)
+For lots of useful discussion and advice regarding RAW and WAV plug-ins.
+
+Anthony Larme (larme@bit.net.au)
+For the invaluable help with SOL file format.
+
+MPQ plug-in wouldn't be possible without the help of the following people
+whom I'd like to thank:
+
+(brainspin@hanmail.net)
+For the STORMING source code
+
+Ted Lyngmo (ted@lyncon.se)
+For the StarCrack mailing list
+
+King Arthur (KingArthur@warzone.com),
+Unknown Mnemonic (zorohack@hotmail.com)
+For sending me the filelists for many MPQ-games
+
+Sean Mims (smims@hotmail.com),
+David "Splice" James (beta@rogers.wave.ca)
+For the invaluable help with the STORM.DLL API
+
+9 Known problems
+=================
+
+ACM plug-in:
+ACM file structure is uncertain and thus ACM search is poorly implemented.
+The plug-in cannot reliably determine channels number of ACM file (which is
+either guessed or set by user).
+
+MVE plug-in:
+The plug-in does not support good (fast) seeking and time calculation.
+
+SOL plug-in:
+The decoding scheme (using or not using compressed code complement) detection
+is poorly implemented: the plug-in decodes first 1 KB of compressed data and
+determines which scheme is more suitable. It also seems that SOL ADPCM
+compressed 8-bit files in some games have minor noise, which is not completely
+removed by SOL LPF scheme.
+
+BNK plug-in:
+The plug-in plays ONLY EA ADPCM (7) BNK sections.
+I know nothing about others to support them anyhow...
+
+MGI plug-in: 
+The plug-in cannot perform seeking precisely enough due to the dependency 
+of seeking precision on section sizes in MGI file: when the section is 
+large, seeking precision is very rough.
+
+10 Future plans
+================
+
+-- Implementation of equalizer/noise filter
+-- Making use (if possible) of WinAmp vis/dsp plug-ins
+
+11 Project
+===========
+
+If you have docs/specs regarding the following game sound/music/video/resource
+file formats (as well as other intersting game (and not necessarily game)
+sound/music/video/resource file formats), please mail me!
+
+Here's the list:
+
+.DSM (DSIK module music: Flying Tigers v2.0, etc.)
+.PSM (MASI module music: Epic MegaGames Jazz JackRabbit, Pinball, etc.)
+.J2B (Epic MegaGames: Jazz JackRabbit 2 compressed modules)
+.WXD/.VCE (Relic Entertainment music/sound: HomeWorld)
+
+.MVE (Interplay video: Descent2, Fallout2, etc.)
+.VMD (Sierra On-Line video: Torin's Passage, etc.)
+.TGV/.DCT/.MAD (Electronic Arts video: NFS'x, NBA'xx, FIFA'xx, NHL'xx, etc.)
+
+12 Support the author of GAP
+=============================
+
+Although GAP and all ANX plug-ins are freeware, you're encouraged to support
+the author of GAP by sending me any donation you would consider a decent
+reward for my work. Such donations would show me the extent of users' interest
+in further GAP development and would help me a lot.
+
+The address to send the donations is:
+	Valery V. Anisimovsky
+	Semashko street, 50/10, flat 23,
+	Mytischi, Moscow Region, 141014 Russia.
+
+13 Appendix: ANX APL playlist format
+=====================================
+
+APL consists of the strings, each is ended by a newline, one string for
+one audio file. Each string has the following format:
+
+<Name> <AFType> <AFInfo> <ResFileName> <RFType> <RFInfo> Start Length
+
+NOTE: "<" and ">" characters are important delimiters!
+
+where:
+
+Name -- Audio file name.
+
+AFType -- Audio file type. Refer to audio file plug-ins source code for their
+type strings.
+
+AFInfo -- Audio file info. Refer to the audio file plug-in source code to
+find out whether it requires AFInfo and details on the format of AFInfo.
+
+ResFileName -- filename for the resource file audio file is contained in,
+(use "[CD]" for CD drive letter to enable APLs to be usable on systems with
+other CD drive letter that your system has -- refer to Options section for
+more details on this feature)
+
+RFType -- resource file/library type. Refer to resource file plug-ins source
+code for their type strings.
+
+RFInfo -- resource file info. Refer to the resource file plug-in source code
+to find out whether it requires RFInfo and details on the format of RFInfo.
+
+Start -- start position of audio file in the file determined by
+ResFileName and RFInfo (HEXADECIMAL).
+
+Length -- length of audio file in the file determined by
+ResFileName and RFInfo (HEXADECIMAL). May be FFFFFFFF for audio file
+spreading up to the end of file it's contained in.
+
+NOTE: The above two numbers are required for ALL audio files even if
+      they are single standalone files not contained in any archive! And
+      these two numbers are important, because placing game files into
+      resource library or even into a file contained in the resource
+      library itself is a common thing for many-many-many games.
+
+NOTE: If a parameter is not required (like AFInfo for most plug-ins),
+      there should be corresponding "<>" delimiters pair for that parameter
+      anyway!
+
+NOTE: Strings enclosed in "<>" delimiters should have equal number of "<" and
+      ">" symbols, otherwise GAP will fail to get right string.

@@ -1,0 +1,17 @@
+<kufrik.wav> <WAV> <> <[CD]\Music\kufrik.wav> <PLAIN> <> 0 10DE7C
+<menu.wav> <WAV> <> <[CD]\Music\menu.wav> <PLAIN> <> 0 193BAA
+<rybky01.wav> <WAV> <> <[CD]\Music\rybky01.wav> <PLAIN> <> 0 5623CA
+<rybky02.wav> <WAV> <> <[CD]\Music\rybky02.wav> <PLAIN> <> 0 56A516
+<rybky03.wav> <WAV> <> <[CD]\Music\rybky03.wav> <PLAIN> <> 0 4AC3DA
+<rybky04.wav> <WAV> <> <[CD]\Music\rybky04.wav> <PLAIN> <> 0 57CB0C
+<rybky05.wav> <WAV> <> <[CD]\Music\rybky05.wav> <PLAIN> <> 0 576D34
+<rybky06.wav> <WAV> <> <[CD]\Music\rybky06.wav> <PLAIN> <> 0 6BECA0
+<rybky07.wav> <WAV> <> <[CD]\Music\rybky07.wav> <PLAIN> <> 0 60E37A
+<rybky08.wav> <WAV> <> <[CD]\Music\rybky08.wav> <PLAIN> <> 0 B4BF4
+<rybky09.wav> <WAV> <> <[CD]\Music\rybky09.wav> <PLAIN> <> 0 521B7E
+<rybky10.wav> <WAV> <> <[CD]\Music\rybky10.wav> <PLAIN> <> 0 22E2A8
+<rybky11.wav> <WAV> <> <[CD]\Music\rybky11.wav> <PLAIN> <> 0 7CD10
+<rybky12.wav> <WAV> <> <[CD]\Music\rybky12.wav> <PLAIN> <> 0 13E0EA
+<rybky13.wav> <WAV> <> <[CD]\Music\rybky13.wav> <PLAIN> <> 0 244FAA
+<rybky14.wav> <WAV> <> <[CD]\Music\rybky14.wav> <PLAIN> <> 0 41B04E
+<rybky15.wav> <WAV> <> <[CD]\Music\rybky15.wav> <PLAIN> <> 0 5D7F26

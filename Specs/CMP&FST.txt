@@ -1,0 +1,250 @@
+=============================================================================
+		  FutureVision Audio File Formats Description	    5-01-2002
+=============================================================================
+
+By Valery V. Anisimovsky (son_of_the_north@mail.ru)
+
+In this document I'll try to describe audio file formats used in
+FutureVision game Harvester for music, sound effects, speech and movie
+soundtracks: CMP (music/sfx/speech) and FST (movie sountracks).
+Perhaps, those formats are also used in some other FutureVision games.
+
+The files this document deals with have extensions: .CMP, .FST, .DAT.
+
+Throughout this document I use C-like notation.
+
+All numbers in all structures described in this document are stored in files
+using little-endian (Intel) byte order.
+
+===================
+1. CMP Audio Files
+===================
+
+The music/sfx/speech in Harvester are .CMP files (stand-alone or stored in
+.DAT resources). CMP file has the following header:
+
+struct CMPHeader
+{
+  char	szID[4];
+  DWORD dwDataSize;
+  DWORD dwSampleRate;
+  WORD	wBits;
+};
+
+szID -- ID string, which is "FCMP".
+
+dwDataSize -- the size of the data in the file. May be used for song length
+(in seconds) calculation (taking into account the compression ratio).
+CMP file size is the sum of the CMPHeader size and (dwDataSize).
+
+dwSampleRate -- sample rate for the file.
+
+wBits -- resolution of the file (8 (8-bit), 16 (16-bit), etc.).
+
+The channels number is NOT specified in the header, so the default value
+(mono) should be used (all audio files in Harvester are mono).
+
+After the CMPHeader comes seemingly useless data. Its size is somewhat
+uncertain, so you may define this as an option -- the good values for such an
+option are 0x0 (no odd data), 0x4 and 0x37 bytes. The last value seems to be
+the most adequate. After that odd junk of data comes IMA ADPCM compressed
+sound data. You may find IMA ADPCM decompression scheme description further
+in this document.
+
+Note that at the end of some CMP files there's a junk of seemingly garbage
+data (usually 17 bytes) -- if you do not skip that when decompressing
+IMA ADPCM stream you'll hear a considerable "popping" at the end of the
+decompressed waveform.
+
+=====================================
+2. IMA ADPCM Decompression Algorithm
+=====================================
+
+During the decompression two LONG variables must be maintained for mono
+stream: lIndex, lCurSample. At the beginning of the file you must initialize
+them to zeroes.
+Note that LONG here is signed.
+
+Here's the code which decompresses one byte of IMA ADPCM compressed
+mono stream. Other bytes are processed in the same way.
+
+BYTE Input; // current byte of compressed data
+BYTE Code;
+LONG Delta;
+
+Code=LONIBBLE(Input); // get LOWER 4-bit nibble
+
+Delta=StepTable[lIndex]>>3;
+if (Code & 4)
+   Delta+=StepTable[lIndex];
+if (Code & 2)
+   Delta+=StepTable[lIndex]>>1;
+if (Code & 1)
+   Delta+=StepTable[lIndex]>>2;
+if (Code & 8) // sign bit
+   lCurSample-=Delta;
+else
+   lCurSample+=Delta;
+
+// clip sample
+if (lCurSample>32767)
+   lCurSample=32767;
+else if (lCurSample<-32768)
+   lCurSample=-32768;
+
+lIndex+=IndexAdjust[Code]; // adjust index
+
+// clip index
+if (lIndex<0)
+   lIndex=0;
+else if (lIndex>88)
+   lIndex=88;
+
+Output((SHORT)lCurSample); // send the sample to output
+
+Code=HINIBBLE(Input); // get HIGHER 4-bit nibble
+// ...just the same as above for higher nibble
+
+HINIBBLE and LONIBBLE are higher and lower 4-bit nibbles:
+#define HINIBBLE(byte) ((byte) >> 4)
+#define LONIBBLE(byte) ((byte) & 0x0F)
+Note that depending on your compiler you may need to use additional nibble
+separation in these defines, e.g. (((byte) >> 4) & 0x0F).
+
+StepTable and IndexAdjust are the tables given in the next section of
+this document.
+
+Output() is just a placeholder for any action you would like to perform for
+decompressed sample value.
+
+Note that LOWER nibble is processed first for mono sound.
+
+Of course, this decompression routine may be greatly optimized.
+
+====================
+3. IMA ADPCM Tables
+====================
+
+LONG IndexAdjust[]=
+{
+    -1,
+    -1,
+    -1,
+    -1,
+     2,
+     4,
+     6,
+     8,
+    -1,
+    -1,
+    -1,
+    -1,
+     2,
+     4,
+     6,
+     8
+};
+
+LONG StepTable[]=
+{
+    7,	   8,	  9,	 10,	11,    12,     13,    14,    16,
+    17,    19,	  21,	 23,	25,    28,     31,    34,    37,
+    41,    45,	  50,	 55,	60,    66,     73,    80,    88,
+    97,    107,   118,	 130,	143,   157,    173,   190,   209,
+    230,   253,   279,	 307,	337,   371,    408,   449,   494,
+    544,   598,   658,	 724,	796,   876,    963,   1060,  1166,
+    1282,  1411,  1552,  1707,	1878,  2066,   2272,  2499,  2749,
+    3024,  3327,  3660,  4026,	4428,  4871,   5358,  5894,  6484,
+    7132,  7845,  8630,  9493,	10442, 11487,  12635, 13899, 15289,
+    16818, 18500, 20350, 22385, 24623, 27086,  29794, 32767
+};
+
+========================
+4. FST Movie Soundtrack
+========================
+
+.FST files are movies used in Harvester.
+FST file has the following header:
+
+struct FSTHeader
+{
+  char	szID[4];
+  DWORD dwImageWidth;
+  DWORD dwImageHeight;
+  DWORD dwUnknown1;
+  DWORD dwNumFrames;
+  DWORD dwFrameRate;
+  DWORD dwSampleRate;
+  WORD	wBits;
+  WORD	wUnknown2;
+};
+
+szID -- ID string, which is "2TSF".
+
+dwNumFrames -- number of frames in FST.
+
+dwSampleRate -- sample rate for the file.
+
+wBits -- resolution of the file (8 (8-bit), 16 (16-bit), etc.).
+
+After the FSTHeader comes the table of frame entries. It contains
+(dwNumFrames) entries of the following format:
+
+struct FSTFrameEntry
+{
+  DWORD dwImageSize;
+  WORD	wSoundSize;
+};
+
+After the table of frame entries comes the frame data. Each frame chunk
+contains image data which has the size (dwImageSize) bytes, and the sound
+data which has the size (wSoundSize) bytes -- these values are taken from the
+frame entry correspondent to the given frame. Sound data immediately follows
+the image data. Sound data in Harvester movies is non-compressed signed
+16-bit PCM data.
+
+Note that the sound part in the first frame chunk contains data for several
+frames (not only for the first frame). Thus you should skip the sound parts
+of several last frame chunks. Namely, the good estimation for the number of
+frame chunks to skip is the number of frames covered by sound data in the
+first frame chunk minus one. That is, you may take the frame entry for the
+first frame, devide its (wSoundSize) by the correspondent value for the
+second frame and subtract one from the result -- that'll give the number of
+frame chunks to skip (the last chunks, of course).
+
+===================================
+5. CMP Audio Files in DAT Archives
+===================================
+
+When stored in .DAT resources, CMP audio files are stored "as is", without
+compression or encryption. That means if you want to play/extract CMP
+file from the DAT resource you just need to search for (szID) id-string
+("FCMP") and read CMP header starting at the beginning position of
+found id-string. This will give you starting point of the file and the size
+of the file will be the sum of CMPHeader size and (dwDataSize) header field.
+
+===========
+6. Credits
+===========
+
+Peter Pawlowski (peterpw666@hotmail.com, piotrpw@polbox.com)
+http://members.fortunecity.com/pp666/
+http://pp666.cjb.net/
+http://www.geocities.com/pp_666/
+Pointed out corrections in IMA ADPCM decoder.
+
+Aleck (aleck_horn@chat.ru)
+Provided me with Harvester decoding stuff thereby inspired
+me to decode the formats and write the plug-ins for GAP.
+
+-------------------------------------------
+
+Valery V. Anisimovsky (son_of_the_north@mail.ru)
+http://bim.km.ru/gap/
+http://www.anxsoft.newmail.ru
+http://anx.da.ru
+On these sites you can find my GAP program which can search for CMP/FST audio
+files in game resources, extract them, convert them to WAV and play them back.
+There's also complete source code of GAP and all its plug-ins there,
+including CMP/FST plug-ins, which could be used for further details on how
+you can deal with those formats.

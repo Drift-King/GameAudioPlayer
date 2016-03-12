@@ -1,0 +1,508 @@
+============================================================================
+		     Games Currently Supported by GAP		  16-03-2002
+============================================================================
+
+This file contains information on currently supported games: list of them
+and some useful tips and hints.
+
+========================
+List of supported games
+========================
+
+Via ACM audio plug-in (using PLAIN resource plug-in):
+    Fallout
+    Fallout 2
+    Baldur's Gate
+    Baldur's Gate - Tales of the Sword Coast
+    Baldur's Gate II: Shadows of Amn
+    Descent to Undermountain
+    Descent 3
+    M.A.X. 2
+    Planescape: Torment
+    MDK 2
+    Icewind Dale
+    IceWind Dale - Heart of Winter
+    Hopefully many other Black Isle/Interplay games (*)
+Via ASF audio plug-in (using PLAIN resource plug-in):
+    NBA Live'95
+    NBA Live'96
+    FIFA'96
+    NHL'95					(*)
+    NHL'96					(*)
+    NHL'97					(*)
+    The Need For Speed
+    The Need For Speed Special Edition
+    Hopefully many other Electronic Arts games	(*)
+Via BLBSFX audio plug-in (using BLB resource plug-in):
+    The Neverhood
+    Hopefully some other DreamWorks games	(*)
+Via EACS audio plug-in (using PLAIN resource plug-in):
+    NHL'98
+    NHL'99
+    NHL'2000
+    NHL'2001
+    NBA Live'97 				(*)
+    NBA Live'98
+    NBA Live'99
+    NBA Live'2000
+    FIFA'97					(*)
+    FIFA'98: Road to WC
+    FIFA'98: France
+    FIFA'99
+    FIFA'2000
+    FIFA'2001
+    Bundesliga Stars 2000
+    World Cup 98
+    Madden NFL'98
+    Madden NFL'99
+    Madden NFL'2000
+    EURO'2000
+    Triple Play 99
+    Need For Speed 2
+    Need For Speed 2 Special Edition
+    Need For Speed 3: Hot Pursuit
+    Need For Speed 4: High Stakes
+    Need For Speed 5: Porsche Unleashed
+    Fighter Pilot
+    World War II Fighters
+    Warhammer 2: Dark Omen
+    Wing Commander: Prophecy
+    Dungeon Keeper 2
+    Populous 3
+    Hopefully many other Electronic Arts games	(*)
+Via XA audio plug-in (using PLAIN resource plug-in):
+    SimCity3000
+    Hopefully many other Maxis games		(*)
+Via MGI audio plug-in (using PLAIN resource plug-in):
+    Wing Commander: Prophecy
+    Hopefully many other Origin games		(*)
+Via FST audio plug-in (using PLAIN resource plug-in):
+    Harvester
+    Hopefully many other FutureVision games	(*)
+Via CMP audio plug-in (using PLAIN resource plug-in):
+    Harvester
+    Hopefully many other FutureVision games	(*)
+Via MVE audio plug-in (using PLAIN resource plug-in):
+    Descent 2
+    Descent 2: Vertigo
+    Descent 3					(*)
+    MDK
+    Conquest of the New World
+    Dungeon Master 2
+    Planescape: Torment
+    Baldur's Gate II: Shadows of Amn
+    Icewind Dale
+    IceWind Dale - Heart of Winter
+    Hopefully many other Interplay games	(*)
+Via AUD audio plug-in (using PLAIN resource plug-in):
+    Legend of Kyrandia 3: Malcolm's Revenge
+    Command & Conquer
+    Command & Conquer: Covert Operations
+    Red Alert
+    Red Alert: The Aftermath
+    Red Alert: Counterstrike
+    Red Alert 2
+    Tiberian Sun
+    Tiberian Sun: FireStorm
+    Lands Of Lore 2
+    Lands Of Lore 3
+    Blade Runner
+    Dune 2000
+    Nox
+    ToonStruck
+    Hopefully many other Westwood Studios games (*)
+Via WAV audio plug-in (using MPQ resource plug-in):
+    Diablo
+    Diablo 2
+    Hellfire
+    StarCraft
+    BroodWar
+    WarCraft II: Battle.net Edition
+    Hopefully many other Blizzard games 	(*)
+Via WADSFX audio file plug-in (using WAD resource file plug-in):
+    DOOM
+    Ultimate DOOM
+    DOOM II
+    DOOM II: Plutonia Experiment
+    DOOM II: TNT Evilution
+    Heretic
+    Hexen
+    Hopefully some other ID Software/Raven Software games (*)
+Via RAW audio plug-in (using PLAIN resource plug-in):
+    Space Bucks
+    X-COM 3: Apocalipse Demo
+    Actua Hockey
+    Gangsters
+    Grand Theft Auto
+    Grand Theft Auto 2
+    Luftwaffe Commander
+    Chine
+Via RAW audio plug-in (using DSND resource plug-in):
+    Descent
+    Descent 2
+Via CLUSFX audio plug-in (using CLU resource plug-in):
+    Broken Sword 2
+    Hopefully some other Revolution games (*)
+Via APC audio plug-in (using PLAIN resource plug-in):
+    Atlantis: The Lost Tale
+    Aztec: The Curse in the Heart of the "City of Gold"
+    Egypte 2
+    Atlantis 2
+    Odyssee
+    Hopefully many other Cryo Interactive games (*)
+Via ISS audio plug-in (using PLAIN resource plug-in):
+    The Longest Journey
+    Hopefully many other FunCom games (*)
+Via SOL audio plug-in (using PLAIN resource plug-in):
+    Pepper's Adventures in Time
+    Under a Killing Moon
+    Quest for Glory 3
+    Space Quest 5
+    Space Quest 6
+    Torin's Passage
+    Phantasmagoria
+    Phantasmagoria 2: A Puzzle of Flesh
+    Gabriel Knight
+    Gabriel Knight 2
+    King's Quest 6
+    King's Quest 7
+    King's Quest 8
+    Leisure Suit Larry 6
+    Leisure Suit Larry 7
+    Shivers
+    Shivers 2: Harvest of Souls
+    Hopefully many other Sierra On-Line games	(*)
+Via VOC audio plug-in (using PLAIN resource plug-in):
+    Full Throttle
+    Shadow Warrior
+    Rise Of The Triad
+    Duke Nukem 3D
+    Redneck Rampage
+    Dark Forces
+    TIE Fighter
+    The Day Of The Tentacle
+    Sam & Max Hit The Road
+    Dune 2
+    Lands Of Lore
+    Legend of Kyrandia 2
+    Pizza Tycoon
+    Simon The Sorcerer 2
+    Darksun
+    Dune 2
+    Jagged Alliance
+    Jagged Alliance - Deadly Games
+    Indiana Jones - And the fate of Atlantis
+    Redneck Rampage - Passum Bayou
+Via WAV audio plug-in (using PLAIN resource plug-in):
+    Red Faction
+    Max Payne
+    Abomination
+    Black & White
+    Broken Sword 1
+    GeneWars
+    Hellbender
+    I Have No Mouth, And I Must Scream
+    Chine
+    The Road to El Dorado
+    World War II Fighters
+    Warzone 2100
+    Uprising 2
+    Ultimate Race Pro
+    Trophy Buck
+    Total Air War
+    Top Gun - Hornet's Nest
+    Radical Drive
+    Toca 2
+    The Tainted
+    Super Bikes
+    Star Trek - Birth of the Federation
+    Starsiege TRIBES
+    Skullcaps
+    Rollcage 2
+    Rival Realms
+    Revenant
+    Resident Evil 2
+    Recoil
+    Player Manager 2000
+    NFL Blitz
+    Nascar 1999 Edition
+    Moto Racer 2
+    Klingon Honor Guard
+    Hard Truck 2
+    Gex 3D
+    Gangsters
+    Future Cop: LAPD
+    Flanker 2.0
+    Fighting Force
+    F22 Red Sea Operations
+    F-16 Multurole Fighter
+    Expendable
+    Earth 2150
+    Dominion
+    Delta Force
+    Deadlock II
+    Die By The Sword
+    Die by the Sword - Limb From Limb
+    Dethkarz
+    Dark Vengeance
+    Cybermercs
+    Commandos
+    Commandos - Beyond the Call of Duty
+    Colin McRae Rally 2
+    Civilization Call To Power
+    Centipede
+    Braveheart
+    Bio F.R.E.A.K.S
+    BattleZone 2
+    Arsenal
+    Alpha Storm
+    Actua Soccer 3
+    3D Ultra Radio Control Racers
+    Worms Armageddon
+    Nox
+    Gabriel Knight 3
+    Jedi Knight
+    Jedi Knight - Mysteries Of the sith
+    Baldies
+    Dungeon Keeper
+    Formula 1
+    Interstate '76
+    Jagged Alliance 2
+    Master Of Orion 2
+    MechWarrior 3
+    MechWarrior 3 - Pirates Moon
+    MechWarrior 4
+    Messiah
+    Across
+    Fillets
+    American McGee's Alice
+    Metal Fatigue
+    Midtown Madness
+    Midtown Madness 2
+    Destruction Derby
+    Simtower
+    STCC 2 - Swedish Touring Car Championship 2
+    NASCAR Racing 2
+    NightLong
+    Postal
+    Postal - Special Delivery
+    RollerCoaster Tycoon
+    RollerCoaster Tycoon - Loopy Landscapes
+    Transport Tycoon
+    Transport Tycoon Deluxe
+    The Outforce
+    Wargasm
+    Return Of Tim: Contraptions
+    Age of the Empires
+    Age of the Empires 2
+    Wing Commander 4: The Price of Freedom
+    Descent: Freespace - The Great War
+    WarWind
+    WaterWorld: The Quest For The Dry Land
+    AH-64D Longbow
+    AH-64D Longbow 2
+    Alien vs Predator
+    Close Combat 3
+    Hidden & Dangerous
+    Armored Fist 3
+    M.A.X.
+    Star Wars: Rebellion
+    System Shock 2
+    Cyberia 2: Resurrection
+    Road Rash
+    MegaRace 2
+    MechCommander
+    Thief: The Dark Project
+    Thief 2: The Metal Age
+    WarCraft
+    WarCraft II - Tides of Darkness
+    WarCraft II - Beyond the Dark Portal
+    Mortal Kombat 3
+    Space Quest 6
+    MDK
+    Monster Truck Madness 2
+    Blood 2: The Chosen
+    Quake
+    Quake 2
+    Quake 3: Arena
+    Quake 3 - Urban Terror
+    Hexen 2
+    Heretic 2
+    MageSlayer
+    Dark Reign
+    Tomb Raider
+    Tomb Raider 2
+    Tomb Raider 3 - Lost Artifact
+    Tomb Raider 4
+    Tomb Raider 5 - Chronicles
+    X-Com - Enemy Unknown
+    Sanitarium
+    Unreal
+    Unreal: Return to Na Pali
+    Wheel Of Time
+    Unreal Tournament
+    Half-life
+    Sin
+    Harvester
+
+And also...
+      Many-Many-Many More !!!
+      Just make search (SCAN FILES in playlist window) !!!
+
+NOTE: (*) means GAP is not tested with that game, but should work.
+      If it does not work please mail me!
+
+Supported are maybe, much more games, but I've got no opportunity to test
+GAP with them. Select ALL game files in SCAN FILES and ADD FILES in playlist
+window to search for supported audio files within game resource files.
+The candidates to check:
+DreamWorks Interactive Games (for BLB, BLBSFX plug-ins),
+Blizzard Entertainment games (for MPQ plug-in),
+Westwood Studios games (for AUD plug-in),
+Sierra On-Line games (for SOL, WAV plug-ins),
+Interplay/Black Isle games (for ACM, MVE plug-in),
+ID Software and Raven Software games (for WAD, WADSFX plug-ins),
+Electronic Arts games (for ASF, EACS and BNK plug-ins),
+Parallax Software games (for DSND plug-in),
+3D Realms games (for GRP plug-in),
+Revolution games (for CLU/CLUSFX plug-ins),
+Cryo Interactive games (for APC plug-in),
+FunCom games (for ISS plug-in),
+Maxis games (for XA plug-in),
+FutureVision games (for CMP/FST plug-ins),
+Origin games (for MGI plug-in).
+Please let me know whether GAP works with these if you can!
+
+=================================================
+Tips and hints for dealing with game audio files
+=================================================
+
+IMPORTANT NOTE: Please take into account, that files of some formats can be
+added to playlist ONLY by ADD FILES operation, while some other file types
+can be added ONLY by SCAN FILES operation. Other file formats may be added
+by both operations.
+So, the general tip is to perform BOTH operations on ALL game files:
+SCAN FILES and ADD FILES. This may lead to adding some audio files twice.
+To avoid that (if that's undesirable) use the following approach:
+while performing ADD FILES: if the dialog "Select files to process from
+archive:..." appears, press SELECT ALL and OK or select files you wish to
+process; while performing SCAN FILES: when the same dialog appears, press
+SELECT NONE and OK (if you wish just to skip this archive) or CANCEL (if you
+wish this archive to be scanned as plain file).
+Note also, that for some games there're ready ANX playlists available with
+GAP. You may want to use these premade APLs as they sometimes contain song
+names and they're independent on CD-drive letter.
+
+VIDEO SOUNDTRACKS PLAYBACK: In order to listen to video soundtracks
+(.VQA, .TGV, .TGQ, .DCT, .MAD, .MVE, .UV, .UV2, .WVE, .FST) set the buffer
+size to low value (but not too low!), something like 64KB/128KB for 4x
+CD-ROM drive. In fact, this value depends greatly on your CD-ROM speed --
+the higher the speed the larger buffer you may use.
+
+The Neverhood (and other DreamWorks games):
+BLBSFX audio files can ONLY be added to playlist by ADD FILES operation.
+Use ADD FILES for .BLB files and select *.07 (sfx) and *.08 (music).
+
+NFS'x, FIFA'x, NHL'x, NBA'x (and other Electronic Arts games):
+Use ADD FILES for .ASF, .STR and .MUS files. Note that plug-in is able to find
+audio stream in video files (.MAD, .DCT, .TGV, .TGQ, .UV, .UV2, .WVE) -- use
+SCAN FILES for them. It's also a good idea to try SCAN FILES for all .BNK/.VIV
+files in order to find speech and sound effects.
+For older Electronic Arts games (like FIFA'96, NHL'96, NBA'96, NFS, etc.) make
+search in .BNK and .CRD files. Songs (sometimes, sounds) are usually .ASF and
+.AS4 files and speech files usually have extensions .SPH and .EAS.
+
+KQx, GQx, Larry'x, SQx, GKx, etc. (and other Sierra On-Line games):
+Make search in RESOURCE.SFX and RESOURCE.AUD files. Sometimes songs (and
+sounds) are stand-alone .AUD files (in Larry7 and KQ8). GK3 music/sfx reside
+in .BRN files -- make search in them.
+
+Legend Of Kyrandia 3:
+Songs are stand-alone .AUD files, which may be just added to playlist with
+ADD FILES button. Speech is in .TLK files and sounds are in .PAK files --
+make search in them. Malcolm's VQAs should be simply added by ADD FILES and
+NOT SCAN FILES!
+
+Fallout 1/2, Planescape: Torment (and other Interplay games):
+Make search in *.DAT files. Before that you should enable ACM search in ACM
+plug-in configuration dialog. Songs are stand-alone .ACM files (which could
+be added to playlist with ADD FILES). .MVE video files sometimes reside in
+.MVL/.EXE/etc files -- make search in them. Note that ACM songs of
+Planescape: Torment should be added to playlist as STEREO files, not as MONO
+(as ACM plug-in incorrectly detects) -- to do so you should set ACM plug-in
+options accordingly: ACM channels -> use default, Channels default -> stereo.
+
+DOOM, DOOM2, Heretic, Hexen (and some other ID/Raven games):
+Press ADD FILES, choose all .WAD files and then press SELECT ALL in the
+lump list dialog box, so that all sounds in .WAD will be added to playlist.
+
+Descent 1/2:
+Press ADD FILES, then choose DESCENT.PIG (for Descent 1) or DESCENT2.S11
+and/or DESCENT2.S22 (for Descent 2) and then press SELECT ALL button in the
+file list dialog box, so that all sounds in .PIG/.S11/.S22 will be added to
+playlist. For Descent 1 all sounds are Unsigned 8-bit Mono 11025 Hz RAWs,
+while for Descent 2 sounds in DESCENT2.S11 are Unsigned 8-bit Mono 11025 Hz
+RAWs and in DESCENT2.S22 they are Unsigned 8-bit Mono 22050 Hz RAWs.
+
+X-COM Apocalipse Demo:
+Music should be added as RAW with the following parameters: Stereo, 16-bit,
+Little-endian, 22050 Hz, Signed. Music files may be found in the MUSIC
+subdirectory. Sounds are in RAWSOUND subdirectory and they should be added
+with the following parameters: Mono, 8-bit, 22050 Hz, Unsigned.
+
+Tomb Raider 3:
+Scan AUDIO\CDAUDIO.WAD.
+
+Duke Nukem 3D:
+Use ADD FILES for DUKE3D.GRP and DUKE.RTS.
+
+Rise Of The Triad:
+Use ADD FILES for DARKWAR.WAD and REMOTE1.RTS.
+
+Redneck Rampage:
+Use ADD FILES for REDNECK.GRP and REDNECK.RTS.
+
+Dark Forces:
+Scan SOUNDS.GOB and JEDISFX.LFD.
+
+TIE Fighter:
+Scan SFXBLAST.LFD, TIESFX.LFD, TIESPCH.LFD (in RESOURCE subdirectory).
+
+The Day Of The Tentacle and Sam & Max Hit The Road:
+Scan MONSTER.SOU.
+
+Dune 2, Lands Of Lore and Legend Of Kyrandia 2:
+Scan all .PAK files.
+
+Mortal Kombat 3:
+Scan all .FTR files,
+
+Quake, Quake 2, Hexen 2, Heretic 2, Half-life:
+Scan all .PAK files.
+
+WarCraft I/II:
+Scan all *.WAR and *.SUD files.
+
+SimCity3000 (perhaps, some other Maxis games):
+Add all *.XA files.
+
+Harvester (perhaps, some other FutureVision games):
+Add all *.CMP files (music), *.FST files (video) and scan HARVEST.DAT
+(sounds) and SOUND.DAT (speech) files.
+
+Broken Sword 2 (perhaps, some other Revolution games):
+Add all *.CLUSFX files in CLUSTERS\MUSIC.CLU (music) and all *.CLUSFX
+files in CLUSTERS\SPEECH.CLU. You CANNOT find CLUSFX files using
+SCAN FILES operation! Use ADD FILES instead.
+
+Atlantis, Aztec, Egypte 2, Atlantis 2 (and other Cryo Interactive games):
+Add all *.APC files.
+
+Odyssee (perhaps, some other Cryo Interactive games):
+Scan all *.BF files.
+
+The Longest Journey (perhaps, some other FunCom games):
+Add all *.ISS files and scan all *.XARC files.
+
+Wing Commander: Prophecy (perhaps, some other Origin games):
+Scan all *.TRE files.

@@ -1,0 +1,203 @@
+=============================================================================
+	      DreamWorks BLB Resource, Music and Sound Formats	    5-01-2002
+=============================================================================
+
+By Valery V. Anisimovsky (son_of_the_north@mail.ru)
+
+In this document I'll try to describe the format of DreamWorks BLB resource
+files as well as the format of sound/music files stored in BLB archives.
+These formats are used in the game The Neverhood (perhaps, in some other
+DreamWorks games).
+
+The files this document deals with have extensions: .BLB.
+
+Throughout this document I use C-like notation.
+
+All numbers in all structures described in this document are stored in files
+using little-endian (Intel) byte order.
+
+======================
+1. BLB Resource Files
+======================
+
+All game files of The Neverhood are stored in BLB resource files.
+Each BLB file has the following header:
+
+struct BLBHeader
+{
+  char	szID[4];
+  BYTE	bID;
+  BYTE	bUnknown;
+  WORD	wDataSize;
+  DWORD dwFileSize;
+  DWORD dwNumber;
+};
+
+szID -- string ID is always "\x40\x49\x00\x02".
+
+bID -- byte ID is always 0x07.
+
+wDataSize -- the size of data section of BLB file (see below).
+
+dwFileSize -- the size of BLB file.
+
+dwNumber -- the number of files stored in BLB file.
+
+After the header comes the array of (dwNumber) file IDs. Each file ID is a
+DWORD identifying a file in BLB archive.
+
+After the file IDs array comes the array of (dwNumber) directory entries.
+Each directory entry contains the info on a file in BLB archive. Each such
+entry has the following format:
+
+struct BLBDirEntry
+{
+  BYTE	bType;
+  BYTE	bAction;
+  WORD	wDataIndex;
+  DWORD dwUnknown;
+  DWORD dwStart;
+  DWORD dwFileID;
+  DWORD dwOutSize;
+};
+
+bType -- the type of the file:
+0x07 -- sound effect,
+0x08 -- music,
+0x0A -- video file (SMK -- Smacker video, www.smacker.com),
+there're some more types, but their purpose is not so evident (e.g. 0x02
+seems to be graphic file type).
+
+bAction -- defines the action which should be performed for the file:
+0x01 -- none: the file is non-compressed, no additional actions are required,
+0x03 -- decompress: the file is PKWARE-compressed (see below),
+0x65 -- fake: the file is fake, that is no file is really present (see below).
+
+wDataIndex -- the index into file data array (see below) for the byte
+correspondent to the file.
+
+dwStart -- the starting position of the file relative to the beginning of the
+BLB archive.
+
+dwFileID -- this field is only relevant for fake files: fake files directory
+entries are just placeholders, there's no real file in the archive for the
+fake file directory entry, but such entry points to some other file (perhaps,
+in other BLB archive) with the file ID equal to (dwFileID) which should be
+used instead of the correspondent fake file. So, fake file is a kind of alias
+for other (non-fake) file. Note, that, in principle, fake file may be an
+alias for another fake file, etc., but finally there should be non-fake file
+in the chain of such redirections.
+
+dwOutSize -- the output size of the file:
+for non-compressed files that's just the size of the file,
+for PKWARE-compressed files that's the size of decompressed file,
+for fake files use the value from the directory entry of the correspondent
+non-fake file.
+
+After the array of directory entries comes the data section. This is the array
+of (wDataSize) bytes. Let's call these bytes "shifts". The shift value for
+the file may be obtained by getting the byte with index (wDataIndex) (see above)
+from the file data array (indices are zero-based). If the index value is too
+large (not less than data section size (wDataSize)), the shift value should
+be set to default (0xFF).
+
+After the file data section come files contained in BLB archive.
+
+============================================
+2. Decompression of PKWARE-compressed Files
+============================================
+
+I will not describe here the algorithm of PKWARE decompression. What I'll
+explain is the easy way you may use to access PKWARE-compressed files via
+PKWARE's library PKWARE.DLL. This library is supplied with GAP's BLB RF
+plug-in (see below).
+
+Here's the sample C code (using Win32 API):
+
+// decompression function -- returns zero on success
+DWORD (__cdecl *Uncompress)
+(
+  char	*outputBuffer,
+  DWORD *pOutSize,
+  char	*inputBuffer,
+  DWORD  dwSize
+);
+
+// first, load the library
+HINSTANCE hDllInst=LoadLibrary("pkware.dll");
+
+// get the decompression function address
+Uncompress=(DWORD (__cdecl *)(char*, DWORD*, char*, DWORD))GetProcAddress(hDllInst,"Uncompress");
+
+// decompress file -- it's assumed here that input buffer contains compressed
+// file loaded from BLB archive and output buffer is allocated and has proper
+// size (that is, (dwOutSize) value from the corresponding directory entry)
+Uncompress(outputBuffer,&dwOutSize,inputBuffer,dwSize);
+
+// now (outputBuffer) contains decompressed file and (dwOutSize) is set to
+// decompressed file size (you should use directory entry value of output
+// size for output buffer allocation)
+
+================================
+3. BLBSFX Sound and Music Files
+================================
+
+As was pointed out above, files with type bytes 0x07 and 0x08 are sound and
+music files. All of them are of the same format which I refer to as BLBSFX.
+BLBSFX file has no header, it's just compressed (or non-compressed) waveform
+stream. All sound/music files in The Neverhood are 16-bit mono 22050 Hz.
+If the shift value for the BLBSFX file is 0xFF, the file in not compressed
+and in this case, it's just PCM waveform stream (signed 16-bit).
+Otherwise, if the shift byte differs from 0xFF, BLBSFX file is compressed
+using DW ADPCM compression algorithm. Refer to the following section for the
+description of DW ADPCM decompression scheme.
+Note that most of sound files in The Neverhood are PKWARE-compressed, that
+is you should first decompress them (e.g. using PKWARE.DLL and the approach
+described above) and then apply DW ADPCM decompression scheme (if needed).
+All music files are not PKWARE-compressed, but most of them are DW ADPCM
+compressed.
+
+====================================
+4. DW ADPCM Decompression Algorithm
+====================================
+
+During the decompression SHORT variable should be maintained. Decompression
+uses shift value, so it should be obtained first.
+
+Here's the code which decompresses DW ADPCM compressed BLBSFX file:
+
+BYTE  bShift; // shift value
+char *inputBuffer[dwSize];
+
+SHORT iCurValue;
+DWORD i;
+
+iCurValue=0x0000;
+
+for (i=0;i<dwSize;i++)
+{
+  iCurValue+=(signed short)inputBuffer[i];
+  Output(iCurValue<<bShift);
+}
+
+Output() is just a placeholder for any action you would like to perform for
+decompressed sample value.
+
+===========
+5. Credits
+===========
+
+Dmitry Kirnocenskij (ejt@mail.ru)
+Provided me with info on dealing with PKWARE-compressed files.
+
+-------------------------------------------
+
+Valery V. Anisimovsky (son_of_the_north@mail.ru)
+http://bim.km.ru/gap/
+http://www.anxsoft.newmail.ru
+http://anx.da.ru
+On these sites you can find my GAP program which can deal with BLB
+resource files, play back BLBSFXes from them and convert BLBSFXes to WAVs.
+There's also complete source code of GAP and all its plug-ins there,
+including BLB and BLBSFX plug-ins, which could be used for further details
+on how you can deal with these formats.

@@ -1,0 +1,226 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "winver.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+ABOUT DIALOG DISCARDABLE  0, 0, 146, 149
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About ANX ASF Plug-In"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Credits",IDC_STATIC,5,3,135,81,BS_LEFT
+    LTEXT           "ANX ASF Audio File Plug-In v0.98\nCopyright© 1999-2000 ANX Software\nE-mail: son_of_the_north@mail.ru\n\nIMA ADPCM decoder corrections were pointed out by Peter Pawlowski:\nE-mail: peterpw666@hotmail.com\nhttp://www.geocities.com/pp_666/",
+                    ID_COPYRIGHT,12,15,122,65,NOT WS_GROUP
+    GROUPBOX        "License",IDC_STATIC,5,87,135,40,BS_LEFT
+    LTEXT           "This plug-in is freeware. There is NO WARRANTY for this software, you use it at your own risk.",
+                    IDC_STATIC,12,97,122,27,NOT WS_GROUP
+    DEFPUSHBUTTON   "O&K",IDOK,48,131,50,14
+END
+
+INFOBOX DIALOG DISCARDABLE  0, 0, 215, 99
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "ASF File Info Box"
+FONT 8, "MS Sans Serif"
+BEGIN
+    RTEXT           "Resource Name",IDC_STATIC,4,8,52,8,NOT WS_GROUP
+    EDITTEXT        ID_RESNAME,58,6,150,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "File Data String",IDC_STATIC,4,22,51,8,NOT WS_GROUP
+    EDITTEXT        ID_DATASTR,58,20,150,12,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "Data Format",IDC_STATIC,5,33,118,60,BS_LEFT
+    EDITTEXT        ID_DATAFMT,9,43,110,47,ES_MULTILINE | ES_READONLY
+    RTEXT           "File Size",IDC_STATIC,124,39,27,8,NOT WS_GROUP
+    EDITTEXT        ID_FILESIZE,154,37,54,12,ES_AUTOHSCROLL | ES_READONLY
+    RTEXT           "Length",IDC_STATIC,124,54,27,8,NOT WS_GROUP
+    EDITTEXT        ID_LENGTH,154,52,54,12,ES_AUTOHSCROLL | ES_READONLY
+    DEFPUSHBUTTON   "O&K",IDOK,163,79,45,14
+END
+
+CONFIG DIALOG DISCARDABLE  0, 0, 228, 118
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "ASF Plug-In Configuration"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "ASF block structure",IDC_STATIC,5,3,165,34
+    CONTROL         "Ignore ASF &loop blocks",ID_IGNORELOOPS,"Button",
+                    BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,11,12,90,10
+    CONTROL         "&Walk ASF blocks chain before playback",ID_WALK,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,23,143,10
+    GROUPBOX        "ASF search/verification",IDC_STATIC,5,39,165,45
+    CONTROL         "Check &sample rate",ID_CHECKRATE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,48,75,10
+    CONTROL         "Check &channels number",ID_CHECKCHANNELS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,59,93,10
+    CONTROL         "Check &resolution",ID_CHECKBITS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,70,69,10
+    GROUPBOX        "IMA ADPCM decompression",IDC_STATIC,5,86,165,26
+    CONTROL         "&Use sample clipping for decompression",ID_USECLIPPING,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,96,138,10
+    DEFPUSHBUTTON   "O&K",IDOK,177,7,45,14
+    PUSHBUTTON      "Ca&ncel",IDCANCEL,177,25,45,14
+    PUSHBUTTON      "&Defaults",ID_DEFAULTS,177,43,45,14
+END
+
+WALKING DIALOG DISCARDABLE  0, 0, 173, 38
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Walking"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Walking ASF blocks chain. Please wait...",IDC_STATIC,21,
+                    6,130,8
+    CONTROL         "Progress1",ID_WALKING,"msctls_progress32",WS_BORDER,8,
+                    18,157,9
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,9,8,0
+ PRODUCTVERSION 1,3,2,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "ANX Software\0"
+            VALUE "FileDescription", "ANX ASF Audio File Plug-In\0"
+            VALUE "FileVersion", "0.98\0"
+            VALUE "InternalName", "AF_ASF\0"
+            VALUE "LegalCopyright", "Copyright © 1999-2000 ANX Software\0"
+            VALUE "OriginalFilename", "AF_ASF.DLL\0"
+            VALUE "ProductName", "Game Audio Player\0"
+            VALUE "ProductVersion", "1.32\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""winver.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "ABOUT", DIALOG
+    BEGIN
+        RIGHTMARGIN, 144
+        BOTTOMMARGIN, 111
+    END
+
+    "CONFIG", DIALOG
+    BEGIN
+        BOTTOMMARGIN, 117
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NOTOURFILE          "This file is not a valid ASF audio file."
+    IDS_NOMEM               "Failed to allocate memory for ASF data block."
+    IDS_NODECODER           "Compression of this ASF audio file is not supported."
+    IDS_NOBUFFER            "Failed to allocate memory for ASF decompression buffer."
+    IDS_INCORRECTFILE       "Incorrect ASF audio file."
+    IDS_UNKNOWNTYPE         "Unknown ASF audio file type."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
