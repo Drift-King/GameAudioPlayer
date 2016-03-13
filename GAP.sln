@@ -1,14 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ACMStream", "Projects\Common\ACMStream.vcxproj", "{9F48302B-7BCE-45F5-96E4-E6E8D9A314A9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AF_ACM", "Projects\Plugins\AudioFile\AF_ACM.vcxproj", "{EE508055-BE1A-455A-816C-BA5A63AAF40E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{9F48302B-7BCE-45F5-96E4-E6E8D9A314A9} = {9F48302B-7BCE-45F5-96E4-E6E8D9A314A9}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AF_APC", "Projects\Plugins\AudioFile\AF_APC.vcxproj", "{D1E10F21-E690-4A05-86A5-2D4749926D54}"
 EndProject
@@ -65,9 +60,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RF_WAD", "Projects\Plugins\ResourceFile\RF_WAD.vcxproj", "{0158E59D-2941-4EE7-A760-AB509AC19BF3}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RF_fDAT", "Projects\Plugins\ResourceFile\RF_fDAT.vcxproj", "{5CB900C9-0BE7-46A2-8530-B61ED6B69282}"
-	ProjectSection(ProjectDependencies) = postProject
-		{27E29BB8-FD3B-4298-B342-B3A242A485AA} = {27E29BB8-FD3B-4298-B342-B3A242A485AA}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TreeSel", "Projects\Common\TreeSel.vcxproj", "{27E29BB8-FD3B-4298-B342-B3A242A485AA}"
 EndProject
