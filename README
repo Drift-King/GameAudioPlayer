@@ -60,7 +60,7 @@ IMPORTANT: if you plan to use gap.sln and *.vcxproj files in this package,
 please do not change the directory structure!
 Solution (gap.sln) and projects (*.vcxproj) depend on that strongly!
 
-GAP.sln -- VS2013 solution file: contains all projects: GAP and all plug-ins.
+GAP.sln -- VS 2015 Express solution file: contains all projects: GAP and all plug-ins.
 To build all, just load GAP.sln in MS Visual Studio and in the main menu
 select Build->Rebuild Solution
 
@@ -147,22 +147,12 @@ games in which music/sfx/speech are stand-alone files.
 
 Things to take care of...
 
-* MSDev has a tendency to change the dimensions of some controls to default
-values: e.g. 12 for edit control height and 8 for static text height.
-This should be avoided as some of such controls, for instance, in PLAYDIALOG,
-have non-default dimensions and that's (of course! :-) made for better GAP
-appearance.
-
 * Note that all plug-in API functions are __stdcall. Other (non-exported)
 functions may be __fastcall or whatever you like.
 
 * For ALL projects, both GAP and plug-ins, there should be the SAME structure
 packing options. This is important, as plug-ins and GAP code share some
 headers defining structures used by both.
-
-* Dealing with plug-ins under WATCOM C 11.0 is a tricky thing: some combinations
-of optimization options for GAP and plug-ins projects result in crashes when
-trying to load plug-ins. There's no such problem under MSVC 5.
 
 * Usage of ListView_DeleteAllItems() seems to cause unreproduceable crashes
 (when clearing playlist).
